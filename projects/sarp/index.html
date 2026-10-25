@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" data-base="/tes11/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080a12">
+  <title>Sarp — Lakshit Singh Saini</title>
+  <meta name="description" content="A Three.js browser game that gives classic Snake a 3D arena, special apples, rising speed, local high scores, and keyboard or touch controls. Verified project details, features, stack, visuals, and repository links.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://lakshits27.github.io/tes11/projects/sarp/">
+  <meta property="og:site_name" content="Lakshit Singh Saini">
+  <meta property="og:title" content="Sarp — Lakshit Singh Saini">
+  <meta property="og:description" content="A Three.js browser game that gives classic Snake a 3D arena, special apples, rising speed, local high scores, and keyboard or touch controls. Verified project details, features, stack, visuals, and repository links.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lakshits27.github.io/tes11/projects/sarp/">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://lakshits27.github.io/tes11/assets/og/sarp.png">
+  <meta property="og:image:alt" content="Sarp — original spectral project artwork by Lavi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sarp — Lakshit Singh Saini">
+  <meta name="twitter:description" content="A Three.js browser game that gives classic Snake a 3D arena, special apples, rising speed, local high scores, and keyboard or touch controls. Verified project details, features, stack, visuals, and repository links.">
+  <meta name="twitter:image" content="https://lakshits27.github.io/tes11/assets/og/sarp.png">
+  <meta name="twitter:creator" content="@Lakshits27">
+  <link rel="icon" type="image/svg+xml" href="/tes11/favicon.svg">
+  <link rel="apple-touch-icon" href="/tes11/favicon-192.png">
+  <link rel="manifest" href="/tes11/manifest.webmanifest">
+  
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Person","name":"Lakshit Singh Saini","alternateName":"Lavi","description":"Computer Science undergraduate and developer.","url":"https://lakshits27.github.io/tes11/","email":"mailto:lakshitsinghsaini@gmail.com","sameAs":["https://github.com/hmmlavi","https://www.instagram.com/lakshitsinghsaini/","https://x.com/Lakshits27"],"knowsAbout":["Web development","Python","TypeScript","Android development","Creative coding","Games","Music","Space"]},{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Sarp","description":"A Three.js browser game that gives classic Snake a 3D arena, special apples, rising speed, local high scores, and keyboard or touch controls.","url":"https://lakshits27.github.io/tes11/projects/sarp/","codeRepository":"https://github.com/hmmlavi/Sarp","programmingLanguage":["React 19","TypeScript 5.9","Three.js 0.186","Tailwind CSS 4","Vite 7","vite-plugin-singlefile","Web Audio"],"author":{"@type":"Person","name":"Lakshit Singh Saini","url":"https://lakshits27.github.io/tes11/"},"dateModified":"2026-10-19","runtimePlatform":"https://sarp3d.vercel.app/","downloadUrl":"https://github.com/hmmlavi/Sarp/releases/tag/v1.0.0"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lakshits27.github.io/tes11/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://lakshits27.github.io/tes11/projects/"},{"@type":"ListItem","position":3,"name":"Sarp","item":"https://lakshits27.github.io/tes11/projects/sarp/"}]}]</script>
+</head>
+<body class="page page--project project-page" data-page="project" data-project="sarp" style="--project-accent:#d7ff65;--project-accent-2:#ff78b7;--project-accent-soft:rgba(215, 255, 101, 0.16)">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-wipe" aria-hidden="true"></div>
+  <canvas id="spectral-trail" aria-hidden="true"></canvas>
+  <noscript><div class="noscript-note">This site works without JavaScript; animations and playground controls are enhanced when JavaScript is available.</div></noscript>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="wordmark" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+        <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+        <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="desktop-nav__link" href="/tes11/"><span>Home</span></a><a class="desktop-nav__link is-active" href="/tes11/projects/" aria-current="page"><span>Projects</span><i aria-hidden="true"></i></a><a class="desktop-nav__link" href="/tes11/playground/"><span>Playground</span></a><a class="desktop-nav__link" href="/tes11/about/"><span>About</span></a><a class="desktop-nav__link" href="/tes11/contact/"><span>Contact</span></a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-cta" href="/tes11/contact/"><span>Let’s talk</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i></span>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" data-menu-panel hidden>
+      <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+        <a class="mobile-menu__link" href="/tes11/"><span>Home</span></a><a class="mobile-menu__link is-active" href="/tes11/projects/" aria-current="page"><span>Projects</span><i aria-hidden="true"></i></a><a class="mobile-menu__link" href="/tes11/playground/"><span>Playground</span></a><a class="mobile-menu__link" href="/tes11/about/"><span>About</span></a><a class="mobile-menu__link" href="/tes11/contact/"><span>Contact</span></a>
+        <div class="mobile-menu__divider" aria-hidden="true"></div>
+        <a class="mobile-menu__link" href="/tes11/now/"><span>Now</span></a><a class="mobile-menu__link" href="/tes11/uses/"><span>Uses</span></a>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>lakshitsinghsaini@gmail.com</span></a>
+        <div class="mobile-menu__socials">
+          <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="page-main" tabindex="-1">
+<div class="project-detail" style="--project-accent:#d7ff65;--project-accent-2:#ff78b7;--project-accent-soft:rgba(215, 255, 101, 0.16)">
+    <section class="project-hero" aria-labelledby="page-title" data-reveal>
+      <div class="project-hero__copy">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/tes11/">Home</a></li><li><a href="/tes11/projects/">Projects</a></li><li><span aria-current="page">Sarp</span></li></ol></nav>
+        <p class="eyebrow "><span aria-hidden="true"></span>3D browser arcade game / project 05</p>
+        <h1 id="page-title">Sarp<span class="project-hero__period">.</span></h1>
+        <p class="project-hero__tagline">Eat. Grow. Don’t crash.</p>
+        <p class="project-hero__intro">Sarp takes a familiar arcade rule set and adds depth — literally. A 21 × 21 3D arena, milestone Rainbow Apples, Fever Mode, changing weather, and procedural audio give short runs a reason to continue.</p>
+        <div class="project-hero__links">
+    <a class="btn btn--secondary " href="https://github.com/hmmlavi/Sarp" target="_blank" rel="noopener noreferrer"><span>View source</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn--primary " href="https://sarp3d.vercel.app/" target="_blank" rel="noopener noreferrer" style="--button-accent:#d7ff65"><span>Play Sarp online</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn--ghost " href="https://github.com/hmmlavi/Sarp/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer"><span>See v1.0.0 tag</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+  </div>
+        <dl class="project-facts">
+          <div><dt>Status</dt><dd>Live demo · v1.0.0</dd></div>
+          <div><dt>Category</dt><dd>Game</dd></div>
+          <div><dt>Verified</dt><dd>25 October 2026</dd></div>
+        </dl>
+      </div>
+      <figure class="project-hero__art" data-reveal style="--delay:120ms">
+        <div class="project-hero__art-frame">
+          <img src="/tes11/assets/covers/sarp.svg" width="1200" height="800" alt="Original illustration of Sarp: a perspective grid with a glowing snake trail, apples, and a spectral arc" decoding="async">
+          <span class="project-hero__art-glint" aria-hidden="true"></span>
+        </div>
+        <figcaption>Original portfolio illustration — not a product screenshot.</figcaption>
+      </figure>
+    </section>
+
+    <div class="project-rail" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <section class="project-section project-section--why" aria-labelledby="why-title">
+      <div class="project-section__rail"><span>01</span><p>Why it exists</p></div>
+      <div class="project-section__content">
+        <h2 id="why-title">Problem &amp; motivation</h2>
+        <p class="project-lead">Classic Snake is instantly understandable, but a small game needs a fresh hook and satisfying feedback before it feels worth replaying.</p>
+        <div class="project-two-col">
+          <article><h3>The spark</h3><p>I wanted to experiment with game feel: a familiar core, a dimensional presentation, escalating pace, and small surprises that reward one more round.</p></article>
+          <article><h3>The approach</h3><p>React manages menus, HUD, and screen flow while a Three.js game engine handles the 3D arena, effects, audio, scores, and achievements.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--decisions" aria-labelledby="decisions-title">
+      <div class="project-section__rail"><span>02</span><p>Direction</p></div>
+      <div class="project-section__content">
+        <h2 id="decisions-title">Goals and design decisions</h2>
+        <ol class="project-goals">
+          <li style="--goal-accent:#d7ff65"><span>01</span><p>Keep the basic goal approachable: collect apples, avoid walls and yourself.</p></li><li style="--goal-accent:#d7ff65"><span>02</span><p>Add variety without burying the original rules.</p></li><li style="--goal-accent:#d7ff65"><span>03</span><p>Make keyboard and touch controls feel fair.</p></li><li style="--goal-accent:#d7ff65"><span>04</span><p>Keep scores and achievements local with no account requirement.</p></li>
+        </ol>
+        <div class="decision-grid">
+          <article class="decision-card" data-reveal style="--delay:0ms">
+                <span class="decision-card__index">01</span>
+                <h3>Three.js arena</h3>
+                <p>A 21 × 21 grid is presented in 3D with changing weather and multiple snake skins.</p>
+              </article><article class="decision-card" data-reveal style="--delay:60ms">
+                <span class="decision-card__index">02</span>
+                <h3>Milestone Rainbow Apples</h3>
+                <p>Every 10th apple, then every 15th, triggers a short Rainbow Mode burst.</p>
+              </article><article class="decision-card" data-reveal style="--delay:120ms">
+                <span class="decision-card__index">03</span>
+                <h3>Layered feedback</h3>
+                <p>Combos, Fever Mode, sound effects, and procedural music reinforce moment-to-moment play.</p>
+              </article><article class="decision-card" data-reveal style="--delay:180ms">
+                <span class="decision-card__index">04</span>
+                <h3>Local persistence</h3>
+                <p>A top-five score table, achievements, and sound preference are stored in browser storage.</p>
+              </article><article class="decision-card" data-reveal style="--delay:240ms">
+                <span class="decision-card__index">05</span>
+                <h3>Single-file build</h3>
+                <p>vite-plugin-singlefile bundles the static game into a self-contained HTML build.</p>
+              </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--features" aria-labelledby="features-title">
+      <div class="project-section__rail"><span>03</span><p>Implemented</p></div>
+      <div class="project-section__content">
+        <h2 id="features-title">What the repository actually contains</h2>
+        <p class="project-section__intro">These features are described in the project README or visible in its source and release material.</p>
+        <div class="feature-grid">
+          <article class="feature-card" data-reveal style="--delay:0ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                <h3>3D Snake arena</h3>
+                <p>Steer through a 21 × 21 grid as the pace increases.</p>
+              </article><article class="feature-card" data-reveal style="--delay:45ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span>
+                <h3>Special apples</h3>
+                <p>Classic, Golden, Magnet, and milestone Rainbow Apples change the rhythm.</p>
+              </article><article class="feature-card" data-reveal style="--delay:90ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg></span>
+                <h3>Combos &amp; Fever</h3>
+                <p>Combos, Fever Mode, multiple skins, and changing weather add variety.</p>
+              </article><article class="feature-card" data-reveal style="--delay:135ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                <h3>Procedural sound</h3>
+                <p>Music and sound effects are generated in the browser, with a mute toggle.</p>
+              </article><article class="feature-card" data-reveal style="--delay:180ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span>
+                <h3>Local high scores</h3>
+                <p>A top-five score table and achievements are saved in the browser.</p>
+              </article><article class="feature-card" data-reveal style="--delay:225ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg></span>
+                <h3>Keyboard &amp; touch</h3>
+                <p>Arrow keys/WASD, on-screen direction pad, swipes, pause, restart, and menu controls.</p>
+              </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--visuals" aria-labelledby="visuals-title">
+      <div class="project-section__rail"><span>04</span><p>Proof</p></div>
+      <div class="project-section__content">
+        <h2 id="visuals-title">Real visuals &amp; original artwork</h2>
+        <p class="project-section__intro">Both screenshots are genuine assets from the Sarp repository README.</p>
+        <div class="project-visuals">
+    <figure class="project-visual project-visual--screenshot" data-reveal>
+          <div class="project-visual__frame">
+            <img src="/tes11/assets/screenshots/sarp-gameplay.webp" alt="Sarp gameplay showing a 3D grid arena, snake, apples, and score HUD" loading="lazy" decoding="async" width="1200" height="800">
+          </div>
+          <figcaption><span>Repository screenshot</span>Gameplay screenshot from the repository, showing the 3D arena and HUD.</figcaption>
+        </figure><figure class="project-visual project-visual--screenshot" data-reveal>
+          <div class="project-visual__frame">
+            <img src="/tes11/assets/screenshots/sarp-menu.webp" alt="Sarp main menu with the game title and a 3D arena preview" loading="lazy" decoding="async" width="1200" height="800">
+          </div>
+          <figcaption><span>Repository screenshot</span>Main menu screenshot from the repository.</figcaption>
+        </figure>
+    
+  </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--stack" aria-labelledby="stack-title">
+      <div class="project-section__rail"><span>05</span><p>Stack</p></div>
+      <div class="project-section__content">
+        <h2 id="stack-title">Verified technology</h2>
+        <ul class="tags tags--large" aria-label="Topics"><li class="tag">React 19</li><li class="tag">TypeScript 5.9</li><li class="tag">Three.js 0.186</li><li class="tag">Tailwind CSS 4</li><li class="tag">Vite 7</li><li class="tag">vite-plugin-singlefile</li><li class="tag">Web Audio</li></ul>
+        <div class="source-card" data-reveal>
+          <div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 5-4 1 2-5 4-1Z"/></svg><h3>Where this was checked</h3></div>
+          <p>Repository last pushed 19 October 2026. Page content verified 25 October 2026 against README.md, package.json, vite.config.ts, live demo, GitHub release v1.0.0.</p>
+          <a href="https://github.com/hmmlavi/Sarp" target="_blank" rel="noopener noreferrer">Open the source <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--reflection" aria-labelledby="reflection-title">
+      <div class="project-section__rail"><span>06</span><p>Reflection</p></div>
+      <div class="project-section__content">
+        <h2 id="reflection-title">Contribution, challenges &amp; scope</h2>
+        <div class="reflection-grid">
+          <article class="reflection-card">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14"/></svg> My contribution</h3>
+            <ul class="plain-list"><li>I authored and maintain the public Sarp repository under hmmlavi; the README credits the game to Lavi.</li><li>The repository contains React screen flow, the Three.js engine, effects, audio, scores, achievements, and utility modules.</li><li>It also includes gameplay screenshots and a repository social preview image.</li></ul>
+          </article>
+          <article class="reflection-card">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 17H3L12 3Z"/><path d="m12 3-3 17m3-17 3 17M3 20h18"/></svg> Challenges &amp; learning</h3>
+            <dl><dt>Readable 3D</dt><dd>A dimensional arena still needs clear edges, apples, body segments, and a readable HUD.</dd><dt>Escalating pace</dt><dd>Speed, combos, and special apples must add excitement without making controls feel unfair.</dd><dt>Input coverage</dt><dd>Keyboard, swipe, and on-screen touch controls all need consistent pause and restart behaviour.</dd></dl>
+          </article>
+          <article class="reflection-card reflection-card--scope">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg> Documented limits</h3>
+            <p>These are boundaries stated in the repository, not completed features:</p>
+            <ul class="plain-list"><li>The v1.0.0 release is a tag; no downloadable release assets are attached.</li><li>No license file is included in the repository; check with the author before redistributing or reusing the project.</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-status" aria-labelledby="status-title">
+      <div class="project-status__copy" data-reveal>
+        <p class="eyebrow "><span aria-hidden="true"></span>Current status</p>
+        <h2 id="status-title">Live demo · v1.0.0</h2>
+        <p>The live demo at sarp3d.vercel.app was verified on 25 October 2026. Release v1.0.0 was published on 19 October 2026.</p>
+      </div>
+      <div class="project-status__links" data-reveal>
+        <a href="https://github.com/hmmlavi/Sarp" target="_blank" rel="noopener noreferrer">
+              <span>View source</span>
+              <small>Source, README, and history</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a><a href="https://sarp3d.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <span>Play Sarp online</span>
+              <small>Verified 25 October 2026.</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a><a href="https://github.com/hmmlavi/Sarp/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+              <span>See v1.0.0 tag</span>
+              <small>Tag and release notes; no binary assets.</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+      </div>
+    </section>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="project-nav__item project-nav__item--prev" href="/tes11/projects/facilityfix/" data-portal data-accent="#ffb86b">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg> Previous project</span><strong>FacilityFix</strong>
+      </a>
+      <a class="project-nav__item project-nav__item--all" href="/tes11/projects/">
+        <span>All work</span><strong>Project shelf <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></strong>
+      </a>
+      <a class="project-nav__item project-nav__item--next" href="/tes11/projects/pustakalaya/" data-portal data-accent="#ffb86b">
+        <span>Next project <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><strong>Pustakalaya</strong>
+      </a>
+    </nav>
+  </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="wordmark wordmark--footer" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+          <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+          <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+        </a>
+        <p>Curious builder, multidisciplinary developer, and collector of interesting questions.</p>
+        <p class="footer-status"><span aria-hidden="true"></span> Open to internships & collaborations</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <span class="footer-label">Explore</span>
+        <a href="/tes11/">Home<small>Start here</small></a><a href="/tes11/projects/">Projects<small>Six public builds</small></a><a href="/tes11/playground/">Playground<small>Interactive experiments</small></a><a href="/tes11/about/">About<small>The human behind the pixels</small></a><a href="/tes11/contact/">Contact<small>Open a conversation</small></a><a href="/tes11/now/">Now<small>Current public work</small></a><a href="/tes11/uses/">Uses<small>Verified toolchain</small></a>
+      </nav>
+      <div class="footer-connect">
+        <span class="footer-label">Find me</span>
+        <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span>GitHub</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><span>Instagram</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg><span>X</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>Email</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lakshit Singh Saini</span>
+      <span>Made with <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg> TypeScript, Canvas & care</span>
+      <a href="#top">Back to top <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </footer>
+  <script type="module" src="../../src/scripts/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" data-base="/tes11/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080a12">
+  <title>Sortify — Lakshit Singh Saini</title>
+  <meta name="description" content="A Windows desktop app that reads supported files, proposes reviewable filenames, and applies safe, undoable renames. Verified project details, features, stack, visuals, and repository links.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://lakshits27.github.io/tes11/projects/sortify/">
+  <meta property="og:site_name" content="Lakshit Singh Saini">
+  <meta property="og:title" content="Sortify — Lakshit Singh Saini">
+  <meta property="og:description" content="A Windows desktop app that reads supported files, proposes reviewable filenames, and applies safe, undoable renames. Verified project details, features, stack, visuals, and repository links.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lakshits27.github.io/tes11/projects/sortify/">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://lakshits27.github.io/tes11/assets/og/sortify.png">
+  <meta property="og:image:alt" content="Sortify — original spectral project artwork by Lavi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sortify — Lakshit Singh Saini">
+  <meta name="twitter:description" content="A Windows desktop app that reads supported files, proposes reviewable filenames, and applies safe, undoable renames. Verified project details, features, stack, visuals, and repository links.">
+  <meta name="twitter:image" content="https://lakshits27.github.io/tes11/assets/og/sortify.png">
+  <meta name="twitter:creator" content="@Lakshits27">
+  <link rel="icon" type="image/svg+xml" href="/tes11/favicon.svg">
+  <link rel="apple-touch-icon" href="/tes11/favicon-192.png">
+  <link rel="manifest" href="/tes11/manifest.webmanifest">
+  
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Person","name":"Lakshit Singh Saini","alternateName":"Lavi","description":"Computer Science undergraduate and developer.","url":"https://lakshits27.github.io/tes11/","email":"mailto:lakshitsinghsaini@gmail.com","sameAs":["https://github.com/hmmlavi","https://www.instagram.com/lakshitsinghsaini/","https://x.com/Lakshits27"],"knowsAbout":["Web development","Python","TypeScript","Android development","Creative coding","Games","Music","Space"]},{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Sortify","description":"A Windows desktop app that reads supported files, proposes reviewable filenames, and applies safe, undoable renames.","url":"https://lakshits27.github.io/tes11/projects/sortify/","codeRepository":"https://github.com/hmmlavi/sortify-desktop","programmingLanguage":["Python 3.11+","PySide6 / Qt 6","SQLite","pypdf","python-docx","python-pptx","openpyxl","Pillow","PyInstaller","Inno Setup","GitHub Actions"],"author":{"@type":"Person","name":"Lakshit Singh Saini","url":"https://lakshits27.github.io/tes11/"},"dateModified":"2026-10-19","downloadUrl":"https://github.com/hmmlavi/sortify-desktop/releases/tag/v1.0.0"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lakshits27.github.io/tes11/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://lakshits27.github.io/tes11/projects/"},{"@type":"ListItem","position":3,"name":"Sortify","item":"https://lakshits27.github.io/tes11/projects/sortify/"}]}]</script>
+</head>
+<body class="page page--project project-page" data-page="project" data-project="sortify" style="--project-accent:#d7ff65;--project-accent-2:#61e7ff;--project-accent-soft:rgba(215, 255, 101, 0.16)">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-wipe" aria-hidden="true"></div>
+  <canvas id="spectral-trail" aria-hidden="true"></canvas>
+  <noscript><div class="noscript-note">This site works without JavaScript; animations and playground controls are enhanced when JavaScript is available.</div></noscript>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="wordmark" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+        <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+        <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="desktop-nav__link" href="/tes11/"><span>Home</span></a><a class="desktop-nav__link is-active" href="/tes11/projects/" aria-current="page"><span>Projects</span><i aria-hidden="true"></i></a><a class="desktop-nav__link" href="/tes11/playground/"><span>Playground</span></a><a class="desktop-nav__link" href="/tes11/about/"><span>About</span></a><a class="desktop-nav__link" href="/tes11/contact/"><span>Contact</span></a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-cta" href="/tes11/contact/"><span>Let’s talk</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i></span>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" data-menu-panel hidden>
+      <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+        <a class="mobile-menu__link" href="/tes11/"><span>Home</span></a><a class="mobile-menu__link is-active" href="/tes11/projects/" aria-current="page"><span>Projects</span><i aria-hidden="true"></i></a><a class="mobile-menu__link" href="/tes11/playground/"><span>Playground</span></a><a class="mobile-menu__link" href="/tes11/about/"><span>About</span></a><a class="mobile-menu__link" href="/tes11/contact/"><span>Contact</span></a>
+        <div class="mobile-menu__divider" aria-hidden="true"></div>
+        <a class="mobile-menu__link" href="/tes11/now/"><span>Now</span></a><a class="mobile-menu__link" href="/tes11/uses/"><span>Uses</span></a>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>lakshitsinghsaini@gmail.com</span></a>
+        <div class="mobile-menu__socials">
+          <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="page-main" tabindex="-1">
+<div class="project-detail" style="--project-accent:#d7ff65;--project-accent-2:#61e7ff;--project-accent-soft:rgba(215, 255, 101, 0.16)">
+    <section class="project-hero" aria-labelledby="page-title" data-reveal>
+      <div class="project-hero__copy">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/tes11/">Home</a></li><li><a href="/tes11/projects/">Projects</a></li><li><span aria-current="page">Sortify</span></li></ol></nav>
+        <p class="eyebrow "><span aria-hidden="true"></span>Windows desktop utility / project 01</p>
+        <h1 id="page-title">Sortify<span class="project-hero__period">.</span></h1>
+        <p class="project-hero__tagline">Name every file by what is inside it.</p>
+        <p class="project-hero__intro">Sortify turns a risky batch operation into a visible plan. It reads bounded excerpts from supported files, suggests clearer names, and waits for approval before touching anything.</p>
+        <div class="project-hero__links">
+    <a class="btn btn--secondary " href="https://github.com/hmmlavi/sortify-desktop" target="_blank" rel="noopener noreferrer"><span>View source</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn--ghost " href="https://github.com/hmmlavi/sortify-desktop/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer"><span>Download v1.0.0</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+  </div>
+        <dl class="project-facts">
+          <div><dt>Status</dt><dd>Released · v1.0.0</dd></div>
+          <div><dt>Category</dt><dd>Desktop</dd></div>
+          <div><dt>Verified</dt><dd>25 October 2026</dd></div>
+        </dl>
+      </div>
+      <figure class="project-hero__art" data-reveal style="--delay:120ms">
+        <div class="project-hero__art-frame">
+          <img src="/tes11/assets/covers/sortify.svg" width="1200" height="800" alt="Original illustration of Sortify: stacked document cards transforming into clear filenames along a spectral path" decoding="async">
+          <span class="project-hero__art-glint" aria-hidden="true"></span>
+        </div>
+        <figcaption>Original portfolio illustration — not a product screenshot.</figcaption>
+      </figure>
+    </section>
+
+    <div class="project-rail" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <section class="project-section project-section--why" aria-labelledby="why-title">
+      <div class="project-section__rail"><span>01</span><p>Why it exists</p></div>
+      <div class="project-section__content">
+        <h2 id="why-title">Problem &amp; motivation</h2>
+        <p class="project-lead">Bulk renaming is repetitive and stressful: a single bad rule can affect dozens of files, and opaque automation is difficult to trust with personal documents.</p>
+        <div class="project-two-col">
+          <article><h3>The spark</h3><p>The idea was to make file organisation predictable, local-first, and reversible — not a blind batch command that hopes for the best.</p></article>
+          <article><h3>The approach</h3><p>Sortify separates understanding a file, proposing a name, previewing the full plan, applying safe renames, and recording history so the last session can be undone.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--decisions" aria-labelledby="decisions-title">
+      <div class="project-section__rail"><span>02</span><p>Direction</p></div>
+      <div class="project-section__content">
+        <h2 id="decisions-title">Goals and design decisions</h2>
+        <ol class="project-goals">
+          <li style="--goal-accent:#d7ff65"><span>01</span><p>Make the exact before-and-after plan visible before any file changes.</p></li><li style="--goal-accent:#d7ff65"><span>02</span><p>Respect collisions, unsupported files, and per-file failures instead of silently overwriting.</p></li><li style="--goal-accent:#d7ff65"><span>03</span><p>Keep the default workflow offline and make external AI naming explicitly opt-in.</p></li><li style="--goal-accent:#d7ff65"><span>04</span><p>Treat undo as a first-class part of the utility.</p></li>
+        </ol>
+        <div class="decision-grid">
+          <article class="decision-card" data-reveal style="--delay:0ms">
+                <span class="decision-card__index">01</span>
+                <h3>Preview before execution</h3>
+                <p>Proposals can be edited inline and the Preview plan dialog lists the exact batch before it runs.</p>
+              </article><article class="decision-card" data-reveal style="--delay:60ms">
+                <span class="decision-card__index">02</span>
+                <h3>Local first, AI by consent</h3>
+                <p>A local heuristic engine is the default. An OpenAI-compatible endpoint is available only after explicit consent.</p>
+              </article><article class="decision-card" data-reveal style="--delay:120ms">
+                <span class="decision-card__index">03</span>
+                <h3>Safety in the rename engine</h3>
+                <p>Collisions are detected before the batch, files are never overwritten, and failures are reported per file.</p>
+              </article><article class="decision-card" data-reveal style="--delay:180ms">
+                <span class="decision-card__index">04</span>
+                <h3>Recoverable history</h3>
+                <p>Applied batches are stored in local SQLite history, enabling Undo last session when it is still safe.</p>
+              </article><article class="decision-card" data-reveal style="--delay:240ms">
+                <span class="decision-card__index">05</span>
+                <h3>Bounded extraction</h3>
+                <p>Only bounded excerpts and supported formats are read; protected, oversized, and image-only PDFs fall back safely.</p>
+              </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--features" aria-labelledby="features-title">
+      <div class="project-section__rail"><span>03</span><p>Implemented</p></div>
+      <div class="project-section__content">
+        <h2 id="features-title">What the repository actually contains</h2>
+        <p class="project-section__intro">These features are described in the project README or visible in its source and release material.</p>
+        <div class="feature-grid">
+          <article class="feature-card" data-reveal style="--delay:0ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                <h3>Content-aware naming</h3>
+                <p>Reads PDF, Word, Excel, PowerPoint, text/data formats, and image metadata.</p>
+              </article><article class="feature-card" data-reveal style="--delay:45ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span>
+                <h3>Two naming engines</h3>
+                <p>Uses an offline local heuristic engine or a configurable OpenAI-compatible endpoint.</p>
+              </article><article class="feature-card" data-reveal style="--delay:90ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg></span>
+                <h3>Editable review</h3>
+                <p>Shows status, rationale, extracted text, and inline proposal edits in the Review view.</p>
+              </article><article class="feature-card" data-reveal style="--delay:135ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                <h3>Collision-aware renames</h3>
+                <p>Detects duplicate destinations before applying and never overwrites files.</p>
+              </article><article class="feature-card" data-reveal style="--delay:180ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span>
+                <h3>Undo history</h3>
+                <p>Records applied sessions in SQLite and can restore original names when still safe.</p>
+              </article><article class="feature-card" data-reveal style="--delay:225ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg></span>
+                <h3>Windows packaging</h3>
+                <p>Ships installer, portable, and standalone builds with SHA-256 checksums.</p>
+              </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--visuals" aria-labelledby="visuals-title">
+      <div class="project-section__rail"><span>04</span><p>Proof</p></div>
+      <div class="project-section__content">
+        <h2 id="visuals-title">Real visuals &amp; original artwork</h2>
+        <p class="project-section__intro">Both screenshots are genuine assets from the Sortify repository README.</p>
+        <div class="project-visuals">
+    <figure class="project-visual project-visual--screenshot" data-reveal>
+          <div class="project-visual__frame">
+            <img src="/tes11/assets/screenshots/sortify-workspace.webp" alt="Sortify Workspace screen after scanning a folder of sample files" loading="lazy" decoding="async" width="1200" height="800">
+          </div>
+          <figcaption><span>Repository screenshot</span>Workspace after a folder scan. The README identifies this as a headless Qt render with generated sample files.</figcaption>
+        </figure><figure class="project-visual project-visual--screenshot" data-reveal>
+          <div class="project-visual__frame">
+            <img src="/tes11/assets/screenshots/sortify-preview.webp" alt="Sortify Preview plan dialog showing the exact planned filename changes" loading="lazy" decoding="async" width="1200" height="800">
+          </div>
+          <figcaption><span>Repository screenshot</span>Preview plan dialog, showing the exact batch before any rename is applied.</figcaption>
+        </figure>
+    
+  </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--stack" aria-labelledby="stack-title">
+      <div class="project-section__rail"><span>05</span><p>Stack</p></div>
+      <div class="project-section__content">
+        <h2 id="stack-title">Verified technology</h2>
+        <ul class="tags tags--large" aria-label="Topics"><li class="tag">Python 3.11+</li><li class="tag">PySide6 / Qt 6</li><li class="tag">SQLite</li><li class="tag">pypdf</li><li class="tag">python-docx</li><li class="tag">python-pptx</li><li class="tag">openpyxl</li><li class="tag">Pillow</li><li class="tag">PyInstaller</li><li class="tag">Inno Setup</li><li class="tag">GitHub Actions</li></ul>
+        <div class="source-card" data-reveal>
+          <div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 5-4 1 2-5 4-1Z"/></svg><h3>Where this was checked</h3></div>
+          <p>Repository last pushed 19 October 2026. Page content verified 25 October 2026 against README.md, requirements.txt, Sortify.spec, CI workflow, GitHub release v1.0.0.</p>
+          <a href="https://github.com/hmmlavi/sortify-desktop" target="_blank" rel="noopener noreferrer">Open the source <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--reflection" aria-labelledby="reflection-title">
+      <div class="project-section__rail"><span>06</span><p>Reflection</p></div>
+      <div class="project-section__content">
+        <h2 id="reflection-title">Contribution, challenges &amp; scope</h2>
+        <div class="reflection-grid">
+          <article class="reflection-card">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14"/></svg> My contribution</h3>
+            <ul class="plain-list"><li>I authored and maintain the public repository under my GitHub account, hmmlavi.</li><li>The repository contains the PySide6 interface, scanning, extraction, validation, rename, and history modules.</li><li>It also includes unit and GUI smoke tests, Windows packaging scripts, CI, and release documentation.</li></ul>
+          </article>
+          <article class="reflection-card">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 17H3L12 3Z"/><path d="m12 3-3 17m3-17 3 17M3 20h18"/></svg> Challenges &amp; learning</h3>
+            <dl><dt>Edge cases matter</dt><dd>Unsupported files, password-protected PDFs, collisions, and partial failures all need clear outcomes.</dd><dt>Privacy by default</dt><dd>File excerpts stay local unless a user configures an endpoint and accepts the AI consent flow.</dd><dt>Distribution is part of the product</dt><dd>The release workflow builds and verifies Windows installer and portable packages.</dd></dl>
+          </article>
+          <article class="reflection-card reflection-card--scope">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg> Documented limits</h3>
+            <p>These are boundaries stated in the repository, not completed features:</p>
+            <ul class="plain-list"><li>No OCR is bundled; image-only PDFs fall back to filename and metadata.</li><li>Release builds are not code-signed, so Windows SmartScreen may warn before running them.</li><li>External AI naming is optional and requires a configured endpoint; API keys stay in the OS keyring.</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-status" aria-labelledby="status-title">
+      <div class="project-status__copy" data-reveal>
+        <p class="eyebrow "><span aria-hidden="true"></span>Current status</p>
+        <h2 id="status-title">Released · v1.0.0</h2>
+        <p>Release v1.0.0 was published on 19 October 2026 with three Windows distribution files and SHA-256 checksums.</p>
+      </div>
+      <div class="project-status__links" data-reveal>
+        <a href="https://github.com/hmmlavi/sortify-desktop" target="_blank" rel="noopener noreferrer">
+              <span>View source</span>
+              <small>Source, README, and history</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a><a href="https://github.com/hmmlavi/sortify-desktop/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+              <span>Download v1.0.0</span>
+              <small>Installer, portable ZIP, standalone ZIP, and checksums.</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+      </div>
+    </section>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="project-nav__item project-nav__item--prev" href="/tes11/projects/pustakalaya/" data-portal data-accent="#ffb86b">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg> Previous project</span><strong>Pustakalaya</strong>
+      </a>
+      <a class="project-nav__item project-nav__item--all" href="/tes11/projects/">
+        <span>All work</span><strong>Project shelf <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></strong>
+      </a>
+      <a class="project-nav__item project-nav__item--next" href="/tes11/projects/veylo/" data-portal data-accent="#61e7ff">
+        <span>Next project <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><strong>Veylo</strong>
+      </a>
+    </nav>
+  </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="wordmark wordmark--footer" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+          <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+          <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+        </a>
+        <p>Curious builder, multidisciplinary developer, and collector of interesting questions.</p>
+        <p class="footer-status"><span aria-hidden="true"></span> Open to internships & collaborations</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <span class="footer-label">Explore</span>
+        <a href="/tes11/">Home<small>Start here</small></a><a href="/tes11/projects/">Projects<small>Six public builds</small></a><a href="/tes11/playground/">Playground<small>Interactive experiments</small></a><a href="/tes11/about/">About<small>The human behind the pixels</small></a><a href="/tes11/contact/">Contact<small>Open a conversation</small></a><a href="/tes11/now/">Now<small>Current public work</small></a><a href="/tes11/uses/">Uses<small>Verified toolchain</small></a>
+      </nav>
+      <div class="footer-connect">
+        <span class="footer-label">Find me</span>
+        <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span>GitHub</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><span>Instagram</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg><span>X</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>Email</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lakshit Singh Saini</span>
+      <span>Made with <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg> TypeScript, Canvas & care</span>
+      <a href="#top">Back to top <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </footer>
+  <script type="module" src="../../src/scripts/main.ts"></script>
+</body>
+</html>

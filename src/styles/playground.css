@@ -1,0 +1,624 @@
+/* PLAYGROUND HERO */
+.page-hero--playground {
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-hero__art {
+  position: absolute;
+  top: 8%;
+  right: 2%;
+  width: min(34vw, 420px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.playground-hero__art span {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  transform: rotate(-18deg) scaleY(0.62);
+  animation: orbit-tilt 16s ease-in-out infinite alternate;
+}
+
+.playground-hero__art span:nth-child(2) {
+  inset: 14%;
+  border-color: rgba(97, 231, 255, 0.35);
+  animation-duration: 12s;
+  animation-direction: alternate-reverse;
+}
+
+.playground-hero__art span:nth-child(3) {
+  inset: 28%;
+  border-color: rgba(215, 255, 101, 0.4);
+  animation-duration: 9s;
+}
+
+.playground-hero__art i {
+  position: absolute;
+  right: 8%;
+  top: 14%;
+  color: var(--lime);
+  font-size: 2rem;
+  font-style: normal;
+  animation: float-card 5s ease-in-out infinite alternate;
+}
+
+/* SHARED EXPERIMENT */
+.experiment {
+  padding-block: clamp(60px, 8vw, 100px);
+  border-top: 1px solid var(--line-soft);
+}
+
+.experiment__head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 36px;
+}
+
+.experiment__head h2 {
+  margin: 14px 0 12px;
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+}
+
+.experiment__head p {
+  max-width: 720px;
+  font-size: 1.02rem;
+}
+
+.experiment__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--lime);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+}
+
+.experiment__badge .icon {
+  width: 17px;
+  height: 17px;
+}
+
+/* PRISM FIELD */
+.prism-lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.prism-lab__stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: #080b14;
+  box-shadow: var(--shadow-soft);
+  aspect-ratio: 1200 / 620;
+}
+
+.prism-lab__stage canvas {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.prism-lab__readout {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(235, 240, 255, 0.55);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+}
+
+.control-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.control-panel__head h3 {
+  font-size: 1.2rem;
+}
+
+.control-panel__head .icon {
+  color: var(--lime);
+}
+
+.range-control,
+.select-control {
+  display: grid;
+  gap: 10px;
+}
+
+.range-control label,
+.select-control label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.range-control output {
+  color: var(--lime);
+  font-weight: 500;
+}
+
+.range-control input[type='range'] {
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  appearance: none;
+  background: linear-gradient(90deg, var(--lime), var(--cyan), var(--violet));
+  cursor: pointer;
+}
+
+.range-control input[type='range']::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  appearance: none;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--line-strong), 0 0 18px rgba(215, 255, 101, 0.45);
+}
+
+.range-control input[type='range']::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--line-strong), 0 0 18px rgba(215, 255, 101, 0.45);
+}
+
+.select-control select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.control-panel__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.control-panel__actions .btn {
+  min-height: 46px;
+  padding: 0 12px;
+  font-size: 0.74rem;
+}
+
+.control-panel__note {
+  color: var(--muted-2);
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+/* ORBIT LAB */
+.orbit-lab {
+  --orbit-radius: clamp(128px, 29vw, 265px);
+  position: relative;
+  width: min(720px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+.orbit-lab__links {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.orbit-link {
+  stroke-width: 2;
+  opacity: 0.12;
+  transition: opacity 0.35s ease, stroke-width 0.35s ease;
+}
+
+.orbit-link.is-active {
+  stroke-width: 3;
+  opacity: 0.62;
+}
+
+.orbit-lab__rings {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(97, 231, 255, 0.08), transparent 58%);
+}
+
+.orbit-lab__rings i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  translate: -50% -50%;
+}
+
+.orbit-lab__rings i:nth-child(1) { width: calc(var(--orbit-radius) * 2); height: calc(var(--orbit-radius) * 2); border-style: dashed; animation: spin-slow 60s linear infinite; }
+.orbit-lab__rings i:nth-child(2) { width: calc(var(--orbit-radius) * 1.35); height: calc(var(--orbit-radius) * 1.35); border-color: rgba(182, 155, 255, 0.25); }
+.orbit-lab__rings i:nth-child(3) { width: calc(var(--orbit-radius) * 0.72); height: calc(var(--orbit-radius) * 0.72); border-color: rgba(215, 255, 101, 0.28); }
+
+.orbit-lab__core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: clamp(156px, 28vw, 230px);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 18px;
+  border: 1px solid var(--orbit-active, var(--line-strong));
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.09), rgba(9, 12, 21, 0.95) 70%);
+  box-shadow: var(--shadow-strong), inset 0 0 40px rgba(97, 231, 255, 0.06);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-lab__core > span:first-child {
+  color: var(--orbit-active, var(--lime));
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.orbit-lab__core small {
+  color: var(--muted-2);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.orbit-lab__core h3 {
+  margin-top: 8px;
+  font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+}
+
+.orbit-lab__core p {
+  color: var(--muted);
+  font-size: clamp(0.64rem, 1.3vw, 0.76rem);
+  line-height: 1.45;
+}
+
+.orbit-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  width: clamp(62px, 11vw, 88px);
+  min-height: clamp(62px, 11vw, 88px);
+  padding: 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: rgba(12, 16, 27, 0.92);
+  color: var(--muted);
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--orbit-radius)) rotate(var(--angle-neg));
+  transition: transform 0.3s var(--ease), border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.orbit-node:hover,
+.orbit-node[aria-pressed='true'] {
+  color: var(--ink);
+  border-color: var(--node-color);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--node-color) 35%, transparent);
+}
+
+.orbit-node:hover {
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(var(--orbit-radius) + 5px)) rotate(var(--angle-neg));
+}
+
+.orbit-node__dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--node-color);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--node-color) 14%, transparent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orbit-node[aria-pressed='true'] .orbit-node__dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--node-color) 18%, transparent), 0 0 22px var(--node-color);
+}
+
+.orbit-node__label {
+  font-family: var(--mono);
+  font-size: clamp(0.52rem, 1.1vw, 0.65rem);
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* CURIOSITY COMPASS (ABOUT) */
+.curiosity-compass {
+  --orbit-radius: clamp(132px, 26vw, 265px);
+  position: relative;
+  width: min(760px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+.curiosity-compass__rings {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(182, 155, 255, 0.07), transparent 62%);
+}
+
+.curiosity-compass__rings i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  translate: -50% -50%;
+}
+
+.curiosity-compass__rings i:nth-child(1) { width: calc(var(--orbit-radius) * 2); height: calc(var(--orbit-radius) * 2); border-style: dashed; animation: spin-slow 70s linear infinite; }
+.curiosity-compass__rings i:nth-child(2) { width: calc(var(--orbit-radius) * 1.4); height: calc(var(--orbit-radius) * 1.4); border-color: rgba(97, 231, 255, 0.2); }
+.curiosity-compass__rings i:nth-child(3) { width: calc(var(--orbit-radius) * 0.78); height: calc(var(--orbit-radius) * 0.78); border-color: rgba(215, 255, 101, 0.2); }
+
+.curiosity-compass__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: clamp(180px, 31vw, 280px);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.07), rgba(9, 12, 21, 0.95) 72%);
+  box-shadow: var(--shadow-strong);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.curiosity-compass__kicker,
+.curiosity-compass__count {
+  color: var(--muted-2);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.curiosity-compass__center h3 {
+  font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+}
+
+.curiosity-compass__center p {
+  color: var(--muted);
+  font-size: clamp(0.65rem, 1.25vw, 0.78rem);
+  line-height: 1.5;
+}
+
+.curiosity-compass__count {
+  color: var(--lime);
+}
+
+.compass-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  width: clamp(64px, 11vw, 92px);
+  min-height: clamp(64px, 11vw, 92px);
+  padding: 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: rgba(12, 16, 27, 0.94);
+  color: var(--muted);
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--orbit-radius)) rotate(var(--angle-neg));
+  transition: transform 0.3s var(--ease), border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.compass-node:hover,
+.compass-node.is-active {
+  color: var(--ink);
+  border-color: var(--node-color);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--node-color) 32%, transparent);
+}
+
+.compass-node:hover {
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(var(--orbit-radius) + 5px)) rotate(var(--angle-neg));
+}
+
+.compass-node__icon {
+  display: grid;
+  place-items: center;
+  color: var(--node-color);
+}
+
+.compass-node__icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.compass-node__label {
+  font-family: var(--mono);
+  font-size: clamp(0.5rem, 1vw, 0.62rem);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.playground-outro {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 90px;
+  padding: clamp(34px, 5vw, 60px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(130deg, rgba(97, 231, 255, 0.08), rgba(255, 120, 183, 0.06));
+}
+
+.playground-outro h2 {
+  margin: 16px 0;
+}
+
+.playground-outro > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1040px) {
+  .prism-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .control-panel__head,
+  .control-panel__actions,
+  .control-panel__note {
+    grid-column: 1 / -1;
+  }
+
+  .control-panel__actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .experiment__head {
+    align-items: start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .control-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .orbit-lab,
+  .curiosity-compass {
+    --orbit-radius: clamp(118px, 34vw, 190px);
+  }
+
+  .orbit-node,
+  .compass-node {
+    width: clamp(58px, 17vw, 72px);
+    min-height: clamp(58px, 17vw, 72px);
+  }
+
+  .orbit-node__label,
+  .compass-node__label {
+    font-size: 0.5rem;
+  }
+
+  .orbit-lab__core,
+  .curiosity-compass__center {
+    width: clamp(144px, 40vw, 190px);
+    padding: 14px;
+  }
+
+  .playground-outro {
+    grid-template-columns: 1fr;
+  }
+
+  .playground-outro > div:last-child {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 390px) {
+  .orbit-lab,
+  .curiosity-compass {
+    --orbit-radius: 116px;
+  }
+
+  .orbit-node__label,
+  .compass-node__label {
+    display: none;
+  }
+
+  .orbit-node,
+  .compass-node {
+    width: 52px;
+    min-height: 52px;
+  }
+}
