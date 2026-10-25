@@ -1,0 +1,93 @@
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.is-entering .page-main > *:first-child {
+  animation: page-enter 0.7s var(--ease) both;
+}
+
+@keyframes page-wipe {
+  0% { transform: scaleX(0); opacity: 1; }
+  70% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@keyframes portal-open {
+  from { clip-path: circle(0% at var(--portal-x, 50%) var(--portal-y, 50%)); }
+  to { clip-path: circle(150% at var(--portal-x, 50%) var(--portal-y, 50%)); }
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float-slow {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-24px, 18px, 0) scale(1.08); }
+}
+
+@keyframes float-card {
+  from { translate: 0 0; }
+  to { translate: 0 -10px; }
+}
+
+@keyframes orbit-tilt {
+  from { rotate: -4deg; scale: 1; }
+  to { rotate: 5deg; scale: 1.04; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes halo-pulse {
+  from { opacity: 0.3; scale: 0.96; }
+  to { opacity: 0.5; scale: 1.04; }
+}
+
+@keyframes glint {
+  0%, 55% { transform: translateX(-30%) rotate(18deg); opacity: 0; }
+  65% { opacity: 0.8; }
+  85%, 100% { transform: translateX(420%) rotate(18deg); opacity: 0; }
+}
+
+@keyframes orbit-dot {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-wipe,
+  .portal-overlay,
+  .hero__ring,
+  .hero__portrait-glow,
+  .hero__float,
+  .contact-signal__dot,
+  .contact-signal__ring,
+  .manifesto-art__ring,
+  .not-found__ring,
+  .stack-ring,
+  .orbit-lab__rings i,
+  .curiosity-compass__rings i {
+    animation: none !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
+  }
+
+  .is-entering .page-main > *:first-child,
+  .project-hero__art-glint,
+  .contact-closing__orbit i {
+    animation: none !important;
+    opacity: 0;
+  }
+}

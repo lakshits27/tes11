@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.audit-tmp/
+image-search/
+.DS_Store
+*.log
+
+# Generated at build time from assets-source/ and src/content/.
+public/assets/avatar/*.webp
+public/assets/covers/*.svg
+public/assets/screenshots/*.webp
+public/favicon-192.png
+public/og-image.png
+public/assets/og/*.png
+public/robots.txt
+public/sitemap.xml
+
+# Generated HTML is committed because it is the pre-rendered source for Vite.
+# It is refreshed with `npm run generate`.

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" data-base="/tes11/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080a12">
+  <title>Pustakalaya — Lakshit Singh Saini</title>
+  <meta name="description" content="An offline-ready Flask library management system for cataloging, circulation, reservations, fines, reports, and staff access control. Verified project details, features, stack, visuals, and repository links.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://lakshits27.github.io/tes11/projects/pustakalaya/">
+  <meta property="og:site_name" content="Lakshit Singh Saini">
+  <meta property="og:title" content="Pustakalaya — Lakshit Singh Saini">
+  <meta property="og:description" content="An offline-ready Flask library management system for cataloging, circulation, reservations, fines, reports, and staff access control. Verified project details, features, stack, visuals, and repository links.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lakshits27.github.io/tes11/projects/pustakalaya/">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://lakshits27.github.io/tes11/assets/og/pustakalaya.png">
+  <meta property="og:image:alt" content="Pustakalaya — original spectral project artwork by Lavi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pustakalaya — Lakshit Singh Saini">
+  <meta name="twitter:description" content="An offline-ready Flask library management system for cataloging, circulation, reservations, fines, reports, and staff access control. Verified project details, features, stack, visuals, and repository links.">
+  <meta name="twitter:image" content="https://lakshits27.github.io/tes11/assets/og/pustakalaya.png">
+  <meta name="twitter:creator" content="@Lakshits27">
+  <link rel="icon" type="image/svg+xml" href="/tes11/favicon.svg">
+  <link rel="apple-touch-icon" href="/tes11/favicon-192.png">
+  <link rel="manifest" href="/tes11/manifest.webmanifest">
+  
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Person","name":"Lakshit Singh Saini","alternateName":"Lavi","description":"Computer Science undergraduate and developer.","url":"https://lakshits27.github.io/tes11/","email":"mailto:lakshitsinghsaini@gmail.com","sameAs":["https://github.com/hmmlavi","https://www.instagram.com/lakshitsinghsaini/","https://x.com/Lakshits27"],"knowsAbout":["Web development","Python","TypeScript","Android development","Creative coding","Games","Music","Space"]},{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Pustakalaya","description":"An offline-ready Flask library management system for cataloging, circulation, reservations, fines, reports, and staff access control.","url":"https://lakshits27.github.io/tes11/projects/pustakalaya/","codeRepository":"https://github.com/hmmlavi/Pustakalaya-LMS","programmingLanguage":["Python 3.12","Flask 3","Flask-WTF","WTForms","SQLAlchemy 2","Alembic","SQLite","Jinja","PyInstaller","pytest"],"author":{"@type":"Person","name":"Lakshit Singh Saini","url":"https://lakshits27.github.io/tes11/"},"dateModified":"2026-10-24","downloadUrl":"https://github.com/hmmlavi/Pustakalaya-LMS/releases/tag/v1.0.0"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lakshits27.github.io/tes11/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://lakshits27.github.io/tes11/projects/"},{"@type":"ListItem","position":3,"name":"Pustakalaya","item":"https://lakshits27.github.io/tes11/projects/pustakalaya/"}]}]</script>
+</head>
+<body class="page page--project project-page" data-page="project" data-project="pustakalaya" style="--project-accent:#ffb86b;--project-accent-2:#d7ff65;--project-accent-soft:rgba(255, 184, 107, 0.16)">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-wipe" aria-hidden="true"></div>
+  <canvas id="spectral-trail" aria-hidden="true"></canvas>
+  <noscript><div class="noscript-note">This site works without JavaScript; animations and playground controls are enhanced when JavaScript is available.</div></noscript>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="wordmark" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+        <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+        <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="desktop-nav__link" href="/tes11/"><span>Home</span></a><a class="desktop-nav__link is-active" href="/tes11/projects/" aria-current="page"><span>Projects</span><i aria-hidden="true"></i></a><a class="desktop-nav__link" href="/tes11/playground/"><span>Playground</span></a><a class="desktop-nav__link" href="/tes11/about/"><span>About</span></a><a class="desktop-nav__link" href="/tes11/contact/"><span>Contact</span></a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-cta" href="/tes11/contact/"><span>Let’s talk</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i></span>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" data-menu-panel hidden>
+      <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+        <a class="mobile-menu__link" href="/tes11/"><span>Home</span></a><a class="mobile-menu__link is-active" href="/tes11/projects/" aria-current="page"><span>Projects</span><i aria-hidden="true"></i></a><a class="mobile-menu__link" href="/tes11/playground/"><span>Playground</span></a><a class="mobile-menu__link" href="/tes11/about/"><span>About</span></a><a class="mobile-menu__link" href="/tes11/contact/"><span>Contact</span></a>
+        <div class="mobile-menu__divider" aria-hidden="true"></div>
+        <a class="mobile-menu__link" href="/tes11/now/"><span>Now</span></a><a class="mobile-menu__link" href="/tes11/uses/"><span>Uses</span></a>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>lakshitsinghsaini@gmail.com</span></a>
+        <div class="mobile-menu__socials">
+          <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="page-main" tabindex="-1">
+<div class="project-detail" style="--project-accent:#ffb86b;--project-accent-2:#d7ff65;--project-accent-soft:rgba(255, 184, 107, 0.16)">
+    <section class="project-hero" aria-labelledby="page-title" data-reveal>
+      <div class="project-hero__copy">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/tes11/">Home</a></li><li><a href="/tes11/projects/">Projects</a></li><li><span aria-current="page">Pustakalaya</span></li></ol></nav>
+        <p class="eyebrow "><span aria-hidden="true"></span>Offline library system / project 06</p>
+        <h1 id="page-title">Pustakalaya<span class="project-hero__period">.</span></h1>
+        <p class="project-hero__tagline">A library’s daily operations, on one local machine.</p>
+        <p class="project-hero__intro">Pustakalaya is a serious local-first application for library operations. It models catalog works and physical copies, members and borrowing policies, reservations, money, audit trails, and staff roles in one SQLite-backed system.</p>
+        <div class="project-hero__links">
+    <a class="btn btn--secondary " href="https://github.com/hmmlavi/Pustakalaya-LMS" target="_blank" rel="noopener noreferrer"><span>View source</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn--ghost " href="https://github.com/hmmlavi/Pustakalaya-LMS/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer"><span>Get v1.0.0</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+  </div>
+        <dl class="project-facts">
+          <div><dt>Status</dt><dd>Released · v1.0.0</dd></div>
+          <div><dt>Category</dt><dd>Systems</dd></div>
+          <div><dt>Verified</dt><dd>25 October 2026</dd></div>
+        </dl>
+      </div>
+      <figure class="project-hero__art" data-reveal style="--delay:120ms">
+        <div class="project-hero__art-frame">
+          <img src="/tes11/assets/covers/pustakalaya.svg" width="1200" height="800" alt="Original illustration of Pustakalaya: library shelves, catalogue cards, and a branching circulation diagram in amber and lime" decoding="async">
+          <span class="project-hero__art-glint" aria-hidden="true"></span>
+        </div>
+        <figcaption>Original portfolio illustration — not a product screenshot.</figcaption>
+      </figure>
+    </section>
+
+    <div class="project-rail" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <section class="project-section project-section--why" aria-labelledby="why-title">
+      <div class="project-section__rail"><span>01</span><p>Why it exists</p></div>
+      <div class="project-section__content">
+        <h2 id="why-title">Problem &amp; motivation</h2>
+        <p class="project-lead">Library work is not just a book list. Physical copies, member tiers, due dates, reservations, fines, and staff permissions need consistent rules and an auditable record.</p>
+        <div class="project-two-col">
+          <article><h3>The spark</h3><p>The project explores how to model a real operational domain carefully while still shipping something a library can run locally without a hosted service.</p></article>
+          <article><h3>The approach</h3><p>A layered Flask application separates domain policies, services, repositories, SQLAlchemy models, web blueprints, and Alembic migrations. SQLite runs locally with foreign keys, WAL mode, and explicit write transactions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--decisions" aria-labelledby="decisions-title">
+      <div class="project-section__rail"><span>02</span><p>Direction</p></div>
+      <div class="project-section__content">
+        <h2 id="decisions-title">Goals and design decisions</h2>
+        <ol class="project-goals">
+          <li style="--goal-accent:#ffb86b"><span>01</span><p>Manage catalog works and physical copy inventory across branches.</p></li><li style="--goal-accent:#ffb86b"><span>02</span><p>Make circulation, reservations, and fines deterministic and auditable.</p></li><li style="--goal-accent:#ffb86b"><span>03</span><p>Support real staff roles and safe first-run administration.</p></li><li style="--goal-accent:#ffb86b"><span>04</span><p>Ship Windows builds that keep runtime data outside the application directory.</p></li>
+        </ol>
+        <div class="decision-grid">
+          <article class="decision-card" data-reveal style="--delay:0ms">
+                <span class="decision-card__index">01</span>
+                <h3>Local-first SQLite</h3>
+                <p>Single-host operation uses foreign keys, WAL mode, busy timeouts, and explicit transactions.</p>
+              </article><article class="decision-card" data-reveal style="--delay:60ms">
+                <span class="decision-card__index">02</span>
+                <h3>Layered architecture</h3>
+                <p>Domain entities, policies, state machines, services, repositories, and ORM models are separated.</p>
+              </article><article class="decision-card" data-reveal style="--delay:120ms">
+                <span class="decision-card__index">03</span>
+                <h3>Exact money handling</h3>
+                <p>INR fines use integer paise storage and Decimal calculations with an auditable ledger.</p>
+              </article><article class="decision-card" data-reveal style="--delay:180ms">
+                <span class="decision-card__index">04</span>
+                <h3>Deterministic reservations</h3>
+                <p>FIFO queues, pickup deadlines, expired holds, and idempotent reallocation are modelled explicitly.</p>
+              </article><article class="decision-card" data-reveal style="--delay:240ms">
+                <span class="decision-card__index">05</span>
+                <h3>Versioned schema</h3>
+                <p>Alembic migrations and dataset verification scripts support repeatable setup.</p>
+              </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--features" aria-labelledby="features-title">
+      <div class="project-section__rail"><span>03</span><p>Implemented</p></div>
+      <div class="project-section__content">
+        <h2 id="features-title">What the repository actually contains</h2>
+        <p class="project-section__intro">These features are described in the project README or visible in its source and release material.</p>
+        <div class="feature-grid">
+          <article class="feature-card" data-reveal style="--delay:0ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                <h3>Catalog &amp; inventory</h3>
+                <p>ISBN validation, authors, works, physical copies, branches, conditions, and catalog search.</p>
+              </article><article class="feature-card" data-reveal style="--delay:45ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span>
+                <h3>Members &amp; circulation</h3>
+                <p>Membership tiers, issue, return, renewal, damaged/lost workflows, and holiday-aware due dates.</p>
+              </article><article class="feature-card" data-reveal style="--delay:90ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg></span>
+                <h3>Reservations</h3>
+                <p>Eligibility checks, FIFO queues, pickup holds, and automatic allocation after returns.</p>
+              </article><article class="feature-card" data-reveal style="--delay:135ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                <h3>Fines</h3>
+                <p>Exact INR calculations, partial/full payments, waivers, receipts, and audit history.</p>
+              </article><article class="feature-card" data-reveal style="--delay:180ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span>
+                <h3>Administration</h3>
+                <p>Role-based access for ADMIN, LIBRARIAN, and STAFF_READONLY, plus audit and correction workflows.</p>
+              </article><article class="feature-card" data-reveal style="--delay:225ms">
+                <span class="feature-card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg></span>
+                <h3>Reports &amp; imports</h3>
+                <p>Operational reports, CSV exports, historical import validation, quarantine, and data-quality checks.</p>
+              </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--visuals" aria-labelledby="visuals-title">
+      <div class="project-section__rail"><span>04</span><p>Proof</p></div>
+      <div class="project-section__content">
+        <h2 id="visuals-title">Real visuals &amp; original artwork</h2>
+        <p class="project-section__intro">Both screenshots are genuine assets from the Pustakalaya-LMS repository README.</p>
+        <div class="project-visuals">
+    <figure class="project-visual project-visual--screenshot" data-reveal>
+          <div class="project-visual__frame">
+            <img src="/tes11/assets/screenshots/pustakalaya-dashboard.webp" alt="Pustakalaya operations dashboard with catalog, circulation, branch, and fine summaries" loading="lazy" decoding="async" width="1200" height="800">
+          </div>
+          <figcaption><span>Repository screenshot</span>Operations dashboard from the repository README, captured with synthetic demonstration data.</figcaption>
+        </figure><figure class="project-visual project-visual--screenshot" data-reveal>
+          <div class="project-visual__frame">
+            <img src="/tes11/assets/screenshots/pustakalaya-catalog.webp" alt="Pustakalaya book catalog with search and availability filters" loading="lazy" decoding="async" width="1200" height="800">
+          </div>
+          <figcaption><span>Repository screenshot</span>Searchable catalog from the repository README, captured with synthetic demonstration data.</figcaption>
+        </figure>
+    
+  </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--stack" aria-labelledby="stack-title">
+      <div class="project-section__rail"><span>05</span><p>Stack</p></div>
+      <div class="project-section__content">
+        <h2 id="stack-title">Verified technology</h2>
+        <ul class="tags tags--large" aria-label="Topics"><li class="tag">Python 3.12</li><li class="tag">Flask 3</li><li class="tag">Flask-WTF</li><li class="tag">WTForms</li><li class="tag">SQLAlchemy 2</li><li class="tag">Alembic</li><li class="tag">SQLite</li><li class="tag">Jinja</li><li class="tag">PyInstaller</li><li class="tag">pytest</li></ul>
+        <div class="source-card" data-reveal>
+          <div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 5-4 1 2-5 4-1Z"/></svg><h3>Where this was checked</h3></div>
+          <p>Repository last pushed 24 October 2026. Page content verified 25 October 2026 against README.md, requirements.txt, requirements-dev.txt, architecture docs, GitHub release v1.0.0.</p>
+          <a href="https://github.com/hmmlavi/Pustakalaya-LMS" target="_blank" rel="noopener noreferrer">Open the source <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--reflection" aria-labelledby="reflection-title">
+      <div class="project-section__rail"><span>06</span><p>Reflection</p></div>
+      <div class="project-section__content">
+        <h2 id="reflection-title">Contribution, challenges &amp; scope</h2>
+        <div class="reflection-grid">
+          <article class="reflection-card">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14"/></svg> My contribution</h3>
+            <ul class="plain-list"><li>I authored and maintain the public Pustakalaya-LMS repository under hmmlavi.</li><li>The repository contains domain policies, services, SQLAlchemy repositories, Flask blueprints, Jinja templates, migrations, tests, and packaging scripts.</li><li>It also includes architecture, business-rule, design-decision, and data-quality documentation.</li></ul>
+          </article>
+          <article class="reflection-card">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 17H3L12 3Z"/><path d="m12 3-3 17m3-17 3 17M3 20h18"/></svg> Challenges &amp; learning</h3>
+            <dl><dt>Concurrency</dt><dd>Atomic issue/return workflows and conditional updates prevent double checkout of one physical copy.</dd><dt>Correctness over shortcuts</dt><dd>FIFO reservations, idempotent payments, and auditable corrections need explicit state transitions.</dd><dt>Safe historical data</dt><dd>Imports classify accepted, rejected, quarantined, duplicate, and error records before they affect operations.</dd></dl>
+          </article>
+          <article class="reflection-card reflection-card--scope">
+            <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg> Documented limits</h3>
+            <p>These are boundaries stated in the repository, not completed features:</p>
+            <ul class="plain-list"><li>The application is designed for reliable single-host operation; it is not a multi-node service without moving the database layer.</li><li>The README states that production needs an explicit secret, HTTPS/TLS, and reverse-proxy controls.</li><li>Screenshots in the repository were captured with synthetic demonstration data.</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-status" aria-labelledby="status-title">
+      <div class="project-status__copy" data-reveal>
+        <p class="eyebrow "><span aria-hidden="true"></span>Current status</p>
+        <h2 id="status-title">Released · v1.0.0</h2>
+        <p>Release v1.0.0 was published on 24 October 2026 with a Windows executable, portable ZIP, and SHA-256 manifest.</p>
+      </div>
+      <div class="project-status__links" data-reveal>
+        <a href="https://github.com/hmmlavi/Pustakalaya-LMS" target="_blank" rel="noopener noreferrer">
+              <span>View source</span>
+              <small>Source, README, and history</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a><a href="https://github.com/hmmlavi/Pustakalaya-LMS/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+              <span>Get v1.0.0</span>
+              <small>Windows executable, portable ZIP, and checksums.</small>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+      </div>
+    </section>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="project-nav__item project-nav__item--prev" href="/tes11/projects/sarp/" data-portal data-accent="#d7ff65">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg> Previous project</span><strong>Sarp</strong>
+      </a>
+      <a class="project-nav__item project-nav__item--all" href="/tes11/projects/">
+        <span>All work</span><strong>Project shelf <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></strong>
+      </a>
+      <a class="project-nav__item project-nav__item--next" href="/tes11/projects/sortify/" data-portal data-accent="#d7ff65">
+        <span>Next project <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><strong>Sortify</strong>
+      </a>
+    </nav>
+  </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="wordmark wordmark--footer" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+          <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+          <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+        </a>
+        <p>Curious builder, multidisciplinary developer, and collector of interesting questions.</p>
+        <p class="footer-status"><span aria-hidden="true"></span> Open to internships & collaborations</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <span class="footer-label">Explore</span>
+        <a href="/tes11/">Home<small>Start here</small></a><a href="/tes11/projects/">Projects<small>Six public builds</small></a><a href="/tes11/playground/">Playground<small>Interactive experiments</small></a><a href="/tes11/about/">About<small>The human behind the pixels</small></a><a href="/tes11/contact/">Contact<small>Open a conversation</small></a><a href="/tes11/now/">Now<small>Current public work</small></a><a href="/tes11/uses/">Uses<small>Verified toolchain</small></a>
+      </nav>
+      <div class="footer-connect">
+        <span class="footer-label">Find me</span>
+        <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span>GitHub</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><span>Instagram</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg><span>X</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>Email</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lakshit Singh Saini</span>
+      <span>Made with <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg> TypeScript, Canvas & care</span>
+      <a href="#top">Back to top <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </footer>
+  <script type="module" src="../../src/scripts/main.ts"></script>
+</body>
+</html>

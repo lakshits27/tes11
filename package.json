@@ -1,0 +1,41 @@
+{
+  "name": "lavi-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A pre-rendered, interactive multi-page portfolio for Lakshit Singh Saini (Lavi).",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "assets": "tsx scripts/optimize-assets.ts",
+    "generate": "npm run assets && tsx scripts/generate.ts",
+    "dev": "npm run generate && vite",
+    "build": "npm run generate && npm run typecheck && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "npm run test:static && npm run test:browser",
+    "test:static": "tsx scripts/test-static.ts",
+    "test:browser": "node --import tsx --test tests/browser.test.ts",
+    "verify:repos": "tsx scripts/verify-repos.ts",
+    "check": "npm run lint && npm run typecheck && npm run build && npm run test:static"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource-variable/space-grotesk": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@sparticuz/chromium": "153.0.0",
+    "@types/node": "22.20.5",
+    "axe-core": "4.14.0",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "puppeteer-core": "25.16.0",
+    "sharp": "0.35.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.0",
+    "vite": "7.3.7"
+  }
+}

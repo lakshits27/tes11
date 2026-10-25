@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-base="/tes11/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080a12">
+  <title>Playground — Lakshit Singh Saini</title>
+  <meta name="description" content="Interactive creative playground by Lakshit Singh Saini: a procedural rainbow prism field and a keyboard-accessible orbit mixer built with Canvas, SVG, CSS, and TypeScript.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://lakshits27.github.io/tes11/playground/">
+  <meta property="og:site_name" content="Lakshit Singh Saini">
+  <meta property="og:title" content="Playground — Lakshit Singh Saini">
+  <meta property="og:description" content="Interactive creative playground by Lakshit Singh Saini: a procedural rainbow prism field and a keyboard-accessible orbit mixer built with Canvas, SVG, CSS, and TypeScript.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lakshits27.github.io/tes11/playground/">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://lakshits27.github.io/tes11/og-image.png">
+  <meta property="og:image:alt" content="Lakshit Singh Saini — spectral portfolio preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Playground — Lakshit Singh Saini">
+  <meta name="twitter:description" content="Interactive creative playground by Lakshit Singh Saini: a procedural rainbow prism field and a keyboard-accessible orbit mixer built with Canvas, SVG, CSS, and TypeScript.">
+  <meta name="twitter:image" content="https://lakshits27.github.io/tes11/og-image.png">
+  <meta name="twitter:creator" content="@Lakshits27">
+  <link rel="icon" type="image/svg+xml" href="/tes11/favicon.svg">
+  <link rel="apple-touch-icon" href="/tes11/favicon-192.png">
+  <link rel="manifest" href="/tes11/manifest.webmanifest">
+  
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Person","name":"Lakshit Singh Saini","alternateName":"Lavi","description":"Computer Science undergraduate and developer.","url":"https://lakshits27.github.io/tes11/","email":"mailto:lakshitsinghsaini@gmail.com","sameAs":["https://github.com/hmmlavi","https://www.instagram.com/lakshitsinghsaini/","https://x.com/Lakshits27"],"knowsAbout":["Web development","Python","TypeScript","Android development","Creative coding","Games","Music","Space"]}]</script>
+</head>
+<body class="page page--playground" data-page="playground">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-wipe" aria-hidden="true"></div>
+  <canvas id="spectral-trail" aria-hidden="true"></canvas>
+  <noscript><div class="noscript-note">This site works without JavaScript; animations and playground controls are enhanced when JavaScript is available.</div></noscript>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="wordmark" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+        <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+        <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="desktop-nav__link" href="/tes11/"><span>Home</span></a><a class="desktop-nav__link" href="/tes11/projects/"><span>Projects</span></a><a class="desktop-nav__link is-active" href="/tes11/playground/" aria-current="page"><span>Playground</span><i aria-hidden="true"></i></a><a class="desktop-nav__link" href="/tes11/about/"><span>About</span></a><a class="desktop-nav__link" href="/tes11/contact/"><span>Contact</span></a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-cta" href="/tes11/contact/"><span>Let’s talk</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i></span>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" data-menu-panel hidden>
+      <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+        <a class="mobile-menu__link" href="/tes11/"><span>Home</span></a><a class="mobile-menu__link" href="/tes11/projects/"><span>Projects</span></a><a class="mobile-menu__link is-active" href="/tes11/playground/" aria-current="page"><span>Playground</span><i aria-hidden="true"></i></a><a class="mobile-menu__link" href="/tes11/about/"><span>About</span></a><a class="mobile-menu__link" href="/tes11/contact/"><span>Contact</span></a>
+        <div class="mobile-menu__divider" aria-hidden="true"></div>
+        <a class="mobile-menu__link" href="/tes11/now/"><span>Now</span></a><a class="mobile-menu__link" href="/tes11/uses/"><span>Uses</span></a>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>lakshitsinghsaini@gmail.com</span></a>
+        <div class="mobile-menu__socials">
+          <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="page-main" tabindex="-1">
+<section class="page-hero page-hero--playground" aria-labelledby="page-title">
+    <div class="playground-hero__art" aria-hidden="true">
+      <span></span><span></span><span></span><i>✦</i>
+    </div>
+    <p class="eyebrow "><span aria-hidden="true"></span>Interactive lab / 004</p>
+    <h1 id="page-title" data-reveal>Where the code <span>gets to play.</span></h1>
+    <p data-reveal>Two original visual experiments: a procedural prism field you can bend and pulse, and a small orbit system you can compose. No external libraries, no heavy 3D engine — just Canvas, SVG, CSS, and TypeScript.</p>
+    <div class="page-hero__meta" data-reveal>
+      <span><i aria-hidden="true"></i> Canvas + SVG</span>
+      <span><i aria-hidden="true"></i> Keyboard friendly</span>
+      <span><i aria-hidden="true"></i> Reduced-motion aware</span>
+    </div>
+  </section>
+
+  <section class="experiment" aria-labelledby="prism-title" data-prism-lab>
+    <div class="experiment__head">
+      <div>
+        <p class="eyebrow "><span aria-hidden="true"></span>Experiment 01 / Procedural light</p>
+        <h2 id="prism-title">Prism field.</h2>
+        <p id="prism-description">Layered spectral waves respond to controls and pointer energy. Drag across the canvas to bend the field, or send a pulse through every layer.</p>
+      </div>
+      <div class="experiment__badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 17H3L12 3Z"/><path d="m12 3-3 17m3-17 3 17M3 20h18"/></svg><span>LIVE CANVAS</span></div>
+    </div>
+    <div class="prism-lab">
+      <div class="prism-lab__stage">
+        <canvas id="prism-field" data-prism-canvas role="img" aria-labelledby="prism-title" aria-describedby="prism-description" width="1200" height="620">
+          An animated field of layered rainbow wave lines. Use the controls to change amplitude, dispersion, and speed.
+        </canvas>
+        <div class="prism-lab__readout" aria-hidden="true"><span>PRISM // 01</span><span data-prism-fps>60 FPS</span></div>
+      </div>
+      <div class="control-panel" aria-label="Prism field controls">
+        <div class="control-panel__head"><h3>Field controls</h3><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span></div>
+        <div class="range-control">
+          <label for="prism-amplitude">Amplitude <output data-prism-output="amplitude">62</output></label>
+          <input id="prism-amplitude" type="range" min="10" max="100" value="62" data-prism-control="amplitude">
+        </div>
+        <div class="range-control">
+          <label for="prism-dispersion">Dispersion <output data-prism-output="dispersion">54</output></label>
+          <input id="prism-dispersion" type="range" min="0" max="100" value="54" data-prism-control="dispersion">
+        </div>
+        <div class="range-control">
+          <label for="prism-speed">Speed <output data-prism-output="speed">38</output></label>
+          <input id="prism-speed" type="range" min="0" max="100" value="38" data-prism-control="speed">
+        </div>
+        <div class="select-control">
+          <label for="prism-palette">Spectrum</label>
+          <select id="prism-palette" data-prism-palette>
+            <option value="aurora">Aurora</option>
+            <option value="solar">Solar flare</option>
+            <option value="ultraviolet">Ultraviolet</option>
+          </select>
+        </div>
+        <div class="control-panel__actions">
+          <button class="btn btn--primary" type="button" data-prism-pulse><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg><span>Send pulse</span></button>
+          <button class="btn btn--ghost" type="button" data-prism-reset><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 3-6.7L3 8m0-5v5h5"/></svg><span>Reset</span></button>
+        </div>
+        <p class="control-panel__note">Reduced-motion visitors get a single static frame; all controls still work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="experiment experiment--orbit" aria-labelledby="orbit-title" data-orbit-lab>
+    <div class="experiment__head">
+      <div>
+        <p class="eyebrow "><span aria-hidden="true"></span>Experiment 02 / Interactive system</p>
+        <h2 id="orbit-title">Orbit mixer.</h2>
+        <p>Six signals orbit the same core. Toggle them to compose a little map of what this portfolio is made of. Active signals draw their own spectral connections.</p>
+      </div>
+      <div class="experiment__badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="5" transform="rotate(-25 12 12)"/><circle cx="20" cy="8" r="1.5" fill="currentColor" stroke="none"/></svg><span>SVG SYSTEM</span></div>
+    </div>
+    <div class="orbit-lab">
+      <svg class="orbit-lab__links" data-orbit-links aria-hidden="true" preserveAspectRatio="none"></svg>
+      <div class="orbit-lab__rings" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="orbit-lab__core" data-orbit-core>
+        <span data-orbit-count>0</span>
+        <small>signals active</small>
+        <h3 data-orbit-title>Choose a signal</h3>
+        <p data-orbit-note aria-live="polite">Activate the orbiting nodes to build your own constellation of interests.</p>
+      </div>
+      <button type="button" class="orbit-node" data-orbit-node="curiosity" data-color="#d7ff65" data-title="Curiosity" data-note="The starting point for every experiment on this site." aria-pressed="false" style="--angle:-90deg;--angle-neg:90deg;--node-color:#d7ff65;--node-index:0">
+        <span class="orbit-node__dot" aria-hidden="true"></span>
+        <span class="orbit-node__label">Curiosity</span>
+      </button><button type="button" class="orbit-node" data-orbit-node="code" data-color="#61e7ff" data-title="Code" data-note="Typed, testable, and deliberately small where it can be." aria-pressed="false" style="--angle:-30deg;--angle-neg:30deg;--node-color:#61e7ff;--node-index:1">
+        <span class="orbit-node__dot" aria-hidden="true"></span>
+        <span class="orbit-node__label">Code</span>
+      </button><button type="button" class="orbit-node" data-orbit-node="space" data-color="#b69bff" data-title="Space" data-note="Big questions and improbable scales." aria-pressed="false" style="--angle:30deg;--angle-neg:-30deg;--node-color:#b69bff;--node-index:2">
+        <span class="orbit-node__dot" aria-hidden="true"></span>
+        <span class="orbit-node__label">Space</span>
+      </button><button type="button" class="orbit-node" data-orbit-node="sound" data-color="#ff78b7" data-title="Sound" data-note="Rhythm, texture, and the mood behind a build." aria-pressed="false" style="--angle:90deg;--angle-neg:-90deg;--node-color:#ff78b7;--node-index:3">
+        <span class="orbit-node__dot" aria-hidden="true"></span>
+        <span class="orbit-node__label">Sound</span>
+      </button><button type="button" class="orbit-node" data-orbit-node="play" data-color="#ffb86b" data-title="Play" data-note="Games, feedback loops, and joyful interaction." aria-pressed="false" style="--angle:150deg;--angle-neg:-150deg;--node-color:#ffb86b;--node-index:4">
+        <span class="orbit-node__dot" aria-hidden="true"></span>
+        <span class="orbit-node__label">Play</span>
+      </button><button type="button" class="orbit-node" data-orbit-node="systems" data-color="#8dffc5" data-title="Systems" data-note="Rules that connect small parts into something useful." aria-pressed="false" style="--angle:210deg;--angle-neg:-210deg;--node-color:#8dffc5;--node-index:5">
+        <span class="orbit-node__dot" aria-hidden="true"></span>
+        <span class="orbit-node__label">Systems</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="playground-outro" aria-labelledby="outro-title">
+    <div data-reveal>
+      <p class="eyebrow "><span aria-hidden="true"></span>That’s the lab</p>
+      <h2 id="outro-title">Play is a serious way <span>to learn.</span></h2>
+      <p>The same curiosity feeds the real projects — safety in Sortify, privacy in Veylo, feedback in Sarp, and careful systems work in Pustakalaya.</p>
+    </div>
+    <div data-reveal>
+      <a class="btn btn--primary " href="/tes11/projects/"><span>Back to the projects</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="btn btn--ghost " href="/tes11/"><span>Return home</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg></a>
+    </div>
+  </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="wordmark wordmark--footer" href="/tes11/" aria-label="LAVI. — Lakshit Singh Saini, home">
+          <span class="wordmark__glyph"><svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg></span>
+          <span class="wordmark__text">LAVI<span class="wordmark__dot">.</span></span>
+        </a>
+        <p>Curious builder, multidisciplinary developer, and collector of interesting questions.</p>
+        <p class="footer-status"><span aria-hidden="true"></span> Open to internships & collaborations</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <span class="footer-label">Explore</span>
+        <a href="/tes11/">Home<small>Start here</small></a><a href="/tes11/projects/">Projects<small>Six public builds</small></a><a href="/tes11/playground/">Playground<small>Interactive experiments</small></a><a href="/tes11/about/">About<small>The human behind the pixels</small></a><a href="/tes11/contact/">Contact<small>Open a conversation</small></a><a href="/tes11/now/">Now<small>Current public work</small></a><a href="/tes11/uses/">Uses<small>Verified toolchain</small></a>
+      </nav>
+      <div class="footer-connect">
+        <span class="footer-label">Find me</span>
+        <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span>GitHub</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><span>Instagram</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg><span>X</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>Email</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lakshit Singh Saini</span>
+      <span>Made with <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6 4 4M19 5l-4 4m-6 6-4 4"/></svg> TypeScript, Canvas & care</span>
+      <a href="#top">Back to top <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </footer>
+  <script type="module" src="../src/scripts/main.ts"></script>
+</body>
+</html>

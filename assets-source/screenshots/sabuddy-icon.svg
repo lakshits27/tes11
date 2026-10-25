@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-label="SaBuddy launcher icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B"/>
+      <stop offset=".5" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#134E4A"/>
+    </linearGradient>
+  </defs>
+  <rect width="108" height="108" fill="url(#bg)"/>
+  <circle cx="54" cy="54" r="42" fill="none" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="1.2"/>
+  <circle cx="54" cy="54" r="26" fill="none" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path fill="#FFFFFF" d="M32 30h44c6.6 0 12 5.4 12 12v22c0 6.6-5.4 12-12 12H48l-14 9v-9h-2c-6.6 0-12-5.4-12-12V42c0-6.6 5.4-12 12-12z"/>
+  <path fill="#0D9488" d="M54 38c0 5 4 9 9 9-5 0-9 4-9 9 0-5-4-9-9-9 5 0 9-4 9-9z"/>
+  <path fill="#F59E0B" d="M42 42c0 3 2 5 5 5-3 0-5 2-5 5 0-3-2-5-5-5 3 0 5-2 5-5z"/>
+  <path fill="#6366F1" d="M66 54c0 2.5 1.5 4 4 4-2.5 0-4 1.5-4 4 0-2.5-1.5-4-4-4 2.5 0 4-1.5 4-4z"/>
+</svg>
