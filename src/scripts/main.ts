@@ -1,4 +1,5 @@
 import '../styles/main.css';
+import { initTheme } from './theme.ts';
 import { initNavigation } from './navigation.ts';
 import { initReveal } from './reveal.ts';
 import { initTransitions } from './transitions.ts';
@@ -38,6 +39,7 @@ function boot(): void {
   }
 
   cleanups.push(
+    initTheme(),
     initNavigation(),
     initReveal(),
     initTransitions(),

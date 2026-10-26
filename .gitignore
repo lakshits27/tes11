@@ -17,3 +17,8 @@ public/sitemap.xml
 
 # Generated HTML is committed because it is the pre-rendered source for Vite.
 # It is refreshed with `npm run generate`.
+
+# Local screenshot harness output
+.shots/
+.shots2/
+.shots3/

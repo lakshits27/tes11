@@ -48,6 +48,7 @@ function header(activeNav: string): string {
         ${PRIMARY_NAV.map((item) => navLink(item, activeNav)).join('')}
       </nav>
       <div class="nav-actions">
+        ${themeToggle()}
         <a class="nav-cta" href="${href('contact/')}"><span>Let’s talk</span>${icon('arrow-up-right')}</a>
         <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
           <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i></span>
@@ -63,7 +64,9 @@ function header(activeNav: string): string {
       </nav>
       <div class="mobile-menu__footer">
         <a href="mailto:${SITE.email}">${icon('mail')}<span>${SITE.email}</span></a>
-        <div class="mobile-menu__socials">
+        <div class="mobile-menu__actions">
+          ${themeToggle('theme-toggle--mobile')}
+          <div class="mobile-menu__socials">
           ${SOCIAL_LINKS.filter((social) => social.url.startsWith('https://'))
             .map(
               (social) =>
@@ -73,9 +76,18 @@ function header(activeNav: string): string {
             )
             .join('')}
         </div>
+        </div>
       </div>
     </div>
   </header>`;
+}
+
+function themeToggle(className = ''): string {
+  return `<button class="theme-toggle ${className}" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+    <span class="theme-toggle__sun">${icon('sun')}</span>
+    <span class="theme-toggle__moon">${icon('moon')}</span>
+    <span class="sr-only" data-theme-label>Switch to light theme</span>
+  </button>`;
 }
 
 function footer(): string {
@@ -135,8 +147,8 @@ export function layout(content: string, options: LayoutOptions): string {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="${SITE.themeColor}">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" id="meta-theme-color" content="${SITE.themeColor}" data-dark="${SITE.themeColor}" data-light="#f6f4ee">
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(options.description)}">
   <meta name="robots" content="${robots}">
@@ -158,6 +170,7 @@ export function layout(content: string, options: LayoutOptions): string {
   <link rel="apple-touch-icon" href="${href('favicon-192.png')}">
   <link rel="manifest" href="${href('manifest.webmanifest')}">
   ${options.preloadAvatar ? `<link rel="preload" as="image" type="image/webp" href="${asset('avatar/lakshit-avatar.webp')}">` : ''}
+  <script>(function(){try{var t=localStorage.getItem('lavi-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">${jsonLd(structured)}</script>
 </head>

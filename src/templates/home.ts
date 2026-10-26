@@ -17,7 +17,7 @@ const marqueeItems = [
 ];
 
 function interestTile(interest: (typeof INTERESTS)[number], index: number): string {
-  return `<article class="interest-tile interest-tile--${index + 1}" style="--tile-accent:${interest.color}" data-reveal>
+  return `<article class="interest-tile interest-tile--${index + 1}" style="--tile-accent:${interest.color};--tile-ink:${interest.ink}" data-interest="${interest.id}" data-reveal>
     <span class="interest-tile__icon">${icon(interest.icon)}</span>
     <h3>${escapeHtml(interest.label)}</h3>
     <p>${escapeHtml(interest.short)}</p>

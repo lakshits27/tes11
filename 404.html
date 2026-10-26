@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#080a12">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" id="meta-theme-color" content="#080a12" data-dark="#080a12" data-light="#f6f4ee">
   <title>Page not found — Lakshit Singh Saini</title>
   <meta name="description" content="The requested page could not be found. Return to the home page, browse projects, or explore the playground.">
   <meta name="robots" content="noindex, nofollow">
@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/tes11/favicon-192.png">
   <link rel="manifest" href="/tes11/manifest.webmanifest">
   
+  <script>(function(){try{var t=localStorage.getItem('lavi-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Person","name":"Lakshit Singh Saini","alternateName":"Lavi","description":"Computer Science undergraduate and developer.","url":"https://lakshits27.github.io/tes11/","email":"mailto:lakshitsinghsaini@gmail.com","sameAs":["https://github.com/hmmlavi","https://www.instagram.com/lakshitsinghsaini/","https://x.com/Lakshits27"],"knowsAbout":["Web development","Python","TypeScript","Android development","Creative coding","Games","Music","Space"]}]</script>
 </head>
@@ -44,6 +45,11 @@
         <a class="desktop-nav__link" href="/tes11/"><span>Home</span></a><a class="desktop-nav__link" href="/tes11/projects/"><span>Projects</span></a><a class="desktop-nav__link" href="/tes11/playground/"><span>Playground</span></a><a class="desktop-nav__link" href="/tes11/about/"><span>About</span></a><a class="desktop-nav__link" href="/tes11/contact/"><span>Contact</span></a>
       </nav>
       <div class="nav-actions">
+        <button class="theme-toggle " type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+    <span class="theme-toggle__sun"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+    <span class="theme-toggle__moon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg></span>
+    <span class="sr-only" data-theme-label>Switch to light theme</span>
+  </button>
         <a class="nav-cta" href="/tes11/contact/"><span>Let’s talk</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
           <span class="menu-toggle__bars" aria-hidden="true"><i></i><i></i></span>
@@ -59,8 +65,15 @@
       </nav>
       <div class="mobile-menu__footer">
         <a href="mailto:lakshitsinghsaini@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg><span>lakshitsinghsaini@gmail.com</span></a>
-        <div class="mobile-menu__socials">
+        <div class="mobile-menu__actions">
+          <button class="theme-toggle theme-toggle--mobile" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+    <span class="theme-toggle__sun"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+    <span class="theme-toggle__moon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg></span>
+    <span class="sr-only" data-theme-label>Switch to light theme</span>
+  </button>
+          <div class="mobile-menu__socials">
           <a href="https://github.com/hmmlavi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6A4.6 4.6 0 0 0 18.8 7a4.3 4.3 0 0 0-.1-3.2s-1-.3-3.2 1.2a11 11 0 0 0-5.9 0C7.4 3.5 6.4 3.8 6.4 3.8A4.3 4.3 0 0 0 6.3 7 4.6 4.6 0 0 0 5 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg></a><a href="https://www.instagram.com/lakshitsinghsaini/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://x.com/Lakshits27" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        </div>
         </div>
       </div>
     </div>

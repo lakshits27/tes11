@@ -55,7 +55,7 @@ export function projectPage(project: Project, index: number): PageDefinition {
   const next = PROJECTS[(index + 1) % PROJECTS.length];
   const number = String(index + 1).padStart(2, '0');
 
-  const content = `<div class="project-detail" style="--project-accent:${project.accent};--project-accent-2:${project.accentSecondary};--project-accent-soft:${project.accentSoft}">
+  const content = `<div class="project-detail" style="--project-accent:${project.accent};--project-accent-2:${project.accentSecondary};--project-accent-soft:${project.accentSoft};--project-accent-ink:${project.accentInk};--project-accent-soft-light:${project.accentSoftLight}">
     <section class="project-hero" aria-labelledby="page-title" data-reveal>
       <div class="project-hero__copy">
         ${breadcrumbs([
@@ -221,7 +221,7 @@ export function projectPage(project: Project, index: number): PageDefinition {
     activeNav: 'projects',
     path: projectPath(project),
     bodyClass: 'project-page',
-    bodyStyle: `--project-accent:${project.accent};--project-accent-2:${project.accentSecondary};--project-accent-soft:${project.accentSoft}`,
+    bodyStyle: `--project-accent:${project.accent};--project-accent-2:${project.accentSecondary};--project-accent-soft:${project.accentSoft};--project-accent-ink:${project.accentInk};--project-accent-soft-light:${project.accentSoftLight}`,
     dataProject: project.slug,
     ogImage: canonical(`assets/og/${project.slug}.png`),
     ogImageAlt: `${project.name} — original spectral project artwork by Lavi`,
