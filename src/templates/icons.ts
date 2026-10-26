@@ -26,7 +26,9 @@ export type IconName =
   | 'compass'
   | 'pause'
   | 'play'
-  | 'reset';
+  | 'reset'
+  | 'sun'
+  | 'moon';
 
 const PATHS: Record<IconName, string> = {
   'arrow-up-right': '<path d="M7 17 17 7M8 7h9v9"/>',
@@ -59,6 +61,8 @@ const PATHS: Record<IconName, string> = {
   pause: '<path d="M9 5v14M15 5v14"/>',
   play: '<path d="m8 5 11 7-11 7V5Z"/>',
   reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8m0-5v5h5"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon: '<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/>',
 };
 
 export function icon(name: IconName, className = 'icon'): string {

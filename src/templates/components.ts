@@ -75,7 +75,7 @@ export function projectCard(project: Project, index: number, featured = false): 
     project.filters.join(' '),
   )}" data-search="${escapeHtml(search)}" style="--card-accent:${project.accent};--card-accent-2:${
     project.accentSecondary
-  }" data-reveal>
+  };--card-accent-ink:${project.accentInk};--card-accent-soft-light:${project.accentSoftLight}" data-reveal>
     <a class="project-card__media" href="${href(projectPath(project))}" data-portal data-accent="${
       project.accent
     }">

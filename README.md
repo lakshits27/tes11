@@ -2,7 +2,7 @@
 
 Production site: **https://lakshits27.github.io/tes11/**
 
-This is the multi-page personal portfolio of **Lakshit Singh Saini (“Lavi”)**. It is a pre-rendered static website with a custom design system, original SVG artwork, a pointer-reactive spectral Canvas layer, and two interactive visual experiments.
+This is the multi-page personal portfolio of **Lakshit Singh Saini (“Lavi”)**. It is a pre-rendered static website with a custom design system, original SVG artwork, a pointer-reactive spectral Canvas layer, two interactive visual experiments, and a full light/dark theme system with a sun/moon toggle.
 
 ## Stack and architecture
 
@@ -11,6 +11,7 @@ This is the multi-page personal portfolio of **Lakshit Singh Saini (“Lavi”)*
 - **Pre-rendered HTML routes** generated from templates and structured content. Every page is a real `index.html` in its own directory, so direct links and refreshes work on GitHub Pages without SPA routing or a 404 fallback hack.
 - **Vanilla CSS** design system with local variable fonts from Fontsource packages (Space Grotesk, Manrope, IBM Plex Mono). No external font or analytics requests.
 - **Canvas 2D, SVG, and CSS** for the rainbow trail, project portal transition, Prism Field, orbit mixer, and curiosity compass.
+- **Dual light/dark theming** built on a single token layer: `:root` defines the dark theme, `[data-theme='light']` overrides it, and a pre-paint inline script applies the stored/system choice before first render to avoid a flash of the wrong theme. Dark “instrument screens” (canvas stages, simulated app windows, orbit panels) keep their deep backdrop in both themes.
 - **Sharp** at build time to optimise the avatar, favicon, social cards, covers, and genuine repository screenshots.
 - **GitHub Actions + GitHub Pages** for deployment.
 - **ESLint 10 + typescript-eslint**, Node’s test runner, Puppeteer Core, and axe-core for quality checks.
@@ -98,12 +99,21 @@ npm run check          # lint + typecheck + build + static checks
 4. uploads **only `dist/`**;
 5. deploys with the official Pages action using minimal permissions.
 
-The repository’s `github-pages` environment allows deployments only from `main`. For this Arena session, work is committed and pushed to `arena/79d4f8cb-tes11`, then merged to `main` through a pull request so the protected deployment environment can publish it. The workflow keeps the existing Pages configuration rather than disabling it.
+The repository’s `github-pages` environment allows deployments only from `main`. For this Arena session, work is committed and pushed to the session branch `arena/c9e150ab-tes11`, then merged to `main` through a pull request so the protected deployment environment can publish it. The workflow keeps the existing Pages configuration rather than disabling it.
+
+## Theming
+
+- Dark is the default and is fully hand-tuned; `[data-theme='light']` re-declares the same token names with paper- and ink-friendly values, so components never branch on hardcoded hex values.
+- A tiny pre-paint inline script in `<head>` reads `localStorage('lavi-theme')` (falling back to `prefers-color-scheme`) and sets `data-theme` before first paint, so there is no flash of the wrong theme.
+- The sun/moon toggle lives in the header and inside the mobile menu; both controls stay in sync, persist the choice, and update the `theme-color` meta. The choice survives navigation and reloads.
+- The spectral Canvas trail adapts to the theme (additive `lighter` blending on dark, normal alpha with `multiply` blend on paper), and the orbit/compass/canvas components stay inside always-dark “instrument” panels so their translucent artwork never turns metallic.
+- Toggling is instant (no enter animation on load); a short color-only transition plays while switching, and is suppressed under `prefers-reduced-motion`.
 
 ## Accessibility and performance
 
 - Semantic landmarks, one `h1` per page, visible focus indicators, keyboard-accessible controls, and screen-reader status messages.
-- `prefers-reduced-motion` disables the spectral trail, pauses the Prism Field animation, removes page entrance motion, and keeps all content readable.
+- The theme toggle is a real `button` with `aria-pressed`, an updated accessible name for each state, and visible focus rings; both themes pass axe-core contrast checks.
+- `prefers-reduced-motion` disables the spectral trail, pauses the Prism Field animation, removes page entrance motion and theme-switch animation, and keeps all content readable.
 - Canvas effects are enabled only for fine pointers, cap device pixel ratio, pause when hidden or off-screen, clean up listeners/animation frames, and never block clicks.
 - Images have explicit dimensions, lazy loading where appropriate, and optimised local WebP/SVG assets.
 - No client-side framework, no external font CDN, no analytics, and no tracking scripts.

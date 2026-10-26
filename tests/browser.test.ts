@@ -34,16 +34,23 @@ async function waitForServer(): Promise<void> {
   throw new Error(`Preview server did not start. Logs:\n${serverLog}`);
 }
 
-async function openPage(route = '', options: { reducedMotion?: boolean } = {}): Promise<PageSession> {
+async function openPage(
+  route = '',
+  options: { reducedMotion?: boolean; colorScheme?: 'dark' | 'light' } = {},
+): Promise<PageSession> {
   if (!browser) throw new Error('Browser not initialised');
   const page = await browser.newPage();
   page.setDefaultTimeout(15000);
   page.setDefaultNavigationTimeout(30000);
   await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
   await page.setCacheEnabled(false);
+  const mediaFeatures: { name: string; value: string }[] = [
+    { name: 'prefers-color-scheme', value: options.colorScheme ?? 'dark' },
+  ];
   if (options.reducedMotion) {
-    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+    mediaFeatures.push({ name: 'prefers-reduced-motion', value: 'reduce' });
   }
+  await page.emulateMediaFeatures(mediaFeatures);
   const errors: string[] = [];
   page.on('console', (message) => {
     if (message.type() === 'error') errors.push(`console: ${message.text()}`);
@@ -276,6 +283,75 @@ describe('portfolio browser checks', () => {
     await page.close();
   });
 
+  it('toggles the sun/moon theme, persists the choice, and syncs every control', async () => {
+    const { page, errors } = await openPage();
+    // Pre-paint script must have already chosen a theme (no flash of an unstyled page).
+    assert.ok(await page.$eval('html', (element) => Boolean(element.getAttribute('data-theme'))), 'data-theme missing on first paint');
+    assert.equal(await page.$eval('html', (element) => element.dataset.theme), 'dark');
+
+    const toggleState = async () =>
+      page.$$eval('[data-theme-toggle]', (buttons) =>
+        buttons.map((button) => ({
+          pressed: button.getAttribute('aria-pressed'),
+          label: button.getAttribute('aria-label'),
+        })),
+      );
+
+    let states = await toggleState();
+    assert.ok(states.length >= 2, 'Header and mobile theme toggles should both exist');
+    assert.deepEqual(states.map((state) => state.pressed), states.map(() => 'false'));
+    assert.deepEqual([...new Set(states.map((state) => state.label))], ['Switch to light theme']);
+
+    await page.click('.theme-toggle:not(.theme-toggle--mobile)');
+    await page.waitForFunction(() => document.documentElement.dataset.theme === 'light');
+    assert.equal(
+      await page.$eval('#meta-theme-color', (element) => element.getAttribute('content')),
+      '#f6f4ee',
+      'meta theme-color should follow the active theme',
+    );
+    assert.equal(await page.evaluate(() => localStorage.getItem('lavi-theme')), 'light');
+    states = await toggleState();
+    assert.deepEqual(states.map((state) => state.pressed), states.map(() => 'true'));
+    assert.deepEqual([...new Set(states.map((state) => state.label))], ['Switch to dark theme']);
+
+    // Choice survives a full reload on a nested route.
+    await page.goto(new URL('projects/sortify/', BASE).toString(), { waitUntil: 'domcontentloaded' });
+    assert.equal(await page.$eval('html', (element) => element.dataset.theme), 'light');
+    assert.equal(await page.evaluate(() => localStorage.getItem('lavi-theme')), 'light');
+
+    // The mobile menu control drives the same state once the menu is open.
+    await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
+    await page.click('[data-menu-toggle]');
+    await page.waitForSelector('#mobile-menu:not([hidden])');
+    const mobileToggle = await page.waitForSelector('.theme-toggle--mobile', { visible: true });
+    await mobileToggle?.evaluate((element) => {
+      const button = element as HTMLElement;
+      button.scrollIntoView({ block: 'center' });
+      button.click();
+    });
+    await page.waitForFunction(() => document.documentElement.dataset.theme === 'dark');
+    assert.equal(await page.evaluate(() => localStorage.getItem('lavi-theme')), 'dark');
+    assert.deepEqual(errors, [], 'Console or request errors during theme toggling');
+    await page.close();
+
+    const reduced = await openPage('contact/', { reducedMotion: true, colorScheme: 'light' });
+    const startingTheme = await reduced.page.evaluate(() => document.documentElement.dataset.theme);
+    const expectedTheme = startingTheme === 'light' ? 'dark' : 'light';
+    await reduced.page.click('[data-theme-toggle]');
+    await reduced.page.waitForFunction(
+      (expected) => document.documentElement.dataset.theme === expected,
+      { timeout: 5000 },
+      expectedTheme,
+    );
+    assert.equal(
+      await reduced.page.$eval('html', (element) => element.classList.contains('theme-anim')),
+      false,
+      'Theme switch must not animate under prefers-reduced-motion',
+    );
+    assert.deepEqual(reduced.errors, [], 'Console or request errors with reduced-motion theme switch');
+    await reduced.page.close();
+  });
+
   it('passes axe-core accessibility checks on representative pages', async () => {
     const routes = ['', 'projects/', 'projects/sortify/', 'about/', 'playground/', 'contact/'];
     const violationsByRoute: Record<string, string[]> = {};
@@ -299,5 +375,31 @@ describe('portfolio browser checks', () => {
       await page.close();
     }
     assert.deepEqual(violationsByRoute, Object.fromEntries(routes.map((route) => [route || '/', []])), 'Axe violations found');
+  });
+
+  it('keeps light-theme contrast accessible on representative pages', async () => {
+    const routes = ['', 'projects/', 'about/', 'contact/'];
+    const violationsByRoute: Record<string, string[]> = {};
+    for (const route of routes) {
+      const { page, errors } = await openPage(route, { colorScheme: 'light' });
+      await page.evaluate(() => localStorage.setItem('lavi-theme', 'light'));
+      await page.reload({ waitUntil: 'domcontentloaded' });
+      await page.waitForFunction(() => document.documentElement.dataset.theme === 'light');
+      await page.addScriptTag({ content: axeSource });
+      const violations = await page.evaluate(async () => {
+        const axe = (
+          window as typeof window & {
+            axe?: { run: (context: Document) => Promise<{ violations: Array<{ id: string; nodes: unknown[] }> }> };
+          }
+        ).axe;
+        if (!axe) throw new Error('axe-core was not injected');
+        const result = await axe.run(document);
+        return result.violations.map((violation) => `${violation.id} (${violation.nodes.length})`);
+      });
+      violationsByRoute[route || '/'] = violations;
+      assert.deepEqual(errors, [], `Console or request errors on light ${route || '/'}`);
+      await page.close();
+    }
+    assert.deepEqual(violationsByRoute, Object.fromEntries(routes.map((route) => [route || '/', []])), 'Light-theme axe violations found');
   });
 });

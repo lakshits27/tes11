@@ -64,6 +64,51 @@
   to { offset-distance: 100%; }
 }
 
+/* Squash and stretch — Disney principle #1, applied with restraint.
+   Interactive controls overshoot slightly on hover and squash on press;
+   the reduced-motion media query below neutralises every transition. */
+.btn,
+.nav-cta,
+.social-row a,
+.filter-chip,
+.theme-toggle {
+  transition-timing-function: var(--spring);
+}
+
+.btn:active,
+.nav-cta:active,
+.social-row a:active,
+.filter-chip:active,
+.text-link:active {
+  transform: scale(0.95);
+}
+
+.project-card__open:active {
+  transform: rotate(45deg) scale(0.88);
+}
+
+.project-card__repo:active {
+  transform: translateY(-2px) scale(0.9);
+}
+
+.wordmark__glyph {
+  transition:
+    transform 0.4s var(--spring),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.wordmark:hover .wordmark__glyph,
+.wordmark:focus-visible .wordmark__glyph {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.hero__float,
+.project-card__open,
+.theme-toggle .icon {
+  transition-timing-function: var(--spring);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-wipe,
   .portal-overlay,

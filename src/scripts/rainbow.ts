@@ -1,4 +1,7 @@
-import { getCanvas2dContext, hsl, randomBetween } from './utils.ts';
+import { clampHslForTheme, getCanvas2dContext, hsl, randomBetween } from './utils.ts';
+
+const THEME_CHANGE_EVENT = 'lavi:themechange';
+type ThemeMode = 'dark' | 'light';
 
 interface TrailPoint {
   x: number;
@@ -41,8 +44,14 @@ export function createSpectralTrail(canvas: HTMLCanvasElement | null): SpectralT
   let attached = false;
   let frameId = 0;
   let lastHoverBurst = 0;
+  let theme: ThemeMode = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
   let points: TrailPoint[] = [];
   let sparks: Spark[] = [];
+
+  const onThemeChange = (event: Event): void => {
+    theme = (event as CustomEvent<ThemeMode>).detail === 'light' ? 'light' : 'dark';
+    if (enabled) ensureFrame();
+  };
 
   const clear = (): void => {
     ctx.clearRect(0, 0, width, height);
@@ -63,8 +72,9 @@ export function createSpectralTrail(canvas: HTMLCanvasElement | null): SpectralT
     frameId = window.requestAnimationFrame(frame);
   };
 
-  const burst = (x: number, y: number, color: string, count = 9): void => {
+  const burst = (x: number, y: number, rawColor: string, count = 9): void => {
     const now = performance.now();
+    const color = clampHslForTheme(rawColor, theme);
     for (let index = 0; index < count; index += 1) {
       const angle = (Math.PI * 2 * index) / count + randomBetween(-0.25, 0.25);
       const speed = randomBetween(45, 150);
@@ -90,23 +100,28 @@ export function createSpectralTrail(canvas: HTMLCanvasElement | null): SpectralT
     clear();
 
     ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
+    /* Additive light on dark surfaces; normal alpha with multiply blend on paper. */
+    ctx.globalCompositeOperation = theme === 'light' ? 'source-over' : 'lighter';
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
     if (points.length > 1) {
+      const coreLightness = theme === 'light' ? 48 : 70;
+      const glowLightness = theme === 'light' ? 42 : 62;
+      const coreAlpha = theme === 'light' ? 0.78 : 0.82;
+      const glowAlpha = theme === 'light' ? 0.12 : 0.09;
       for (let index = 1; index < points.length; index += 1) {
         const previous = points[index - 1];
         const current = points[index];
         if (!previous || !current) continue;
         const age = Math.max(0, Math.min(1, (now - current.t) / POINT_LIFE));
         const fade = 1 - age;
-        const color = hsl(current.hue, 100, 70, fade * 0.82);
+        const color = hsl(current.hue, 96, coreLightness, fade * coreAlpha);
 
         ctx.beginPath();
         ctx.moveTo(previous.x, previous.y);
         ctx.lineTo(current.x, current.y);
-        ctx.strokeStyle = hsl(current.hue, 100, 62, fade * 0.09);
+        ctx.strokeStyle = hsl(current.hue, 92, glowLightness, fade * glowAlpha);
         ctx.lineWidth = 18 * fade + 2;
         ctx.stroke();
         ctx.strokeStyle = color;
@@ -190,6 +205,7 @@ export function createSpectralTrail(canvas: HTMLCanvasElement | null): SpectralT
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     document.addEventListener('pointerover', onPointerOver, { passive: true });
     document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener(THEME_CHANGE_EVENT, onThemeChange as EventListener);
     resize();
   };
 
@@ -200,6 +216,7 @@ export function createSpectralTrail(canvas: HTMLCanvasElement | null): SpectralT
     window.removeEventListener('pointermove', onPointerMove);
     document.removeEventListener('pointerover', onPointerOver);
     document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onThemeChange as EventListener);
     if (frameId !== 0) window.cancelAnimationFrame(frameId);
     frameId = 0;
     points = [];

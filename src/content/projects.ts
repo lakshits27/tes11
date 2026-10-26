@@ -31,6 +31,10 @@ export interface Project {
   accent: string;
   accentSecondary: string;
   accentSoft: string;
+  /** Readable accent for text and borders on light backgrounds. */
+  accentInk: string;
+  /** Low-tint accent wash for light backgrounds. */
+  accentSoftLight: string;
   featured: boolean;
   year: number;
   problem: string;
@@ -78,6 +82,8 @@ export const PROJECTS: readonly Project[] = [
     accent: '#d7ff65',
     accentSecondary: '#61e7ff',
     accentSoft: 'rgba(215, 255, 101, 0.16)',
+    accentInk: '#43720a',
+    accentSoftLight: 'rgba(67, 114, 10, 0.12)',
     featured: true,
     year: 2026,
     problem:
@@ -201,6 +207,8 @@ export const PROJECTS: readonly Project[] = [
     accent: '#61e7ff',
     accentSecondary: '#b69bff',
     accentSoft: 'rgba(97, 231, 255, 0.16)',
+    accentInk: '#0b739e',
+    accentSoftLight: 'rgba(11, 115, 158, 0.1)',
     featured: true,
     year: 2026,
     problem:
@@ -299,6 +307,8 @@ export const PROJECTS: readonly Project[] = [
     accent: '#ff78b7',
     accentSecondary: '#ffb86b',
     accentSoft: 'rgba(255, 120, 183, 0.16)',
+    accentInk: '#c22d72',
+    accentSoftLight: 'rgba(194, 45, 114, 0.1)',
     featured: false,
     year: 2026,
     problem:
@@ -389,6 +399,8 @@ export const PROJECTS: readonly Project[] = [
     accent: '#ffb86b',
     accentSecondary: '#61e7ff',
     accentSoft: 'rgba(255, 184, 107, 0.16)',
+    accentInk: '#9d551b',
+    accentSoftLight: 'rgba(157, 85, 27, 0.12)',
     featured: false,
     year: 2026,
     problem:
@@ -485,6 +497,8 @@ export const PROJECTS: readonly Project[] = [
     accent: '#d7ff65',
     accentSecondary: '#ff78b7',
     accentSoft: 'rgba(215, 255, 101, 0.16)',
+    accentInk: '#43720a',
+    accentSoftLight: 'rgba(67, 114, 10, 0.12)',
     featured: true,
     year: 2026,
     problem:
@@ -582,6 +596,8 @@ export const PROJECTS: readonly Project[] = [
     accent: '#ffb86b',
     accentSecondary: '#d7ff65',
     accentSoft: 'rgba(255, 184, 107, 0.16)',
+    accentInk: '#9d551b',
+    accentSoftLight: 'rgba(157, 85, 27, 0.12)',
     featured: false,
     year: 2026,
     problem:
