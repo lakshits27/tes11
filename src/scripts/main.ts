@@ -53,13 +53,16 @@ function boot(): void {
 
   syncMotion();
 
-  window.addEventListener(
-    'pagehide',
-    () => {
-      cleanups.forEach((cleanup) => cleanup());
-    },
-    { once: true },
-  );
+  const onPageHide = (event: PageTransitionEvent): void => {
+    // Keep listeners and visual controllers alive while the page is in the
+    // back-forward cache; the browser freezes and restores this same instance.
+    if (event.persisted) return;
+
+    cleanups.forEach((cleanup) => cleanup());
+    window.removeEventListener('pagehide', onPageHide);
+  };
+
+  window.addEventListener('pagehide', onPageHide);
 }
 
 if (document.readyState === 'loading') {
