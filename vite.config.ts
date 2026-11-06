@@ -10,14 +10,6 @@ const input = Object.fromEntries(
 export default defineConfig({
   base: SITE.basePath,
   publicDir: 'public',
-  server: {
-    host: '0.0.0.0',
-    allowedHosts: true,
-  },
-  preview: {
-    host: '0.0.0.0',
-    allowedHosts: true,
-  },
   build: {
     target: 'es2022',
     cssCodeSplit: false,
