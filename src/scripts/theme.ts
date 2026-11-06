@@ -72,11 +72,13 @@ export function initTheme(): () => void {
     }
   };
 
+  const onReducedMotionChange = (): void => apply(currentTheme(), false);
+
   for (const button of buttons) {
     button.addEventListener('click', onToggle);
   }
   systemQuery.addEventListener('change', onSystemChange);
-  reducedQuery.addEventListener('change', () => apply(currentTheme(), false));
+  reducedQuery.addEventListener('change', onReducedMotionChange);
 
   apply(currentTheme(), false);
 
@@ -85,6 +87,7 @@ export function initTheme(): () => void {
       button.removeEventListener('click', onToggle);
     }
     systemQuery.removeEventListener('change', onSystemChange);
+    reducedQuery.removeEventListener('change', onReducedMotionChange);
   };
 }
 
