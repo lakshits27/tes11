@@ -36,6 +36,15 @@
   transform: translate(2px, -2px);
 }
 
+.btn:active {
+  transform: translateY(-1px) scale(0.97);
+  transition-duration: 0.08s;
+}
+
+.btn:active .icon {
+  transform: translate(1px, -1px) scale(0.94);
+}
+
 .btn--primary {
   background: var(--button-accent);
   color: var(--on-accent);
