@@ -39,7 +39,12 @@ export function designSystemPage(): PageDefinition {
         <article><div style="box-shadow:var(--shadow-strong)"></div><span>--shadow-strong</span></article>
         <article><div style="box-shadow:var(--accent-glow)"></div><span>--accent-glow</span></article>
       </div></section>
-      <section aria-labelledby="ds-components-title"><span>04 / COMPONENTS</span><h2 id="ds-components-title">Interface pieces</h2><p>Buttons, fields, cards, and iconography.</p><div class="ds-placeholder">Component specimens are being documented.</div></section>
+      <section aria-labelledby="ds-components-title"><span>04 / COMPONENTS</span><h2 id="ds-components-title">Interface pieces</h2><p>Buttons, fields, cards, and iconography.</p><div class="ds-button-showcase">
+        <a class="btn btn--primary" href="#ds-components-title">Primary action <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--secondary" href="#ds-components-title">Secondary action</a>
+        <a class="btn btn--ghost" href="#ds-components-title">Quiet action</a>
+        <button class="btn btn--dark" type="button" disabled>Disabled state</button>
+      </div></section>
     </div>
   </section>`;
   return {

@@ -3008,3 +3008,6 @@
 .ds-shadow-grid article { display:grid; gap:16px; color:var(--muted); font:.65rem var(--mono); }
 .ds-shadow-grid article > div { height:88px; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--surface-2); }
 @media(max-width:560px) { .ds-shadow-grid { grid-template-columns:1fr; } }
+
+.ds-button-showcase { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:24px; }
+.ds-button-showcase .btn { min-height:44px; }
