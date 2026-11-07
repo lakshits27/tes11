@@ -3069,3 +3069,8 @@
 .credits-list a { color:var(--accent); font-size:.75rem; }
 .credits-note { margin-top:28px; }
 @media(max-width:560px) { .credits-page { width:min(100% - 36px,920px); } .credits-list article { grid-template-columns:32px minmax(0,1fr); } .credits-list a { grid-column:2; } }
+
+.credits-assets { margin-top:48px; padding:26px; border:1px solid var(--line); border-radius:var(--radius-md); background:var(--surface); }
+.credits-assets h2 { margin-bottom:16px; font-size:1.55rem; }
+.credits-assets p { color:var(--muted); font-size:.86rem; line-height:1.75; }
+.credits-assets p + p { margin-top:12px; }
