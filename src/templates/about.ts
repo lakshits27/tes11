@@ -148,6 +148,8 @@ export function aboutPage(): PageDefinition {
     <div class="about-next__actions" data-reveal>
       ${buttonLink({ label: 'Browse all work', url: href('projects/'), variant: 'primary' })}
       ${buttonLink({ label: 'Current public work', url: href('now/'), variant: 'ghost', iconName: 'arrow-right' })}
+      <button class="btn btn--ghost" type="button" data-share-page>Share this page</button>
+      <p class="share-feedback" data-share-feedback role="status" aria-live="polite"></p>
     </div>
     <div class="about-next__stack" data-reveal>${tags(PORTFOLIO_STACK)}</div>
   </section>`;

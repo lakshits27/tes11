@@ -5,6 +5,7 @@ import { initReveal } from './reveal.ts';
 import { initTransitions } from './transitions.ts';
 import { initProjectFilter } from './project-filter.ts';
 import { initCopyEmail } from './copy-email.ts';
+import { initPageShare } from './page-share.ts';
 import { initInterestCompass } from './interest-compass.ts';
 import { initOrbitLab } from './orbit-lab.ts';
 import { createSpectralTrail } from './rainbow.ts';
@@ -45,6 +46,7 @@ function boot(): void {
     initTransitions(),
     initProjectFilter(),
     initCopyEmail(),
+    initPageShare(),
     initInterestCompass(),
     initOrbitLab(),
     () => trail?.destroy(),
