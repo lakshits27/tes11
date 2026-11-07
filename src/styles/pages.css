@@ -3033,3 +3033,6 @@
 .ds-icon-catalogue article > span { display:grid; place-items:center; width:36px; height:36px; color:var(--accent); }
 .ds-icon-catalogue .icon { width:22px; height:22px; }
 .ds-icon-catalogue code { color:var(--muted); font:.6rem var(--mono); text-align:center; overflow-wrap:anywhere; }
+
+.ds-icon-catalogue button { padding:4px 7px; border:1px solid var(--line); border-radius:6px; background:transparent; color:var(--muted); font-size:.6rem; cursor:pointer; }
+.ds-icon-catalogue button:hover,.ds-icon-catalogue button:focus-visible { border-color:var(--accent); color:var(--ink); }

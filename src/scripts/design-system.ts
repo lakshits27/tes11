@@ -4,6 +4,23 @@ export function initDesignSystem(): () => void {
   const onClick = async (event: MouseEvent): Promise<void> => {
     const target = event.target;
     if (!(target instanceof Element)) return;
+    const iconButton = target.closest<HTMLButtonElement>('[data-copy-icon]');
+    if (iconButton) {
+      const name = iconButton.dataset.copyIcon ?? '';
+      let copied = false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(name); copied = true; }
+        else {
+          const field = document.createElement('textarea'); field.value = name; field.setAttribute('readonly', '');
+          field.style.position = 'fixed'; field.style.opacity = '0'; field.style.top = '-9999px';
+          document.body.append(field); field.select(); copied = document.execCommand('copy'); field.remove();
+        }
+      } catch { copied = false; }
+      const original = iconButton.textContent;
+      iconButton.textContent = copied ? 'Copied' : 'Copy failed';
+      window.setTimeout(() => { iconButton.textContent = original; }, 1600);
+      return;
+    }
     const button = target.closest<HTMLButtonElement>('[data-copy-token]');
     if (!button) return;
     const card = button.closest<HTMLElement>('.ds-color-token');
