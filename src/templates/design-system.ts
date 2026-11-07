@@ -1,4 +1,5 @@
 import { eyebrow } from './components.ts';
+import { icon, type IconName } from './icons.ts';
 import type { PageDefinition } from './page.ts';
 
 export function designSystemPage(): PageDefinition {
@@ -52,6 +53,8 @@ export function designSystemPage(): PageDefinition {
         <article class="ds-demo-card ds-demo-card--quiet"><span>01 / QUIET</span><h3>Surface card</h3><p>A restrained container for supporting information.</p></article>
         <article class="ds-demo-card ds-demo-card--raised"><span>02 / RAISED</span><h3>Elevated card</h3><p>A stronger surface for a primary item or interaction.</p></article>
         <article class="ds-demo-card ds-demo-card--accent"><span>03 / ACCENT</span><h3>Accent card</h3><p>A focused highlight for one meaningful detail.</p></article>
+      </div><div class="ds-icon-catalogue">
+        ${(['arrow-up-right','arrow-right','arrow-left','github','instagram','x','mail','copy','check','menu','close','spark','space','music','game','future','code','ideas','prism','orbit','search','filter','terminal','layers','compass','pause','play','reset','sun','moon'] as IconName[]).map((name) => `<article><span>${icon(name)}</span><code>${name}</code></article>`).join('')}
       </div></section>
     </div>
   </section>`;
