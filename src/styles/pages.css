@@ -2984,3 +2984,9 @@
 .design-system-sections p { color:var(--muted); font-size:.9rem; }
 .ds-placeholder { margin-top:24px; padding:16px; border:1px dashed var(--line-strong); border-radius:var(--radius-sm); color:var(--muted-2); font-size:.78rem; }
 @media(max-width:650px) { .design-system-page { width:min(100% - 36px,1100px); } .design-system-intro,.design-system-sections { grid-template-columns:1fr; } }
+
+.ds-color-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin-top:24px; }
+.ds-color-token { display:grid; gap:8px; padding:10px; border:1px solid var(--line); border-radius:12px; background:var(--bg-soft); }
+.ds-color-token__swatch { display:block; height:58px; border:1px solid var(--line); border-radius:8px; }
+.ds-color-token__name { color:var(--ink); font-size:.78rem; font-weight:650; }
+.ds-color-token code { color:var(--muted); font:.66rem var(--mono); }
