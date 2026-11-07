@@ -22,6 +22,11 @@ export function creditsPage(): PageDefinition {
     <div class="credits-list">
       ${tools.map((tool, index) => `<article><span>${String(index + 1).padStart(2, '0')}</span><div><h2>${tool.name}</h2><p>${tool.role}</p></div><a href="${tool.url}" target="_blank" rel="noopener noreferrer">Project site ↗</a></article>`).join('')}
     </div>
+    <section class="credits-assets" aria-labelledby="credits-assets-title">
+      <h2 id="credits-assets-title">Visual material &amp; attribution</h2>
+      <p>Project screenshots are presented as evidence from the corresponding public project repositories and are labelled on their project pages. Portfolio cover illustrations and the profile illustration are maintained as local portfolio assets. The interface icon set is a small, local SVG path catalogue in the source tree.</p>
+      <p>Where a project visual or dependency has its own upstream source, its repository or project link is provided alongside the relevant item. Reuse should follow the original creator's license and attribution requirements.</p>
+    </section>
     <p class="credits-note">Names and links are provided for acknowledgement. Please consult each upstream project's license and attribution terms before reusing its code, typefaces, or assets.</p>
   </section>`;
   return {
