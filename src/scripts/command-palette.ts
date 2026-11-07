@@ -1,4 +1,4 @@
-import { PRIMARY_NAV, SECONDARY_NAV, SOCIAL_LINKS, href } from '../content/site.ts';
+import { PRIMARY_NAV, SECONDARY_NAV, SOCIAL_LINKS, SITE, href } from '../content/site.ts';
 
 async function copyPaletteText(value: string): Promise<boolean> {
   try {
@@ -64,6 +64,24 @@ export function initCommandPalette(): () => void {
           root.querySelector('.command-palette__dialog')?.append(feedback);
         }
         feedback.textContent = copied ? 'Page URL copied.' : 'Could not copy the page URL.';
+      });
+    },
+  });
+  commands.push({
+    id: 'copy-contact-email', label: 'Copy contact email',
+    description: SITE.email, category: 'Actions',
+    run: () => {
+      void copyPaletteText(SITE.email).then((copied) => {
+        let feedback = root.querySelector<HTMLElement>('[data-palette-feedback]');
+        if (!feedback) {
+          feedback = document.createElement('p');
+          feedback.dataset.paletteFeedback = '';
+          feedback.setAttribute('role', 'status');
+          feedback.setAttribute('aria-live', 'polite');
+          feedback.className = 'command-palette__feedback';
+          root.querySelector('.command-palette__dialog')?.append(feedback);
+        }
+        feedback.textContent = copied ? 'Contact email copied.' : 'Could not copy the contact email.';
       });
     },
   });
