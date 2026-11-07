@@ -352,6 +352,23 @@ describe('portfolio browser checks', () => {
     await reduced.page.close();
   });
 
+  it('detects broken images across all primary routes', async () => {
+    const routes = ['', 'projects/', 'projects/sortify/', 'projects/veylo/', 'projects/sabuddy/', 'projects/facilityfix/', 'projects/sarp/', 'projects/pustakalaya/', 'about/', 'playground/', 'contact/', 'now/', 'uses/'];
+    const { page, errors } = await openPage();
+    for (const route of routes) {
+      await page.goto(new URL(route, BASE).toString(), { waitUntil: 'networkidle0' });
+      const broken = await page.evaluate(async () => {
+        const images = Array.from(document.images);
+        images.forEach((image) => { image.loading = 'eager'; });
+        await Promise.all(images.map((image) => image.decode().catch(() => undefined)));
+        return images.filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src);
+      });
+      assert.deepEqual(broken, [], `Broken images on ${route || '/'}`);
+    }
+    assert.deepEqual(errors, [], 'Console or request errors during image checks');
+    await page.close();
+  });
+
   it('passes axe-core accessibility checks on representative pages', async () => {
     const routes = ['', 'projects/', 'projects/sortify/', 'about/', 'playground/', 'contact/'];
     const violationsByRoute: Record<string, string[]> = {};
