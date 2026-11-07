@@ -49,6 +49,17 @@ export function initProjectFilter(): () => void {
 
   const onSearch = (): void => apply();
 
+  const onDocumentKeyDown = (event: KeyboardEvent): void => {
+    const target = event.target;
+    const isTyping = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+    const shortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k';
+    const slashShortcut = event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey && !isTyping;
+    if ((!shortcut && !slashShortcut) || !search) return;
+    event.preventDefault();
+    search.focus();
+    search.select();
+  };
+
   const onChipKeyDown = (event: KeyboardEvent): void => {
     const current = event.currentTarget;
     if (!(current instanceof HTMLButtonElement)) return;
@@ -76,12 +87,14 @@ export function initProjectFilter(): () => void {
 
   chips.forEach((chip) => { chip.addEventListener('click', onChipClick); chip.addEventListener('keydown', onChipKeyDown); });
   search?.addEventListener('input', onSearch);
+  document.addEventListener('keydown', onDocumentKeyDown);
   clear?.addEventListener('click', onClear);
   apply();
 
   return () => {
     chips.forEach((chip) => { chip.removeEventListener('click', onChipClick); chip.removeEventListener('keydown', onChipKeyDown); });
     search?.removeEventListener('input', onSearch);
+    document.removeEventListener('keydown', onDocumentKeyDown);
     clear?.removeEventListener('click', onClear);
   };
 }
