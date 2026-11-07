@@ -490,3 +490,8 @@
     min-height: 44px;
   }
 }
+
+
+/* 44 — visible keyboard focus for project cards */
+.project-card a:focus-visible, .project-card:focus-visible { outline: 2px solid var(--card-read); outline-offset: 5px; border-radius: 4px; }
+.project-card:focus-within { outline: 1px solid color-mix(in srgb, var(--card-read) 45%, transparent); outline-offset: 3px; }
