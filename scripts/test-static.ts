@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -40,6 +41,7 @@ const titles: string[] = [];
 const descriptions: string[] = [];
 const canonicals: string[] = [];
 const checkedAssets = new Set<string>();
+const generatedFingerprints = new Map<string, string>();
 const cssFiles = (await readdir(path.join(DIST, 'assets'))).filter((file) => /\\.css$/i.test(file));
 assert.ok(cssFiles.length > 0, 'No production CSS bundles found');
 for (const file of cssFiles) {
@@ -66,6 +68,9 @@ for (const route of HTML_ROUTES) {
   assert.equal(await exists(distFile), true, `Missing built route: ${distFile}`);
   assert.equal(await exists(route.file, ROOT), true, `Missing generated source route: ${route.file}`);
   const html = await readFile(path.join(DIST, distFile), 'utf8');
+  const fingerprint = createHash('sha256').update(html).digest('hex');
+  assert.equal(generatedFingerprints.has(fingerprint), false, `Duplicate generated HTML content: ${distFile} matches ${generatedFingerprints.get(fingerprint) ?? ''}`);
+  generatedFingerprints.set(fingerprint, distFile);
   assert.ok(Buffer.byteLength(html, 'utf8') <= 300_000, `Generated HTML exceeds 300 KB on ${distFile}`);
 
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
