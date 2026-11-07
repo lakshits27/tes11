@@ -52,13 +52,13 @@ const descriptions: string[] = [];
 const canonicals: string[] = [];
 const checkedAssets = new Set<string>();
 const generatedFingerprints = new Map<string, string>();
-const cssFiles = (await readdir(path.join(DIST, 'assets'))).filter((file) => /\\.css$/i.test(file));
+const cssFiles = (await readdir(path.join(DIST, 'assets'))).filter((file) => /\.css$/i.test(file));
 assert.ok(cssFiles.length > 0, 'No production CSS bundles found');
 for (const file of cssFiles) {
   const details = await stat(path.join(DIST, 'assets', file));
   assert.ok(details.size <= 350_000, `CSS bundle exceeds 350 KB: ${file} (${details.size} bytes)`);
 }
-const jsFiles = (await readdir(path.join(DIST, 'assets'))).filter((file) => /\\.js$/i.test(file));
+const jsFiles = (await readdir(path.join(DIST, 'assets'))).filter((file) => /\.js$/i.test(file));
 assert.ok(jsFiles.length > 0, 'No production JavaScript bundles found');
 for (const file of jsFiles) {
   const details = await stat(path.join(DIST, 'assets', file));
