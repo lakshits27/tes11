@@ -31,8 +31,9 @@ export function projectsPage(): PageDefinition {
       <label class="search-field">
         <span class="sr-only">Search projects</span>
         ${icon('search')}
-        <input type="search" id="project-search" data-project-search placeholder="Search projects, stacks, ideas…" autocomplete="off">
+        <input type="search" id="project-search" data-project-search placeholder="Search projects, stacks, ideas…" autocomplete="off" maxlength="80" aria-describedby="project-search-counter">
       </label>
+      <span class="search-counter" id="project-search-counter" data-search-counter aria-live="polite">0/80</span>
     </div>
     <div class="recent-searches" data-recent-searches hidden aria-label="Recent project searches"><span>Recent</span><div data-recent-search-list></div><button type="button" data-clear-recent-searches>Clear</button></div>
     <div class="project-discovery-actions"><p class="filter-status" data-filter-status role="status" aria-live="polite">Showing all ${PROJECTS.length} projects.</p><button class="btn btn--ghost" type="button" data-project-random>Surprise me <span aria-hidden="true">↗</span></button></div>
