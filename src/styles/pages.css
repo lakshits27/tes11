@@ -3027,3 +3027,9 @@
 .ds-demo-card--raised { box-shadow:var(--shadow-soft); background:var(--surface-2); }
 .ds-demo-card--accent { border-color:var(--lime-line); background:var(--lime-wash); }
 @media(max-width:760px) { .ds-card-showcase { grid-template-columns:1fr; } }
+
+.ds-icon-catalogue { display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:9px; margin-top:28px; }
+.ds-icon-catalogue article { display:grid; justify-items:center; gap:10px; padding:15px 8px; border:1px solid var(--line); border-radius:12px; background:var(--bg-soft); }
+.ds-icon-catalogue article > span { display:grid; place-items:center; width:36px; height:36px; color:var(--accent); }
+.ds-icon-catalogue .icon { width:22px; height:22px; }
+.ds-icon-catalogue code { color:var(--muted); font:.6rem var(--mono); text-align:center; overflow-wrap:anywhere; }
