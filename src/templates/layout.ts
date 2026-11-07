@@ -48,6 +48,7 @@ function header(activeNav: string): string {
         ${PRIMARY_NAV.map((item) => navLink(item, activeNav)).join('')}
       </nav>
       <div class="nav-actions">
+        <button class="palette-trigger" type="button" data-palette-open aria-label="Open command palette" title="Search commands · Ctrl+K"><span aria-hidden="true">⌕</span><span>Quick find</span><kbd>Ctrl K</kbd></button>
         ${themeToggle()}
         <a class="nav-cta" href="${href('contact/')}"><span>Let’s talk</span>${icon('arrow-up-right')}</a>
         <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
