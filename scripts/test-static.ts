@@ -157,7 +157,7 @@ for (const project of PROJECTS) {
 assert.equal(await exists('assets/avatar/lakshit-avatar.webp'), true, 'Avatar WebP missing');
 assert.equal(await exists('favicon.svg'), true, 'Favicon SVG missing');
 const faviconSvg = await readFile(path.join(DIST, 'favicon.svg'), 'utf8');
-assert.match(faviconSvg, /<svg\\b[^>]*viewBox=/, 'Favicon SVG must contain a viewBox');
+assert.match(faviconSvg, /<svg\b[^>]*viewBox=/, 'Favicon SVG must contain a viewBox');
 assert.equal(await exists('favicon-192.png'), true, 'Favicon PNG missing');
 const faviconPng = await sharp(path.join(DIST, 'favicon-192.png')).metadata();
 assert.equal(faviconPng.format, 'png', 'Apple touch icon must be PNG');
@@ -178,7 +178,7 @@ assert.equal(manifest.scope, SITE.basePath, 'Manifest scope must match the deplo
 assert.ok(['standalone', 'minimal-ui', 'browser', 'fullscreen'].includes(manifest.display ?? ''), 'Manifest display mode is invalid');
 assert.ok((manifest.icons ?? []).some((icon) => icon.src === 'favicon-192.png' && icon.sizes === '192x192' && icon.type === 'image/png'), 'Manifest is missing the 192px PNG icon');
 const assetFiles = await readdir(path.join(DIST, 'assets'));
-assert.ok(assetFiles.some((file) => /\\.(woff2?|ttf|otf)$/.test(file)), 'No bundled font files found in production assets');
+assert.ok(assetFiles.some((file) => /\.(woff2?|ttf|otf)$/.test(file)), 'No bundled font files found in production assets');
 assert.equal(await exists('robots.txt'), true, 'robots.txt missing');
 assert.equal(await exists('sitemap.xml'), true, 'sitemap.xml missing');
 assert.equal(await exists('.nojekyll'), true, '.nojekyll missing');
