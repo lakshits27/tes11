@@ -42,6 +42,7 @@ export function createPrismField(): PrismFieldController | null {
   const controls = Array.from(document.querySelectorAll<HTMLInputElement>('[data-prism-control]'));
   const outputs = Array.from(document.querySelectorAll<HTMLOutputElement>('[data-prism-output]'));
   const paletteSelect = document.querySelector<HTMLSelectElement>('[data-prism-palette]');
+  const shuffleButton = document.querySelector<HTMLButtonElement>('[data-prism-shuffle]');
   const pulseButton = document.querySelector<HTMLButtonElement>('[data-prism-pulse]');
   const resetButton = document.querySelector<HTMLButtonElement>('[data-prism-reset]');
   const toggleButton = document.querySelector<HTMLButtonElement>('[data-prism-toggle]');
@@ -240,6 +241,16 @@ export function createPrismField(): PrismFieldController | null {
     if (reducedMotion) draw(performance.now());
   };
 
+  const onShufflePalette = (): void => {
+    if (!paletteSelect) return;
+    const choices: PaletteName[] = ['aurora', 'solar', 'ultraviolet'];
+    const alternatives = choices.filter((choice) => choice !== palette);
+    const next = alternatives[Math.floor(Math.random() * alternatives.length)];
+    if (!next) return;
+    paletteSelect.value = next;
+    onPaletteChange();
+  };
+
   const onPulse = (): void => {
     addRipple(width * 0.5, height * 0.5, 2.1);
     addRipple(width * 0.25, height * 0.48, 1.2);
@@ -321,6 +332,7 @@ export function createPrismField(): PrismFieldController | null {
 
   controls.forEach((control) => control.addEventListener('input', onControlInput));
   paletteSelect?.addEventListener('change', onPaletteChange);
+  shuffleButton?.addEventListener('click', onShufflePalette);
   pulseButton?.addEventListener('click', onPulse);
   resetButton?.addEventListener('click', onReset);
   toggleButton?.addEventListener('click', onToggle);
@@ -375,6 +387,7 @@ export function createPrismField(): PrismFieldController | null {
       stopLoop();
       controls.forEach((control) => control.removeEventListener('input', onControlInput));
       paletteSelect?.removeEventListener('change', onPaletteChange);
+      shuffleButton?.removeEventListener('click', onShufflePalette);
       pulseButton?.removeEventListener('click', onPulse);
       resetButton?.removeEventListener('click', onReset);
       toggleButton?.removeEventListener('click', onToggle);
