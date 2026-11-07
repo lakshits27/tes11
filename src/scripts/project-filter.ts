@@ -1,6 +1,7 @@
 export function initProjectFilter(): () => void {
   const root = document.querySelector<HTMLElement>('[data-projects-grid]');
   const search = document.querySelector<HTMLInputElement>('[data-project-search]');
+  const searchCounter = document.querySelector<HTMLElement>('[data-search-counter]');
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
   const status = document.querySelector<HTMLElement>('[data-filter-status]');
   const empty = document.querySelector<HTMLElement>('[data-projects-empty]');
@@ -120,7 +121,8 @@ export function initProjectFilter(): () => void {
     selected?.querySelector<HTMLAnchorElement>('h3 a')?.focus({ preventScroll: true });
   };
 
-  const onSearch = (): void => apply();
+  const updateSearchCounter = (): void => { if (searchCounter && search) searchCounter.textContent = `${search.value.length}/80`; };
+  const onSearch = (): void => { updateSearchCounter(); apply(); };
   const onSearchKeyDown = (event: KeyboardEvent): void => { if (event.key === 'Enter') rememberSearch(); };
   const onPopState = (): void => { readUrlState(); apply(); };
 
@@ -162,6 +164,7 @@ export function initProjectFilter(): () => void {
 
   chips.forEach((chip) => { chip.addEventListener('click', onChipClick); chip.addEventListener('keydown', onChipKeyDown); });
   readUrlState();
+  updateSearchCounter();
   search?.addEventListener('input', onSearch);
   search?.addEventListener('keydown', onSearchKeyDown);
   recentList?.addEventListener('click', onRecentClick);
