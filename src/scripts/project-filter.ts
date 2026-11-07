@@ -5,6 +5,49 @@ export function initProjectFilter(): () => void {
   const status = document.querySelector<HTMLElement>('[data-filter-status]');
   const empty = document.querySelector<HTMLElement>('[data-projects-empty]');
   const clear = document.querySelector<HTMLButtonElement>('[data-clear-filters]');
+  const recentRoot = document.querySelector<HTMLElement>('[data-recent-searches]');
+  const recentList = recentRoot?.querySelector<HTMLElement>('[data-recent-search-list]');
+  const clearRecent = recentRoot?.querySelector<HTMLButtonElement>('[data-clear-recent-searches]');
+  const RECENT_KEY = 'lavi-project-searches';
+  const readRecent = (): string[] => {
+    try {
+      const value: unknown = JSON.parse(localStorage.getItem(RECENT_KEY) ?? '[]');
+      return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string').slice(0, 5) : [];
+    } catch { return []; }
+  };
+  const renderRecent = (): void => {
+    if (!recentRoot || !recentList) return;
+    const recent = readRecent();
+    recentList.replaceChildren();
+    recent.forEach((query) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.recentQuery = query;
+      button.textContent = query;
+      recentList.append(button);
+    });
+    recentRoot.hidden = recent.length === 0;
+  };
+  const rememberSearch = (): void => {
+    const query = (search?.value ?? '').trim();
+    if (query.length < 2) return;
+    const recent = [query, ...readRecent().filter((item) => item.toLowerCase() !== query.toLowerCase())].slice(0, 5);
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(recent)); } catch { /* Storage may be unavailable. */ }
+    renderRecent();
+  };
+  const onRecentClick = (event: MouseEvent): void => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const button = target.closest<HTMLButtonElement>('[data-recent-query]');
+    if (!button || !search) return;
+    search.value = button.dataset.recentQuery ?? '';
+    apply();
+    search.focus();
+  };
+  const onClearRecent = (): void => {
+    try { localStorage.removeItem(RECENT_KEY); } catch { /* Storage may be unavailable. */ }
+    renderRecent();
+  };
   const randomButton = document.querySelector<HTMLButtonElement>('[data-project-random]');
   const cards = root ? Array.from(root.querySelectorAll<HTMLElement>('[data-project-card]')) : [];
 
@@ -78,6 +121,7 @@ export function initProjectFilter(): () => void {
   };
 
   const onSearch = (): void => apply();
+  const onSearchKeyDown = (event: KeyboardEvent): void => { if (event.key === 'Enter') rememberSearch(); };
   const onPopState = (): void => { readUrlState(); apply(); };
 
   const onDocumentKeyDown = (event: KeyboardEvent): void => {
@@ -119,6 +163,10 @@ export function initProjectFilter(): () => void {
   chips.forEach((chip) => { chip.addEventListener('click', onChipClick); chip.addEventListener('keydown', onChipKeyDown); });
   readUrlState();
   search?.addEventListener('input', onSearch);
+  search?.addEventListener('keydown', onSearchKeyDown);
+  recentList?.addEventListener('click', onRecentClick);
+  clearRecent?.addEventListener('click', onClearRecent);
+  renderRecent();
   window.addEventListener('popstate', onPopState);
   document.addEventListener('keydown', onDocumentKeyDown);
   clear?.addEventListener('click', onClear);
@@ -128,6 +176,9 @@ export function initProjectFilter(): () => void {
   return () => {
     chips.forEach((chip) => { chip.removeEventListener('click', onChipClick); chip.removeEventListener('keydown', onChipKeyDown); });
     search?.removeEventListener('input', onSearch);
+    search?.removeEventListener('keydown', onSearchKeyDown);
+    recentList?.removeEventListener('click', onRecentClick);
+    clearRecent?.removeEventListener('click', onClearRecent);
     window.removeEventListener('popstate', onPopState);
     document.removeEventListener('keydown', onDocumentKeyDown);
     clear?.removeEventListener('click', onClear);
