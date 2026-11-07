@@ -34,6 +34,10 @@ export function designSystemPage(): PageDefinition {
       </div></section>
       <section aria-labelledby="ds-layout-title"><span>03 / LAYOUT</span><h2 id="ds-layout-title">Space &amp; shape</h2><p>Consistent spacing, corner radii, and depth.</p><div class="ds-radius-grid">
         ${[['XS','--radius-xs'],['SM','--radius-sm'],['MD','--radius-md'],['LG','--radius-lg'],['XL','--radius-xl']].map(([label,token])=>`<article><span>${label}</span><div style="border-radius:var(${token})"></div><code>${token}</code></article>`).join('')}
+      </div><div class="ds-shadow-grid">
+        <article><div style="box-shadow:var(--shadow-soft)"></div><span>--shadow-soft</span></article>
+        <article><div style="box-shadow:var(--shadow-strong)"></div><span>--shadow-strong</span></article>
+        <article><div style="box-shadow:var(--accent-glow)"></div><span>--accent-glow</span></article>
       </div></section>
       <section aria-labelledby="ds-components-title"><span>04 / COMPONENTS</span><h2 id="ds-components-title">Interface pieces</h2><p>Buttons, fields, cards, and iconography.</p><div class="ds-placeholder">Component specimens are being documented.</div></section>
     </div>
