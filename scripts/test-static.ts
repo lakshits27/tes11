@@ -3,7 +3,7 @@ import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import { HTML_ROUTES } from '../src/content/routes.ts';
-import { PROJECTS } from '../src/content/projects.ts';
+import { PROJECTS, PROJECT_FILTERS } from '../src/content/projects.ts';
 import { SITE } from '../src/content/site.ts';
 
 const ROOT = process.cwd();
@@ -40,6 +40,14 @@ const titles: string[] = [];
 const descriptions: string[] = [];
 const canonicals: string[] = [];
 const checkedAssets = new Set<string>();
+
+// Project catalogue integrity: slugs are IDs and must map to unique routes.
+const projectSlugs = PROJECTS.map((project) => project.slug);
+assert.equal(new Set(projectSlugs).size, projectSlugs.length, 'Duplicate project slug/ID detected');
+assert.ok(projectSlugs.every((slug) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)), 'Project slugs must be lowercase URL-safe identifiers');
+const routePaths = HTML_ROUTES.map((route) => route.path);
+assert.equal(new Set(routePaths).size, routePaths.length, 'Duplicate generated route detected');
+
 
 for (const route of HTML_ROUTES) {
   const distFile = route.file;
@@ -104,6 +112,17 @@ assert.equal(new Set(descriptions).size, descriptions.length, 'Meta descriptions
 assert.equal(new Set(canonicals).size, canonicals.length, 'Canonical URLs must be unique');
 
 for (const project of PROJECTS) {
+  assert.ok(project.name.trim(), `Project ${project.slug} has no name`);
+  assert.ok(project.category.trim(), `${project.name} has no category`);
+  assert.ok(project.filters.length > 0, `${project.name} has no filter categories`);
+  assert.ok(project.filters.every((filter) => PROJECT_FILTERS.includes(filter)), `${project.name} has an invalid filter category`);
+  assert.ok(project.summary.trim() && project.tagline.trim() && project.status.trim(), `${project.name} is missing core metadata`);
+  assert.ok(project.coverAlt.trim(), `${project.name} is missing cover alt text`);
+  assert.ok(project.links.length > 0, `${project.name} has no project links`);
+  for (const link of project.links) {
+    const parsed = new URL(link.url);
+    assert.ok(['https:', 'http:', 'mailto:'].includes(parsed.protocol), `${project.name} has an unsupported link protocol: ${link.url}`);
+  }
   const route = `projects/${project.slug}/index.html`;
   const html = await readFile(path.join(DIST, route), 'utf8');
   assert.ok(html.includes(project.verified.repository), `${project.name} missing repository link`);
@@ -114,6 +133,7 @@ for (const project of PROJECTS) {
   assert.equal(await exists(`assets/covers/${project.slug}.svg`), true, `Missing cover for ${project.name}`);
   assert.equal(await exists(`assets/og/${project.slug}.png`), true, `Missing OG image for ${project.name}`);
   for (const visual of project.visuals) {
+    assert.ok(visual.alt.trim(), `${project.name} has a screenshot without alt text: ${visual.file}`);
     assert.equal(await exists(`assets/screenshots/${visual.file}`), true, `Missing visual ${visual.file}`);
   }
 }
