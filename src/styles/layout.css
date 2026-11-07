@@ -79,6 +79,14 @@
   background: var(--ov-055);
 }
 
+.desktop-nav__link:hover {
+  transition-delay: 45ms;
+}
+
+.desktop-nav__link:not(:hover) {
+  transition-delay: 0ms;
+}
+
 .desktop-nav__link i {
   position: absolute;
   left: 50%;
@@ -87,7 +95,17 @@
   height: 2px;
   border-radius: 2px;
   background: var(--spectrum);
-  transform: translateX(-50%);
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0.35);
+  transform-origin: center;
+  transition:
+    opacity 0.22s ease,
+    transform 0.32s var(--ease);
+}
+
+.desktop-nav__link.is-active i {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
 }
 
 .nav-actions {
@@ -229,7 +247,11 @@ html[data-theme='light'] .theme-toggle__sun {
   border-bottom: 1px solid var(--line);
   background: var(--menu-bg);
   box-shadow: var(--shadow-strong);
-  animation: menu-in 0.28s var(--ease) both;
+  animation: menu-in 0.36s var(--ease) both;
+}
+
+.mobile-menu.is-closing {
+  animation: menu-out 0.2s ease-in both;
 }
 
 .mobile-menu__nav {

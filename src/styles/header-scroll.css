@@ -15,6 +15,7 @@
 }
 
 .wordmark__glyph {
+  transform-origin: center;
   transition:
     width 0.32s var(--ease),
     height 0.32s var(--ease),
@@ -23,10 +24,24 @@
     background 0.28s ease;
 }
 
+.wordmark:hover .wordmark__glyph {
+  transform: translateY(-2px) rotate(-5deg) scale(1.06);
+  border-color: var(--line-strong);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+.wordmark:hover .wordmark__glyph svg {
+  transform: rotate(5deg) scale(1.04);
+}
+
+.wordmark__glyph svg {
+  transition: transform 0.28s var(--spring);
+}
+
 .site-header.is-scrolled {
   background: color-mix(in srgb, var(--header-bg) 94%, var(--ink) 6%);
   border-bottom-color: var(--line);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), 0 1px 0 var(--line-soft);
   -webkit-backdrop-filter: blur(28px) saturate(155%);
   backdrop-filter: blur(28px) saturate(155%);
 }
@@ -44,7 +59,14 @@
 @media (prefers-reduced-motion: reduce) {
   .site-header,
   .nav-shell,
-  .wordmark__glyph {
+  .wordmark__glyph,
+  .wordmark__glyph svg {
     transition: none;
+  }
+
+  .wordmark:hover .wordmark__glyph,
+  .wordmark:hover .wordmark__glyph svg {
+    transform: none;
+    box-shadow: none;
   }
 }
