@@ -48,6 +48,12 @@ export function initProjectFilter(): () => void {
   };
 
   const onSearch = (): void => apply();
+  const onShortcut = (event: KeyboardEvent): void => {
+    if (event.key !== 'Escape' || (!search?.value && activeFilter === 'All')) return;
+    if (event.target instanceof HTMLInputElement && event.target !== search) return;
+    event.preventDefault();
+    onClear();
+  };
   const onClear = (): void => {
     activeFilter = 'All';
     if (search) search.value = '';
@@ -62,12 +68,14 @@ export function initProjectFilter(): () => void {
 
   chips.forEach((chip) => chip.addEventListener('click', onChipClick));
   search?.addEventListener('input', onSearch);
+  document.addEventListener('keydown', onShortcut);
   clear?.addEventListener('click', onClear);
   apply();
 
   return () => {
     chips.forEach((chip) => chip.removeEventListener('click', onChipClick));
     search?.removeEventListener('input', onSearch);
+    document.removeEventListener('keydown', onShortcut);
     clear?.removeEventListener('click', onClear);
   };
 }
