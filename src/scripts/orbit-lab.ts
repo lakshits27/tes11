@@ -11,6 +11,7 @@ export function initOrbitLab(): () => void {
   const note = root.querySelector<HTMLElement>('[data-orbit-note]');
   const nodes = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-orbit-node]'));
   const resetButton = root.querySelector<HTMLButtonElement>('[data-orbit-reset]');
+  const randomButton = root.querySelector<HTMLButtonElement>('[data-orbit-random]');
   if (!svg || !core || nodes.length === 0) return () => undefined;
 
   const active = new Set<HTMLButtonElement>();
@@ -74,8 +75,18 @@ export function initOrbitLab(): () => void {
     sync();
   };
 
+  const onRandom = (): void => {
+    active.clear();
+    const shuffled = [...nodes].sort(() => Math.random() - 0.5);
+    const countToActivate = 1 + Math.floor(Math.random() * Math.max(1, nodes.length - 1));
+    shuffled.slice(0, countToActivate).forEach((node) => active.add(node));
+    nodes.forEach((node) => node.setAttribute('aria-pressed', String(active.has(node))));
+    sync();
+  };
+
   nodes.forEach((node) => node.addEventListener('click', onClick));
   resetButton?.addEventListener('click', onReset);
+  randomButton?.addEventListener('click', onRandom);
 
   let resizeObserver: ResizeObserver | null = null;
   const supportsResizeObserver = typeof ResizeObserver !== 'undefined';
@@ -91,6 +102,7 @@ export function initOrbitLab(): () => void {
   return () => {
     nodes.forEach((node) => node.removeEventListener('click', onClick));
     resetButton?.removeEventListener('click', onReset);
+    randomButton?.removeEventListener('click', onRandom);
     window.cancelAnimationFrame(initialFrame);
     resizeObserver?.disconnect();
     if (!supportsResizeObserver) window.removeEventListener('resize', updateLines);
