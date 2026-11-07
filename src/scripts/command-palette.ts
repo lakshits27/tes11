@@ -56,6 +56,7 @@ export function initCommandPalette(): () => void {
   const input = root?.querySelector<HTMLInputElement>('[data-palette-search]');
   const results = root?.querySelector<HTMLElement>('[data-palette-results]');
   const closeButton = root?.querySelector<HTMLButtonElement>('[data-palette-close]');
+  const openButton = document.querySelector<HTMLButtonElement>('[data-palette-open]');
   if (!root || !input || !results || !closeButton) return () => undefined;
   let open = false;
   let selectedIndex = 0;
@@ -187,12 +188,14 @@ export function initCommandPalette(): () => void {
   input.addEventListener('input', onInput);
   input.addEventListener('keydown', onInputKeyDown);
   closeButton.addEventListener('click', close);
+  openButton?.addEventListener('click', show);
   document.addEventListener('keydown', onKeyDown);
   render();
   return () => {
     input.removeEventListener('input', onInput);
     input.removeEventListener('keydown', onInputKeyDown);
     closeButton.removeEventListener('click', close);
+    openButton?.removeEventListener('click', show);
     document.removeEventListener('keydown', onKeyDown);
     close();
   };
