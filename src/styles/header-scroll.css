@@ -1,0 +1,46 @@
+/* Compact, elevated header state after the page begins scrolling. */
+.site-header {
+  transition:
+    background-color 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    backdrop-filter 0.28s ease;
+}
+
+.nav-shell {
+  transition: height 0.32s var(--ease);
+}
+
+.wordmark__glyph {
+  transition:
+    width 0.32s var(--ease),
+    height 0.32s var(--ease),
+    border-radius 0.32s var(--ease),
+    transform 0.32s var(--ease),
+    background 0.28s ease;
+}
+
+.site-header.is-scrolled {
+  background: color-mix(in srgb, var(--header-bg) 94%, var(--ink) 6%);
+  border-bottom-color: var(--line);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(22px) saturate(145%);
+}
+
+.site-header.is-scrolled .nav-shell {
+  height: calc(var(--header-height) - 8px);
+}
+
+.site-header.is-scrolled .wordmark__glyph {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .nav-shell,
+  .wordmark__glyph {
+    transition: none;
+  }
+}
