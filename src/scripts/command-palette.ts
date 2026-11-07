@@ -22,8 +22,19 @@ export function initCommandPalette(): () => void {
   let open = false;
   let previousFocus: HTMLElement | null = null;
   const commands: PaletteCommand[] = [];
+  const historyKey = 'lavi-command-history';
+  const readHistory = (): string[] => {
+    try { return JSON.parse(localStorage.getItem(historyKey) ?? '[]') as string[]; }
+    catch { return []; }
+  };
+  const remember = (id: string): void => {
+    try { localStorage.setItem(historyKey, JSON.stringify([id, ...readHistory().filter((item) => item !== id)].slice(0, 5))); }
+    catch { /* Private browsing may block storage; command execution still works. */ }
+  };
   const render = (): void => {
-    const matches = commands.filter((command) => fuzzyMatch(input.value, command.label));
+    const history = readHistory();
+    const ordered = input.value.trim() ? commands : [...history.map((id) => commands.find((command) => command.id === id)).filter((command): command is PaletteCommand => Boolean(command)), ...commands.filter((command) => !history.includes(command.id))];
+    const matches = ordered.filter((command) => fuzzyMatch(input.value, command.label));
     const groups = new Map<string, PaletteCommand[]>();
     matches.forEach((command) => {
       const category = command.category ?? 'General';
@@ -33,7 +44,12 @@ export function initCommandPalette(): () => void {
       ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}">${command.label}</button>`).join('')}</section>`).join('')
       : '<p class="command-palette__empty">No matching commands.</p>';
     results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button) => {
-      button.addEventListener('click', () => commands.find((command) => command.id === button.dataset.commandId)?.run());
+      button.addEventListener('click', () => {
+        const command = commands.find((item) => item.id === button.dataset.commandId);
+        if (!command) return;
+        remember(command.id);
+        command.run();
+      });
     });
   };
   const close = (): void => {
