@@ -614,3 +614,8 @@ html.theme-anim *::after {
 .btn, .nav-cta, .theme-toggle, .menu-toggle, .filter-chip { transition-property: transform, color, background-color, border-color, box-shadow; }
 .btn:active, .nav-cta:active, .theme-toggle:active, .menu-toggle:active, .filter-chip:active { transform: translateY(1px) scale(.985); }
 @media (prefers-reduced-motion: reduce) { .btn:active, .nav-cta:active, .theme-toggle:active, .menu-toggle:active, .filter-chip:active { transform: none; } }
+
+
+/* 137 — consistent interactive cursor affordances */
+:where(a[href], button:not(:disabled), [role='button']:not([aria-disabled='true']), summary) { cursor: pointer; }
+:where(button:disabled, [aria-disabled='true']) { cursor: not-allowed; }
