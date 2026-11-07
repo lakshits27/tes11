@@ -1,9 +1,12 @@
-/* Compact, elevated header state after the page begins scrolling. */
+/* Refined glass treatment for the header in both its resting and scrolled states. */
 .site-header {
+  -webkit-backdrop-filter: blur(18px) saturate(138%);
+  backdrop-filter: blur(18px) saturate(138%);
   transition:
     background-color 0.28s ease,
     border-color 0.28s ease,
     box-shadow 0.28s ease,
+    -webkit-backdrop-filter 0.28s ease,
     backdrop-filter 0.28s ease;
 }
 
@@ -24,7 +27,8 @@
   background: color-mix(in srgb, var(--header-bg) 94%, var(--ink) 6%);
   border-bottom-color: var(--line);
   box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(28px) saturate(155%);
+  backdrop-filter: blur(28px) saturate(155%);
 }
 
 .site-header.is-scrolled .nav-shell {
