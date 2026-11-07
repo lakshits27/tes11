@@ -94,7 +94,7 @@ function footer(): string {
   const year = new Date().getFullYear();
   const allNav = [...PRIMARY_NAV, ...SECONDARY_NAV];
   return `<footer class="site-footer">
-    <div class="footer-inner">
+    <div class="footer-inner" data-reveal>
       <div class="footer-brand">
         <a class="wordmark wordmark--footer" href="${href()}" aria-label="LAVI. — ${escapeHtml(SITE.name)}, home">
           <span class="wordmark__glyph">${wordmarkGlyph()}</span>
@@ -122,7 +122,7 @@ function footer(): string {
         ).join('')}
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" data-reveal>
       <span>© ${year} ${escapeHtml(SITE.name)}</span>
       <span>Made with ${icon('spark')} TypeScript, Canvas & care</span>
       <a href="#top">Back to top ${icon('arrow-up-right')}</a>
