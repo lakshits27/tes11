@@ -490,3 +490,11 @@
     min-height: 44px;
   }
 }
+
+
+/* 60 — project status metadata refinement */
+.project-facts dt { letter-spacing:.14em; }
+.project-facts dd { line-height:1.45; }
+.project-hero__period { display:inline-block; transform-origin:center bottom; transition:transform .25s var(--ease),color .25s ease; }
+.project-hero:hover .project-hero__period { transform:translateY(-2px) rotate(5deg); }
+@media (prefers-reduced-motion:reduce) { .project-hero__period { transition:none; } .project-hero:hover .project-hero__period { transform:none; } }
