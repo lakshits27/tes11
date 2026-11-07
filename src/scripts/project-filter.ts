@@ -5,6 +5,7 @@ export function initProjectFilter(): () => void {
   const status = document.querySelector<HTMLElement>('[data-filter-status]');
   const empty = document.querySelector<HTMLElement>('[data-projects-empty]');
   const clear = document.querySelector<HTMLButtonElement>('[data-clear-filters]');
+  const randomButton = document.querySelector<HTMLButtonElement>('[data-project-random]');
   const cards = root ? Array.from(root.querySelectorAll<HTMLElement>('[data-project-card]')) : [];
 
   if (!root || cards.length === 0) return () => undefined;
@@ -68,6 +69,14 @@ export function initProjectFilter(): () => void {
     apply();
   };
 
+  const onRandom = (): void => {
+    const visibleCards = cards.filter((card) => !card.hidden);
+    if (visibleCards.length === 0) return;
+    const selected = visibleCards[Math.floor(Math.random() * visibleCards.length)];
+    selected?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    selected?.querySelector<HTMLAnchorElement>('h3 a')?.focus({ preventScroll: true });
+  };
+
   const onSearch = (): void => apply();
   const onPopState = (): void => { readUrlState(); apply(); };
 
@@ -113,6 +122,7 @@ export function initProjectFilter(): () => void {
   window.addEventListener('popstate', onPopState);
   document.addEventListener('keydown', onDocumentKeyDown);
   clear?.addEventListener('click', onClear);
+  randomButton?.addEventListener('click', onRandom);
   apply();
 
   return () => {
@@ -121,5 +131,6 @@ export function initProjectFilter(): () => void {
     window.removeEventListener('popstate', onPopState);
     document.removeEventListener('keydown', onDocumentKeyDown);
     clear?.removeEventListener('click', onClear);
+    randomButton?.removeEventListener('click', onRandom);
   };
 }
