@@ -572,3 +572,10 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 /* 164 — expose the canonical page URL on paper */
 .print-page-url { display: none; }
 @media print { .print-page-url { display: block; margin: 1rem 0 0; padding-top: .5rem; border-top: 1px solid #bbb; color: #333; font: 8pt/1.4 var(--mono); overflow-wrap: anywhere; } }
+
+
+/* 156/157 — copyable heading permalinks */
+.heading-permalink { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; margin-inline-start: .35em; border: 0; border-radius: 50%; background: transparent; color: var(--muted-2); font: 500 .55em var(--mono); opacity: 0; vertical-align: middle; cursor: pointer; transition: opacity .18s ease, color .18s ease, background .18s ease; }
+:is(h2, h3):hover .heading-permalink, :is(h2, h3):focus-within .heading-permalink, .heading-permalink:focus-visible { opacity: 1; }
+.heading-permalink:hover { background: var(--surface-2); color: var(--accent-violet); }
+@media (hover: none) { .heading-permalink { opacity: .72; } }
