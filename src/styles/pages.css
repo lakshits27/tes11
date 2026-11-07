@@ -2858,3 +2858,70 @@
     font-size: 8pt;
   }
 }
+
+
+/* 108 — print-friendly Contact page */
+@media print {
+  body.page--contact {
+    background: #fff !important;
+    color: #171717 !important;
+    font-size: 10.5pt;
+    print-color-adjust: economy;
+    -webkit-print-color-adjust: economy;
+  }
+
+  body.page--contact .site-header,
+  body.page--contact .site-footer,
+  body.page--contact .page-wipe,
+  body.page--contact #spectral-trail,
+  body.page--contact .contact-signal,
+  body.page--contact .email-card__actions,
+  body.page--contact .contact-closing__orbit {
+    display: none !important;
+  }
+
+  body.page--contact .page-main,
+  body.page--contact .contact-workspace,
+  body.page--contact .section--reasons,
+  body.page--contact .contact-closing {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 16pt 0;
+    background: #fff !important;
+    color: #171717 !important;
+    box-shadow: none !important;
+  }
+
+  body.page--contact h1,
+  body.page--contact h2,
+  body.page--contact h3,
+  body.page--contact p,
+  body.page--contact a,
+  body.page--contact strong,
+  body.page--contact small {
+    color: #171717 !important;
+    text-shadow: none !important;
+  }
+
+  body.page--contact .contact-workspace,
+  body.page--contact .social-cards,
+  body.page--contact .reasons-grid {
+    display: block;
+  }
+
+  body.page--contact .email-card,
+  body.page--contact .social-card,
+  body.page--contact .reason-card {
+    break-inside: avoid;
+    border-color: #bbb !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  body.page--contact a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+    font-size: 8pt;
+  }
+}
