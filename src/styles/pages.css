@@ -200,6 +200,20 @@
   width: clamp(270px, 31vw, 430px);
 }
 
+.hero__portrait {
+  animation: avatar-idle 7s ease-in-out infinite;
+}
+
+.hero__portrait:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__portrait {
+    animation: none;
+  }
+}
+
 .hero__portrait-glow {
   position: absolute;
   inset: 12% 8% 3%;
