@@ -600,3 +600,11 @@ html.theme-anim *::after {
 ::selection { background: var(--selection-bg); color: var(--selection-ink); }
 :root { --selection-bg: #d7ff65; --selection-ink: #080a12; }
 [data-theme='light'] { --selection-bg: #d9d0ff; --selection-ink: #21183f; }
+
+
+/* 130 — theme-aware browser scrollbars */
+:root { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { border: 2px solid var(--bg); border-radius: 999px; background: var(--muted-2); }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
