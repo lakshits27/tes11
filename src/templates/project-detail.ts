@@ -215,7 +215,7 @@ export function projectPage(project: Project, index: number): PageDefinition {
   return {
     content,
     title: project.name,
-    description: `${project.summary} Verified project details, features, stack, visuals, and repository links.`,
+    description: project.summary.length > 185 ? `${project.summary.slice(0, 182).trimEnd()}…` : project.summary,
     pageId: 'project',
     activeNav: 'projects',
     path: projectPath(project),
