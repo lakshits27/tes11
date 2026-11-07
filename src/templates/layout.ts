@@ -179,6 +179,15 @@ export function layout(content: string, options: LayoutOptions): string {
     options.pageId,
   )}"${dataProject}${bodyStyle}>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="command-palette" data-command-palette hidden>
+    <button class="command-palette__backdrop" type="button" data-palette-close aria-label="Close command palette"></button>
+    <section class="command-palette__dialog" role="dialog" aria-modal="true" aria-labelledby="command-palette-title">
+      <h2 id="command-palette-title" class="sr-only">Quick navigation</h2>
+      <label class="command-palette__search"><span aria-hidden="true">⌕</span><input type="search" data-palette-search placeholder="Search commands…" autocomplete="off" spellcheck="false"><kbd>ESC</kbd></label>
+      <div class="command-palette__results" data-palette-results role="listbox" aria-label="Commands"><p class="command-palette__empty">Start typing to find a command.</p></div>
+      <p class="command-palette__hint">Navigate with arrow keys <kbd>↑</kbd> <kbd>↓</kbd> · Select <kbd>↵</kbd> · Close <kbd>ESC</kbd></p>
+    </section>
+  </div>
   <div class="page-wipe" aria-hidden="true"></div>
   <canvas id="spectral-trail" aria-hidden="true"></canvas>
   <div class="reading-progress" data-reading-progress role="progressbar" aria-label="Page reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="reading-progress__track"><span data-reading-progress-fill></span></span><output data-reading-progress-value>0%</output></div>
