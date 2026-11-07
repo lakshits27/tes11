@@ -27,5 +27,6 @@ export const HTML_ROUTES: HtmlRoute[] = [
   { name: 'uses', file: 'uses/index.html', path: 'uses/', sitemap: true, priority: '0.6', changefreq: 'monthly' },
   { name: 'changelog', file: 'changelog/index.html', path: 'changelog/', sitemap: true, priority: '0.5', changefreq: 'weekly' },
   { name: 'faq', file: 'faq/index.html', path: 'faq/', sitemap: true, priority: '0.5', changefreq: 'monthly' },
+  { name: 'designSystem', file: 'design-system/index.html', path: 'design-system/', sitemap: true, priority: '0.4', changefreq: 'monthly' },
   { name: 'notFound', file: '404.html', path: '404.html', sitemap: false, priority: '0.1', changefreq: 'yearly' },
 ];

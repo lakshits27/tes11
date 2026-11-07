@@ -15,6 +15,7 @@ import { nowPage } from '../src/templates/now.ts';
 import { usesPage } from '../src/templates/uses.ts';
 import { changelogPage } from '../src/templates/changelog.ts';
 import { faqPage } from '../src/templates/faq.ts';
+import { designSystemPage } from '../src/templates/design-system.ts';
 import { notFoundPage } from '../src/templates/not-found.ts';
 
 const ROOT = process.cwd();
@@ -30,6 +31,7 @@ const pages = new Map<string, PageDefinition>([
   ['uses', usesPage()],
   ['changelog', changelogPage()],
   ['faq', faqPage()],
+  ['designSystem', designSystemPage()],
   ['notFound', notFoundPage()],
 ]);
 
