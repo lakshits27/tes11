@@ -163,6 +163,12 @@ export function initCommandPalette(): () => void {
   };
   const onInput = (): void => render();
   const onInputKeyDown = (event: KeyboardEvent): void => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'Backspace' && input.value) {
+      event.preventDefault();
+      input.value = '';
+      render();
+      return;
+    }
     const options = Array.from(results.querySelectorAll<HTMLButtonElement>('[data-command-id]'));
     if (!options.length) return;
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
