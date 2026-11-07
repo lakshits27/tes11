@@ -3,12 +3,12 @@ import { eyebrow } from './components.ts';
 import type { PageDefinition } from './page.ts';
 
 const questions = [
-  { question: 'What kind of work is showcased here?', answer: 'A mix of web applications, desktop utilities, mobile ideas, systems projects, games, and creative coding experiments.' },
-  { question: 'Where can I inspect the source code?', answer: 'Each project page links to its public repository when one is available. Repository links are the source of truth for implementation details.' },
-  { question: 'Are all projects production services?', answer: 'No. Projects may be released, live demos, experiments, or works in progress. Their individual pages describe the verified status and documented limits.' },
-  { question: 'How can I get in touch?', answer: 'Use the contact page or email lakshitsinghsaini@gmail.com for internship, collaboration, or project conversations.' },
-  { question: 'Can I use the artwork or code?', answer: 'Please check the relevant repository license and asset attribution before reusing project code, screenshots, or artwork.' },
-  { question: 'Does the website respect reduced-motion settings?', answer: 'The site checks the operating-system reduced-motion preference and reduces or disables decorative motion where supported.' },
+  { category: 'Projects & work', question: 'What kind of work is showcased here?', answer: 'A mix of web applications, desktop utilities, mobile ideas, systems projects, games, and creative coding experiments.' },
+  { category: 'Projects & work', question: 'Where can I inspect the source code?', answer: 'Each project page links to its public repository when one is available. Repository links are the source of truth for implementation details.' },
+  { category: 'Projects & work', question: 'Are all projects production services?', answer: 'No. Projects may be released, live demos, experiments, or works in progress. Their individual pages describe the verified status and documented limits.' },
+  { category: 'Contact & reuse', question: 'How can I get in touch?', answer: 'Use the contact page or email lakshitsinghsaini@gmail.com for internship, collaboration, or project conversations.' },
+  { category: 'Contact & reuse', question: 'Can I use the artwork or code?', answer: 'Please check the relevant repository license and asset attribution before reusing project code, screenshots, or artwork.' },
+  { category: 'Accessibility', question: 'Does the website respect reduced-motion settings?', answer: 'The site checks the operating-system reduced-motion preference and reduces or disables decorative motion where supported.' },
 ];
 
 export function faqPage(): PageDefinition {
@@ -19,10 +19,13 @@ export function faqPage(): PageDefinition {
       <p>Quick context about the work, the projects, and how to reach me.</p>
     </header>
     <div class="faq-list">
-      ${questions.map((item, index) => `<article class="faq-item">
-        <span class="faq-item__index">${String(index + 1).padStart(2, '0')}</span>
-        <div><h2>${item.question}</h2><p>${item.answer}</p></div>
-      </article>`).join('')}
+      ${[...new Set(questions.map((item) => item.category))].map((category) => `<section class="faq-group" aria-labelledby="faq-${category.toLowerCase().replace(/[^a-z]+/g, '-')}">
+        <h2 id="faq-${category.toLowerCase().replace(/[^a-z]+/g, '-')}" class="faq-group__title">${category}</h2>
+        ${questions.filter((item) => item.category === category).map((item) => `<article class="faq-item">
+          <span class="faq-item__index">${String(questions.indexOf(item) + 1).padStart(2, '0')}</span>
+          <div><h3>${item.question}</h3><p>${item.answer}</p></div>
+        </article>`).join('')}
+      </section>`).join('')}
     </div>
     <a class="text-link" href="${href('contact/')}">Still curious? Get in touch ↗</a>
   </section>`;
