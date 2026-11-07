@@ -490,3 +490,9 @@
     min-height: 44px;
   }
 }
+
+
+/* 58 — technology chip interaction */
+.project-detail .tags a,.project-detail .tags span { transition:transform .2s var(--ease),border-color .2s ease,color .2s ease,background .2s ease; }
+.project-detail .tags a:hover,.project-detail .tags span:hover { transform:translateY(-2px); border-color:var(--project-read); color:var(--project-read); background:var(--project-soft); }
+@media (prefers-reduced-motion:reduce) { .project-detail .tags a,.project-detail .tags span { transition:none; } .project-detail .tags a:hover,.project-detail .tags span:hover { transform:none; } }
