@@ -2958,3 +2958,12 @@
 .faq-group + .faq-group { margin-top:38px; }
 .faq-group__title { margin:0 0 12px; color:var(--accent); font:.72rem var(--mono); letter-spacing:.1em; text-transform:uppercase; }
 .faq-item h3 { margin:0 0 9px; font-size:1.12rem; }
+
+.faq-item { display:block; }
+.faq-item > summary { display:grid; grid-template-columns:34px minmax(0,1fr) 28px; align-items:center; gap:10px; cursor:pointer; list-style:none; }
+.faq-item > summary::-webkit-details-marker { display:none; }
+.faq-item > summary h3 { margin:0; }
+.faq-item__toggle { display:grid; place-items:center; width:26px; height:26px; border:1px solid var(--line); border-radius:50%; color:var(--muted); transition:transform .2s ease,color .2s ease; }
+.faq-item[open] .faq-item__toggle { transform:rotate(45deg); color:var(--accent); }
+.faq-item > p { margin:14px 0 0 44px; }
+.faq-item > summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:6px; }
