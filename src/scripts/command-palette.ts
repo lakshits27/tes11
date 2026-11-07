@@ -20,6 +20,7 @@ export function initCommandPalette(): () => void {
   const closeButton = root?.querySelector<HTMLButtonElement>('[data-palette-close]');
   if (!root || !input || !results || !closeButton) return () => undefined;
   let open = false;
+  let selectedIndex = 0;
   let previousFocus: HTMLElement | null = null;
   const commands: PaletteCommand[] = [];
   const historyKey = 'lavi-command-history';
@@ -32,6 +33,7 @@ export function initCommandPalette(): () => void {
     catch { /* Private browsing may block storage; command execution still works. */ }
   };
   const render = (): void => {
+    selectedIndex = 0;
     const history = readHistory();
     const ordered = input.value.trim() ? commands : [...history.map((id) => commands.find((command) => command.id === id)).filter((command): command is PaletteCommand => Boolean(command)), ...commands.filter((command) => !history.includes(command.id))];
     const matches = ordered.filter((command) => fuzzyMatch(input.value, command.label));
@@ -43,7 +45,9 @@ export function initCommandPalette(): () => void {
     results.innerHTML = groups.size
       ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}">${command.label}</button>`).join('')}</section>`).join('')
       : '<p class="command-palette__empty">No matching commands.</p>';
-    results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button) => {
+    results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button, index) => {
+      button.setAttribute('aria-selected', String(index === selectedIndex));
+      button.tabIndex = index === selectedIndex ? 0 : -1;
       button.addEventListener('click', () => {
         const command = commands.find((item) => item.id === button.dataset.commandId);
         if (!command) return;
@@ -77,12 +81,30 @@ export function initCommandPalette(): () => void {
     }
   };
   const onInput = (): void => render();
+  const onInputKeyDown = (event: KeyboardEvent): void => {
+    const options = Array.from(results.querySelectorAll<HTMLButtonElement>('[data-command-id]'));
+    if (!options.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      selectedIndex = (selectedIndex + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
+      options.forEach((option, index) => {
+        option.setAttribute('aria-selected', String(index === selectedIndex));
+        option.tabIndex = index === selectedIndex ? 0 : -1;
+      });
+      options[selectedIndex]?.focus();
+    } else if (event.key === 'Enter') {
+      const selected = results.querySelector<HTMLButtonElement>('[aria-selected="true"]');
+      if (selected) { event.preventDefault(); selected.click(); }
+    }
+  };
   input.addEventListener('input', onInput);
+  input.addEventListener('keydown', onInputKeyDown);
   closeButton.addEventListener('click', close);
   document.addEventListener('keydown', onKeyDown);
   render();
   return () => {
     input.removeEventListener('input', onInput);
+    input.removeEventListener('keydown', onInputKeyDown);
     closeButton.removeEventListener('click', close);
     document.removeEventListener('keydown', onKeyDown);
     close();
