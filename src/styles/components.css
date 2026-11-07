@@ -490,3 +490,10 @@
     min-height: 44px;
   }
 }
+
+
+/* 45 — project grid reflow polish */
+.projects-grid { transition: gap .28s ease; }
+.projects-grid .project-card { transition: opacity .22s ease, transform .32s var(--ease), border-color .35s ease, box-shadow .35s ease; }
+.projects-grid .project-card[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .projects-grid, .projects-grid .project-card { transition: none; } }
