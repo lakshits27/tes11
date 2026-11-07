@@ -86,6 +86,11 @@
   display: block;
 }
 
+.hero__title > span,
+.hero__title > em {
+  text-wrap: balance;
+}
+
 .hero__title em {
   font-style: normal;
   background: var(--spectrum);
@@ -131,6 +136,10 @@
   color: var(--ink-soft);
   font-size: clamp(1.02rem, 1.55vw, 1.22rem);
   line-height: 1.75;
+}
+
+.hero__lead {
+  text-wrap: pretty;
 }
 
 .hero__actions {
