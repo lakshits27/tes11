@@ -3000,3 +3000,6 @@
 .ds-type-display { font-family:var(--display); font-size:clamp(1.7rem,4vw,3rem); letter-spacing:-.06em; }
 .ds-type-body { color:var(--ink-soft); font-family:var(--body-font); font-size:1rem; line-height:1.7; }
 .ds-type-mono { color:var(--accent-violet); font-family:var(--mono); font-size:.85rem; overflow-wrap:anywhere; }
+
+.ds-weight-samples { display:grid; gap:9px; margin-top:22px; padding:16px; border:1px solid var(--line); border-radius:var(--radius-sm); }
+.ds-weight-samples p { color:var(--ink); font-size:.9rem; }
