@@ -10,6 +10,7 @@ export function initProjectFilter(): () => void {
   const recentList = recentRoot?.querySelector<HTMLElement>('[data-recent-search-list]');
   const clearRecent = recentRoot?.querySelector<HTMLButtonElement>('[data-clear-recent-searches]');
   const RECENT_KEY = 'lavi-project-searches';
+  let activeFilter = 'All';
   const readRecent = (): string[] => {
     try {
       const value: unknown = JSON.parse(localStorage.getItem(RECENT_KEY) ?? '[]');
