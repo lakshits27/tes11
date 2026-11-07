@@ -6,6 +6,14 @@ export function initNavigation(): () => void {
   if (!header || !toggle || !panel) return () => undefined;
 
   let open = false;
+  let scrolled = false;
+
+  const syncScrollState = (): void => {
+    const next = window.scrollY > 12;
+    if (next === scrolled) return;
+    scrolled = next;
+    header.classList.toggle('is-scrolled', scrolled);
+  };
 
   const setOpen = (next: boolean, returnFocus = false): void => {
     if (next === open) return;
@@ -67,6 +75,8 @@ export function initNavigation(): () => void {
     if (open && window.innerWidth > 1040) setOpen(false);
   };
 
+  syncScrollState();
+  window.addEventListener('scroll', syncScrollState, { passive: true });
   toggle.addEventListener('click', onToggle);
   panel.addEventListener('click', onPanelClick);
   document.addEventListener('keydown', onKeyDown);
@@ -74,11 +84,13 @@ export function initNavigation(): () => void {
   window.addEventListener('resize', onResize);
 
   return () => {
+    window.removeEventListener('scroll', syncScrollState);
     toggle.removeEventListener('click', onToggle);
     panel.removeEventListener('click', onPanelClick);
     document.removeEventListener('keydown', onKeyDown);
     document.removeEventListener('click', onDocumentClick);
     window.removeEventListener('resize', onResize);
     setOpen(false);
+    header.classList.remove('is-scrolled');
   };
 }

@@ -6,6 +6,7 @@
 @import './tokens.css';
 @import './layout.css';
 @import './components.css';
+@import './header-scroll.css';
 @import './pages.css';
 @import './playground.css';
 @import './motion.css';
