@@ -1,5 +1,18 @@
 type PaletteCommand = { id: string; label: string; run: () => void };
 
+function fuzzyMatch(query: string, candidate: string): boolean {
+  const needle = query.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
+  const haystack = candidate.toLocaleLowerCase();
+  if (!needle) return true;
+  let cursor = 0;
+  for (const character of needle) {
+    cursor = haystack.indexOf(character, cursor);
+    if (cursor < 0) return false;
+    cursor += 1;
+  }
+  return true;
+}
+
 export function initCommandPalette(): () => void {
   const root = document.querySelector<HTMLElement>('[data-command-palette]');
   const input = root?.querySelector<HTMLInputElement>('[data-palette-search]');
@@ -9,7 +22,15 @@ export function initCommandPalette(): () => void {
   let open = false;
   let previousFocus: HTMLElement | null = null;
   const commands: PaletteCommand[] = [];
-  const render = (): void => { results.innerHTML = '<p class="command-palette__empty">No commands available yet.</p>'; };
+  const render = (): void => {
+    const matches = commands.filter((command) => fuzzyMatch(input.value, command.label));
+    results.innerHTML = matches.length
+      ? matches.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}">${command.label}</button>`).join('')
+      : '<p class="command-palette__empty">No matching commands.</p>';
+    results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button) => {
+      button.addEventListener('click', () => commands.find((command) => command.id === button.dataset.commandId)?.run());
+    });
+  };
   const close = (): void => {
     if (!open) return;
     open = false;
