@@ -239,7 +239,6 @@
   position: relative;
   z-index: 2;
   width: clamp(270px, 31vw, 430px);
-  }
 }
 
 .hero__portrait-glow {
