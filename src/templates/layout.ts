@@ -90,7 +90,7 @@ function themeToggle(className = ''): string {
   </button>`;
 }
 
-function footer(): string {
+function footer(currentPage: string): string {
   const year = new Date().getFullYear();
   const allNav = [...PRIMARY_NAV, ...SECONDARY_NAV];
   return `<footer class="site-footer">
@@ -125,6 +125,7 @@ function footer(): string {
     <div class="footer-bottom" data-reveal>
       <span>© ${year} ${escapeHtml(SITE.name)}</span>
       <span>Made with ${icon('spark')} TypeScript, Canvas & care</span>
+      <nav class="footer-breadcrumb" aria-label="Current page"><a href="${href()}">Home</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(currentPage)}</span></nav>
       <a href="#top">Back to top ${icon('arrow-up-right')}</a>
     </div>
   </footer>`;
@@ -187,7 +188,7 @@ export function layout(content: string, options: LayoutOptions): string {
 ${content}
   </main>
   <p class="print-page-url">Page URL: ${escapeHtml(url)}</p>
-  ${footer()}
+  ${footer(options.title)}
   <script type="module" src="${scriptSrc}"></script>
 </body>
 </html>`;
