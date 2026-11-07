@@ -490,3 +490,9 @@
     min-height: 44px;
   }
 }
+
+
+/* 47 — consistent media frame sizing across project cards */
+.projects-grid .project-card__media { aspect-ratio:16 / 10; }
+.projects-grid .project-card__media img { display:block; width:100%; height:100%; object-fit:cover; }
+@media (min-width:900px) { .projects-grid .project-card:nth-child(1) .project-card__media,.projects-grid .project-card:nth-child(6) .project-card__media { aspect-ratio:16 / 9; } }
