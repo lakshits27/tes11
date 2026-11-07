@@ -1,4 +1,4 @@
-type PaletteCommand = { id: string; label: string; category?: string; run: () => void };
+type PaletteCommand = { id: string; label: string; description?: string; category?: string; run: () => void };
 
 function fuzzyMatch(query: string, candidate: string): boolean {
   const needle = query.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
@@ -43,7 +43,7 @@ export function initCommandPalette(): () => void {
       groups.set(category, [...(groups.get(category) ?? []), command]);
     });
     results.innerHTML = groups.size
-      ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}">${command.label}</button>`).join('')}</section>`).join('')
+      ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}"><span class="command-palette__result-label">${command.label}</span>${command.description ? `<small class="command-palette__result-description">${command.description}</small>` : ""}</button>`).join('')}</section>`).join('')
       : '<p class="command-palette__empty">No matching commands.</p>';
     results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button, index) => {
       button.setAttribute('aria-selected', String(index === selectedIndex));
