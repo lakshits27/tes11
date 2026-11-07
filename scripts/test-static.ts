@@ -83,6 +83,14 @@ for (const route of HTML_ROUTES) {
   assert.match(html, /<html lang="[a-z]{2}(-[A-Z]{2})?"/, `Missing or invalid language attribute on ${distFile}`);
   assert.match(html, /type="application\/ld\+json"/, `Missing structured data on ${distFile}`);
   assert.doesNotMatch(html, /href="#"/, `Dead href="#" on ${distFile}`);
+  for (const imageTag of html.match(/<img\\b[^>]*>/g) ?? []) {
+    assert.match(imageTag, /\\balt="[^"]*"/, `Image missing alt attribute on ${distFile}: ${imageTag.slice(0, 100)}`);
+  }
+  for (const value of extractAll(html, /(?:href|src)="([^"#]+)"/g)) {
+    if (/^(?:data:|mailto:|tel:)/i.test(value)) continue;
+    const parsed = new URL(value, SITE.productionUrl);
+    assert.ok(['http:', 'https:'].includes(parsed.protocol), `Invalid URL protocol on ${distFile}: ${value}`);
+  }
   const pageIds = extractAll(html, /\bid="([^"]+)"/g);
   assert.equal(new Set(pageIds).size, pageIds.length, `Duplicate id on ${distFile}`);
   const pageIdSet = new Set(pageIds);
