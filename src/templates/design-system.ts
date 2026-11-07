@@ -18,8 +18,8 @@ export function designSystemPage(): PageDefinition {
           ['Background', '--bg'], ['Deep background', '--bg-deep'], ['Surface', '--surface'],
           ['Primary text', '--ink'], ['Muted text', '--muted'], ['Lime accent', '--lime'],
           ['Cyan accent', '--cyan'], ['Violet accent', '--violet'], ['Pink accent', '--pink'],
-          ['Amber accent', '--amber'], ['Mint accent', '--mint'], ['Border', '--line'],
-        ].map(([label, token]) => `<article class="ds-color-token"><span class="ds-color-token__swatch" style="background:var(${token})"></span><span class="ds-color-token__name">${label}</span><code>${token}</code></article>`).join('')}
+          ['Amber accent', '--amber'], ['Mint accent', '--mint'],
+        ].map(([label, token]) => `<article class="ds-color-token"><span class="ds-color-token__swatch" style="background:var(${token})"></span><span class="ds-color-token__name">${label}</span><code>${token}</code><button class="ds-token-copy" type="button" data-copy-token aria-label="Copy ${token} hex value">Copy hex</button></article>`).join('')}
       </div></section>
       <section aria-labelledby="ds-type-title"><span>02 / TYPE</span><h2 id="ds-type-title">Typography</h2><p>Display, body, and monospace roles.</p><div class="ds-placeholder">Typography specimens are being documented.</div></section>
       <section aria-labelledby="ds-layout-title"><span>03 / LAYOUT</span><h2 id="ds-layout-title">Space &amp; shape</h2><p>Consistent spacing, corner radii, and depth.</p><div class="ds-placeholder">Layout tokens are being documented.</div></section>
