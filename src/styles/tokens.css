@@ -608,3 +608,9 @@ html.theme-anim *::after {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { border: 2px solid var(--bg); border-radius: 999px; background: var(--muted-2); }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+
+/* 133 — tactile, ripple-free press feedback */
+.btn, .nav-cta, .theme-toggle, .menu-toggle, .filter-chip { transition-property: transform, color, background-color, border-color, box-shadow; }
+.btn:active, .nav-cta:active, .theme-toggle:active, .menu-toggle:active, .filter-chip:active { transform: translateY(1px) scale(.985); }
+@media (prefers-reduced-motion: reduce) { .btn:active, .nav-cta:active, .theme-toggle:active, .menu-toggle:active, .filter-chip:active { transform: none; } }
