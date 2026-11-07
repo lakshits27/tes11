@@ -125,7 +125,9 @@ before(async () => {
     await page.waitForFunction(() => document.querySelectorAll('[data-command-id]').length === 1);
     assert.equal(await page.$eval('[data-command-id]', (element) => element.textContent?.includes('Projects')), true);
     assert.ok(await page.$('[data-command-palette] mark'));
-    await page.keyboard.press('Control+Backspace');
+    await page.keyboard.down('Control');
+    await page.keyboard.press('Backspace');
+    await page.keyboard.up('Control');
     assert.equal(await page.$eval('[data-palette-search]', (element) => (element as HTMLInputElement).value), '');
     await page.focus('[data-palette-search]');
     await page.keyboard.press('ArrowDown');
