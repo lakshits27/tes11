@@ -9,7 +9,20 @@ export function initProjectFilter(): () => void {
 
   if (!root || cards.length === 0) return () => undefined;
 
-  let activeFilter = 'All';
+  const params = new URLSearchParams(window.location.search);
+  const initialCategory = params.get('category') ?? 'All';
+  let activeFilter = chips.some((chip) => chip.dataset.filter === initialCategory) ? initialCategory : 'All';
+  if (search) search.value = params.get('q') ?? '';
+
+  const syncUrl = (): void => {
+    const next = new URL(window.location.href);
+    if (activeFilter === 'All') next.searchParams.delete('category');
+    else next.searchParams.set('category', activeFilter);
+    const query = search?.value.trim() ?? '';
+    if (query) next.searchParams.set('q', query);
+    else next.searchParams.delete('q');
+    window.history.replaceState({}, '', next);
+  };
 
   const apply = (): void => {
     const query = (search?.value ?? '').trim().toLowerCase();
@@ -33,6 +46,7 @@ export function initProjectFilter(): () => void {
         : `Showing ${visible} ${noun}${activeFilter === 'All' ? '' : ` in ${activeFilter}`}.`;
     }
     if (empty) empty.hidden = visible !== 0;
+    syncUrl();
   };
 
   const onChipClick = (event: MouseEvent): void => {
@@ -48,6 +62,18 @@ export function initProjectFilter(): () => void {
   };
 
   const onSearch = (): void => apply();
+  const onPopState = (): void => {
+    const next = new URLSearchParams(window.location.search);
+    const category = next.get('category') ?? 'All';
+    activeFilter = chips.some((chip) => chip.dataset.filter === category) ? category : 'All';
+    if (search) search.value = next.get('q') ?? '';
+    chips.forEach((chip) => {
+      const active = chip.dataset.filter === activeFilter;
+      chip.classList.toggle('is-active', active);
+      chip.setAttribute('aria-pressed', String(active));
+    });
+    apply();
+  };
   const onClear = (): void => {
     activeFilter = 'All';
     if (search) search.value = '';
@@ -62,12 +88,14 @@ export function initProjectFilter(): () => void {
 
   chips.forEach((chip) => chip.addEventListener('click', onChipClick));
   search?.addEventListener('input', onSearch);
+  window.addEventListener('popstate', onPopState);
   clear?.addEventListener('click', onClear);
   apply();
 
   return () => {
     chips.forEach((chip) => chip.removeEventListener('click', onChipClick));
     search?.removeEventListener('input', onSearch);
+    window.removeEventListener('popstate', onPopState);
     clear?.removeEventListener('click', onClear);
   };
 }
