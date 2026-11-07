@@ -563,3 +563,7 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 .recent-searches button { min-height: 30px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2); color: var(--muted); font: inherit; cursor: pointer; }
 .recent-searches button:hover { border-color: var(--accent-violet); color: var(--ink); }
 .recent-searches > button { border-color: transparent; background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+
+
+/* 179 — project search character counter */
+.search-counter { align-self: center; color: var(--muted-2); font: 500 .58rem var(--mono); white-space: nowrap; }
