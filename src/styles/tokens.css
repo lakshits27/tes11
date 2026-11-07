@@ -594,3 +594,9 @@ html.theme-anim *::after {
     transition: none !important;
   }
 }
+
+
+/* 129 — theme-aware selection palette */
+::selection { background: var(--selection-bg); color: var(--selection-ink); }
+:root { --selection-bg: #d7ff65; --selection-ink: #080a12; }
+[data-theme='light'] { --selection-bg: #d9d0ff; --selection-ink: #21183f; }
