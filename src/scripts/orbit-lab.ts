@@ -10,6 +10,7 @@ export function initOrbitLab(): () => void {
   const title = root.querySelector<HTMLElement>('[data-orbit-title]');
   const note = root.querySelector<HTMLElement>('[data-orbit-note]');
   const nodes = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-orbit-node]'));
+  const resetButton = root.querySelector<HTMLButtonElement>('[data-orbit-reset]');
   if (!svg || !core || nodes.length === 0) return () => undefined;
 
   const active = new Set<HTMLButtonElement>();
@@ -67,7 +68,14 @@ export function initOrbitLab(): () => void {
     sync();
   };
 
+  const onReset = (): void => {
+    active.clear();
+    nodes.forEach((node) => node.setAttribute('aria-pressed', 'false'));
+    sync();
+  };
+
   nodes.forEach((node) => node.addEventListener('click', onClick));
+  resetButton?.addEventListener('click', onReset);
 
   let resizeObserver: ResizeObserver | null = null;
   const supportsResizeObserver = typeof ResizeObserver !== 'undefined';
@@ -82,6 +90,7 @@ export function initOrbitLab(): () => void {
 
   return () => {
     nodes.forEach((node) => node.removeEventListener('click', onClick));
+    resetButton?.removeEventListener('click', onReset);
     window.cancelAnimationFrame(initialFrame);
     resizeObserver?.disconnect();
     if (!supportsResizeObserver) window.removeEventListener('resize', updateLines);
