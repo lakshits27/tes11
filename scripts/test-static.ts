@@ -60,12 +60,27 @@ for (const route of HTML_ROUTES) {
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   assert.ok(title, `Missing title on ${distFile}`);
   assert.ok(description, `Missing description on ${distFile}`);
+  assert.ok(title.length <= 90, `Open Graph title is too long on ${distFile}`);
+  assert.ok(description.length <= 200, `Open Graph description is too long on ${distFile}`);
+  const headings = Array.from(html.matchAll(/<h([1-6])\\b[^>]*>([\\s\\S]*?)<\\/h[1-6]>/g));
+  assert.ok(headings.every((match) => (match[2] ?? '').replace(/<[^>]+>/g, '').trim().length > 0), `Empty heading on ${distFile}`);
+  let previousLevel = 0;
+  for (const heading of headings) {
+    const level = Number(heading[1]);
+    assert.ok(level <= previousLevel + 1 || previousLevel === 0, `Heading hierarchy skips a level on ${distFile}`);
+    previousLevel = level;
+  }
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1, `Expected exactly one h1 on ${distFile}`);
   assert.match(html, /class="site-header"/, `Missing header on ${distFile}`);
   assert.match(html, /class="site-footer"/, `Missing footer on ${distFile}`);
   assert.match(html, /<main id="main"/, `Missing main landmark on ${distFile}`);
   assert.match(html, /rel="icon"/, `Missing favicon on ${distFile}`);
   assert.match(html, /property="og:image"/, `Missing OG image on ${distFile}`);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image"/, `Missing Twitter card type on ${distFile}`);
+  assert.match(html, /<meta name="twitter:title" content="[^"]+"/, `Missing Twitter title on ${distFile}`);
+  assert.match(html, /<meta name="twitter:description" content="[^"]+"/, `Missing Twitter description on ${distFile}`);
+  assert.match(html, /<meta name="twitter:image" content="[^"]+"/, `Missing Twitter image on ${distFile}`);
+  assert.match(html, /<html lang="[a-z]{2}(-[A-Z]{2})?"/, `Missing or invalid language attribute on ${distFile}`);
   assert.match(html, /type="application\/ld\+json"/, `Missing structured data on ${distFile}`);
   assert.doesNotMatch(html, /href="#"/, `Dead href="#" on ${distFile}`);
   const pageIds = extractAll(html, /\bid="([^"]+)"/g);
@@ -82,6 +97,7 @@ for (const route of HTML_ROUTES) {
     assert.equal(canonical, undefined, '404 must not have a canonical URL');
   } else {
     assert.ok(canonical, `Missing canonical on ${distFile}`);
+    assert.equal(canonical, new URL(route.path, SITE.productionUrl).toString(), `Canonical URL mismatch on ${distFile}`);
     canonicals.push(canonical);
   }
 
