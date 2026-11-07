@@ -53,7 +53,14 @@ export function aboutPage(): PageDefinition {
     </div>
   </section>
 
-  <section class="section section--story" aria-labelledby="story-title">
+  <nav class="about-section-nav" aria-label="About page sections">
+    <a href="#story-title">My story</a>
+    <a href="#compass-title">Curiosity</a>
+    <a href="#skills-title">Skills</a>
+    <a href="#loop-title">How I learn</a>
+  </nav>
+
+  <section id="about-story" class="section section--story" aria-labelledby="story-title">
     <div class="story-grid">
       <div class="story-aside" data-reveal>
         ${eyebrow('A note, not a résumé')}
@@ -69,7 +76,7 @@ export function aboutPage(): PageDefinition {
     </div>
   </section>
 
-  <section class="section section--compass" aria-labelledby="compass-title">
+  <section id="about-compass" class="section section--compass" aria-labelledby="compass-title">
     ${sectionHeading('The curiosity compass', 'Tech is one coordinate, <span>not the whole map.</span>', 'Choose a signal to explore an interest. The controls work with mouse, touch, and keyboard.')}
     <div class="curiosity-compass" data-interest-compass>
       <div class="curiosity-compass__rings" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -94,7 +101,7 @@ export function aboutPage(): PageDefinition {
     </div>
   </section>
 
-  <section class="section section--skills" aria-labelledby="skills-title">
+  <section id="about-skills" class="section section--skills" aria-labelledby="skills-title">
     ${sectionHeading('Verified skills', 'Tools I use, and ideas <span>I’m still growing into.</span>', 'This split is intentional. The left side comes from public repository manifests and my GitHub profile; the right side is what I am actively exploring — not a claim of mastery.')}
     <div class="skills-layout">
       <div class="skills-groups">
@@ -115,7 +122,7 @@ export function aboutPage(): PageDefinition {
     </div>
   </section>
 
-  <section class="section section--loop" aria-labelledby="loop-title">
+  <section id="about-learning" class="section section--loop" aria-labelledby="loop-title">
     <div class="loop-heading" data-reveal>
       ${eyebrow('How I learn')}
       <h2 id="loop-title">A loop, <span>not a ladder.</span></h2>
