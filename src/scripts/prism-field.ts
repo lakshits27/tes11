@@ -44,6 +44,7 @@ export function createPrismField(): PrismFieldController | null {
   const paletteSelect = document.querySelector<HTMLSelectElement>('[data-prism-palette]');
   const pulseButton = document.querySelector<HTMLButtonElement>('[data-prism-pulse]');
   const resetButton = document.querySelector<HTMLButtonElement>('[data-prism-reset]');
+  const toggleButton = document.querySelector<HTMLButtonElement>('[data-prism-toggle]');
 
   const values: Record<ControlKey, number> = { ...DEFAULTS };
   let palette: PaletteName = 'aurora';
@@ -56,17 +57,22 @@ export function createPrismField(): PrismFieldController | null {
   let fpsFrames = 0;
   let fpsLast = performance.now();
   let reducedMotion = false;
+  let paused = false;
   let intersecting = true;
   let pointerDown = false;
   let lastHoverRipple = 0;
   let ripples: Ripple[] = [];
 
-  const canAnimate = (): boolean => !reducedMotion && !document.hidden && intersecting;
+  const canAnimate = (): boolean => !reducedMotion && !paused && !document.hidden && intersecting;
 
   const updateReadout = (now: number): void => {
     if (!fps) return;
     if (reducedMotion) {
       fps.textContent = 'STATIC';
+      return;
+    }
+    if (paused) {
+      fps.textContent = 'PAUSED';
       return;
     }
     fpsFrames += 1;
@@ -239,6 +245,20 @@ export function createPrismField(): PrismFieldController | null {
     time += 0.5;
   };
 
+  const onToggle = (): void => {
+    paused = !paused;
+    toggleButton?.setAttribute('aria-pressed', String(paused));
+    const label = toggleButton?.querySelector('span');
+    if (label) label.textContent = paused ? 'Resume' : 'Pause';
+    if (paused) {
+      stopLoop();
+      if (fps) fps.textContent = 'PAUSED';
+      draw(performance.now());
+    } else {
+      startLoop();
+    }
+  };
+
   const onReset = (): void => {
     (Object.keys(DEFAULTS) as ControlKey[]).forEach((key) => setControl(key, DEFAULTS[key]));
     if (paletteSelect) paletteSelect.value = 'aurora';
@@ -283,6 +303,7 @@ export function createPrismField(): PrismFieldController | null {
   paletteSelect?.addEventListener('change', onPaletteChange);
   pulseButton?.addEventListener('click', onPulse);
   resetButton?.addEventListener('click', onReset);
+  toggleButton?.addEventListener('click', onToggle);
   canvas.addEventListener('pointerdown', onPointerDown);
   canvas.addEventListener('pointermove', onPointerMove);
   canvas.addEventListener('pointerup', onPointerUp);
@@ -334,6 +355,7 @@ export function createPrismField(): PrismFieldController | null {
       paletteSelect?.removeEventListener('change', onPaletteChange);
       pulseButton?.removeEventListener('click', onPulse);
       resetButton?.removeEventListener('click', onReset);
+      toggleButton?.removeEventListener('click', onToggle);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup', onPointerUp);

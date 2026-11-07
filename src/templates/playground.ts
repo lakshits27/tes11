@@ -67,6 +67,7 @@ export function playgroundPage(): PageDefinition {
         </div>
         <div class="control-panel__actions">
           <button class="btn btn--primary" type="button" data-prism-pulse>${icon('spark')}<span>Send pulse</span></button>
+          <button class="btn btn--ghost" type="button" data-prism-toggle aria-pressed="false"><span>Pause</span></button>
           <button class="btn btn--ghost" type="button" data-prism-reset>${icon('reset')}<span>Reset</span></button>
         </div>
         <p class="control-panel__note">Reduced-motion visitors get a single static frame; all controls still work.</p>
