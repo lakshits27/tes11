@@ -540,3 +540,13 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 .project-discovery-actions { display:flex; align-items:center; justify-content:space-between; gap:16px; }
 .project-discovery-actions .filter-status { margin:22px 0 26px; }
 @media (max-width:560px) { .project-discovery-actions { align-items:flex-start; flex-direction:column; gap:4px; } }
+
+
+/* 332 — accessible expandable design-decision cards */
+.decision-card > summary { display:flex; align-items:center; gap:12px; cursor:pointer; list-style:none; }
+.decision-card > summary::-webkit-details-marker { display:none; }
+.decision-card > summary h3 { flex:1; }
+.decision-card__toggle { display:grid; place-items:center; width:28px; height:28px; border:1px solid var(--line); border-radius:50%; color:var(--muted); transition:transform .2s ease, color .2s ease; }
+.decision-card[open] .decision-card__toggle { transform:rotate(45deg); color:var(--accent); }
+.decision-card > p { padding-inline-start:42px; }
+.decision-card > summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:6px; }

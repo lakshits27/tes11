@@ -107,11 +107,10 @@ export function projectPage(project: Project, index: number): PageDefinition {
         <div class="decision-grid">
           ${project.decisions
             .map(
-              (decision, i) => `<article class="decision-card" data-reveal style="--delay:${i * 60}ms">
-                <span class="decision-card__index">${String(i + 1).padStart(2, '0')}</span>
-                <h3>${escapeHtml(decision.title)}</h3>
+              (decision, i) => `<details class="decision-card" data-reveal style="--delay:${i * 60}ms">
+                <summary><span class="decision-card__index">${String(i + 1).padStart(2, '0')}</span><h3>${escapeHtml(decision.title)}</h3><span class="decision-card__toggle" aria-hidden="true">+</span></summary>
                 <p>${escapeHtml(decision.detail)}</p>
-              </article>`,
+              </details>`,
             )
             .join('')}
         </div>
