@@ -94,6 +94,18 @@ before(async () => {
     protocolTimeout: 90000,
   });
   await browser.defaultBrowserContext().overridePermissions(ORIGIN, ['clipboard-read', 'clipboard-write']);
+  it('restores focus to the command palette trigger after closing', async () => {
+    const { page, errors } = await openPage();
+    await page.click('[data-palette-open]');
+    await page.waitForSelector('[data-command-palette]:not([hidden])');
+    assert.equal(await page.evaluate(() => document.activeElement?.matches('[data-palette-search]')), true);
+    await page.keyboard.press('Escape');
+    await page.waitForSelector('[data-command-palette][hidden]');
+    assert.equal(await page.evaluate(() => document.activeElement?.matches('[data-palette-open]')), true);
+    assert.deepEqual(errors, [], 'Console or request errors during palette focus restoration');
+    await page.close();
+  });
+
 });
 
 after(async () => {
