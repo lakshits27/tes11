@@ -132,7 +132,7 @@ describe('portfolio browser checks', () => {
     await page.goto(BASE, { waitUntil: 'domcontentloaded' });
     await page.click('[data-palette-open]');
     await page.waitForSelector('[data-command-palette]:not([hidden])');
-    const groups = await page.$eval('.command-palette__group-title', (elements) => elements.map((element) => element.textContent?.trim()));
+    const groups = await page.$$eval('.command-palette__group-title', (elements) => elements.map((element) => element.textContent?.trim()));
     assert.ok(groups.includes('Navigate'));
     assert.ok(groups.includes('Profiles'));
     assert.ok(groups.includes('Actions'));
