@@ -2990,3 +2990,6 @@
 .ds-color-token__swatch { display:block; height:58px; border:1px solid var(--line); border-radius:8px; }
 .ds-color-token__name { color:var(--ink); font-size:.78rem; font-weight:650; }
 .ds-color-token code { color:var(--muted); font:.66rem var(--mono); }
+
+.ds-token-copy { justify-self:start; padding:5px 8px; border:1px solid var(--line); border-radius:6px; background:transparent; color:var(--muted); font-size:.66rem; cursor:pointer; }
+.ds-token-copy:hover,.ds-token-copy:focus-visible { border-color:var(--accent); color:var(--ink); }
