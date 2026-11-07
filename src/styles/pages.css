@@ -232,6 +232,27 @@
   width: clamp(270px, 31vw, 430px);
 }
 
+.hero__portrait .avatar-image {
+  transition:
+    transform 0.48s var(--ease),
+    filter 0.48s ease;
+}
+
+.hero__portrait:hover .avatar-image {
+  transform: translateY(-6px) scale(1.015);
+  filter: drop-shadow(0 34px 48px rgba(0, 0, 0, 0.42));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__portrait .avatar-image {
+    transition: none;
+  }
+
+  .hero__portrait:hover .avatar-image {
+    transform: none;
+  }
+}
+
 .hero__portrait-glow {
   position: absolute;
   inset: 12% 8% 3%;
