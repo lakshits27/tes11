@@ -18,16 +18,20 @@ export function initNavigation(): () => void {
   const setOpen = (next: boolean, returnFocus = false): void => {
     if (next === open) return;
     open = next;
-    panel.hidden = !open;
     header.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
 
     if (open) {
+      panel.hidden = false;
+      panel.inert = false;
+      panel.classList.remove('is-closing');
       const firstLink = panel.querySelector<HTMLAnchorElement>('a');
       firstLink?.focus();
-    } else if (returnFocus) {
-      toggle.focus();
+    } else {
+      panel.inert = true;
+      panel.classList.add('is-closing');
+      if (returnFocus) toggle.focus();
     }
   };
 
@@ -71,6 +75,12 @@ export function initNavigation(): () => void {
     if (target.closest('a')) setOpen(false);
   };
 
+  const onPanelAnimationEnd = (event: AnimationEvent): void => {
+    if (event.target !== panel || event.animationName !== 'menu-out' || open) return;
+    panel.hidden = true;
+    panel.classList.remove('is-closing');
+  };
+
   const onResize = (): void => {
     if (open && window.innerWidth > 1040) setOpen(false);
   };
@@ -79,6 +89,7 @@ export function initNavigation(): () => void {
   window.addEventListener('scroll', syncScrollState, { passive: true });
   toggle.addEventListener('click', onToggle);
   panel.addEventListener('click', onPanelClick);
+  panel.addEventListener('animationend', onPanelAnimationEnd);
   document.addEventListener('keydown', onKeyDown);
   document.addEventListener('click', onDocumentClick);
   window.addEventListener('resize', onResize);
@@ -87,10 +98,14 @@ export function initNavigation(): () => void {
     window.removeEventListener('scroll', syncScrollState);
     toggle.removeEventListener('click', onToggle);
     panel.removeEventListener('click', onPanelClick);
+    panel.removeEventListener('animationend', onPanelAnimationEnd);
     document.removeEventListener('keydown', onKeyDown);
     document.removeEventListener('click', onDocumentClick);
     window.removeEventListener('resize', onResize);
     setOpen(false);
+    panel.hidden = true;
+    panel.inert = false;
+    panel.classList.remove('is-closing');
     header.classList.remove('is-scrolled');
   };
 }
