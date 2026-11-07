@@ -255,6 +255,56 @@ describe('portfolio browser checks', () => {
     await page.close();
   });
 
+  it('persists, deduplicates, restores, and clears recent project searches', async () => {
+    const { page, errors } = await openPage('projects/');
+    await page.evaluate(() => localStorage.removeItem('lavi-project-searches'));
+
+    const search = '[data-project-search]';
+    await page.focus(search);
+    await page.keyboard.type('sortify');
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('[data-recent-searches]:not([hidden])');
+    assert.deepEqual(
+      await page.$eval('[data-recent-query]', (buttons) => buttons.map((button) => button.textContent)),
+      ['sortify'],
+    );
+
+    await page.$eval(search, (element) => {
+      const input = element as HTMLInputElement;
+      input.value = 'veylo';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    await page.focus(search);
+    await page.keyboard.press('Enter');
+    assert.deepEqual(
+      await page.$eval('[data-recent-query]', (buttons) => buttons.map((button) => button.textContent)),
+      ['veylo', 'sortify'],
+    );
+
+    await page.$eval(search, (element) => {
+      const input = element as HTMLInputElement;
+      input.value = 'SORTIFY';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    await page.focus(search);
+    await page.keyboard.press('Enter');
+    assert.deepEqual(
+      await page.$eval('[data-recent-query]', (buttons) => buttons.map((button) => button.textContent)),
+      ['SORTIFY', 'veylo'],
+      'A repeated query should move to the front instead of creating a duplicate',
+    );
+
+    await page.click('[data-recent-query="veylo"]');
+    assert.equal(await page.$eval(search, (element) => (element as HTMLInputElement).value), 'veylo');
+    assert.match(await page.$eval('[data-filter-status]', (element) => element.textContent ?? ''), /1 project matching “veylo”/);
+
+    await page.click('[data-clear-recent-searches]');
+    await page.waitForSelector('[data-recent-searches][hidden]');
+    assert.equal(await page.evaluate(() => localStorage.getItem('lavi-project-searches')), null);
+    assert.deepEqual(errors, [], 'Console or request errors during recent-search interactions');
+    await page.close();
+  });
+
   it('opens the mobile menu, navigates, and respects reduced motion', async () => {
     const { page, errors } = await openPage();
     await page.setViewport({ width: 375, height: 812, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
