@@ -601,3 +601,6 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 .command-palette__empty { margin:0; padding:22px 12px; color:var(--muted); text-align:center; font-size:.88rem; }
 .command-palette__hint { margin:0; padding:11px 16px; border-top:1px solid var(--line); color:var(--muted); font-size:.7rem; }
 .command-palette__hint kbd { margin-inline:2px; }
+
+.command-palette__result { display:block; width:100%; padding:12px 14px; border:0; border-radius:9px; background:transparent; color:var(--text); text-align:left; cursor:pointer; }
+.command-palette__result:hover,.command-palette__result:focus-visible { outline:0; background:var(--surface-raised); }
