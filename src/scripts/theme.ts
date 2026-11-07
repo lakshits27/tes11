@@ -74,10 +74,19 @@ export function initTheme(): () => void {
 
   const onReducedMotionChange = (): void => apply(currentTheme(), false);
 
+  const onShortcut = (event: KeyboardEvent): void => {
+    const target = event.target;
+    const isTyping = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+    if (!(event.ctrlKey || event.metaKey) || !event.shiftKey || event.key.toLowerCase() !== 'l' || isTyping) return;
+    event.preventDefault();
+    onToggle();
+  };
+
   for (const button of buttons) {
     button.addEventListener('click', onToggle);
   }
   systemQuery.addEventListener('change', onSystemChange);
+  document.addEventListener('keydown', onShortcut);
   reducedQuery.addEventListener('change', onReducedMotionChange);
 
   apply(currentTheme(), false);
@@ -87,6 +96,7 @@ export function initTheme(): () => void {
       button.removeEventListener('click', onToggle);
     }
     systemQuery.removeEventListener('change', onSystemChange);
+    document.removeEventListener('keydown', onShortcut);
     reducedQuery.removeEventListener('change', onReducedMotionChange);
   };
 }
