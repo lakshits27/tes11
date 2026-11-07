@@ -106,7 +106,7 @@ export function playgroundPage(): PageDefinition {
       </button>`,
       ).join('')}
     </div>
-    <div class="orbit-lab__actions"><button class="btn btn--ghost" type="button" data-orbit-reset>Reset orbit</button></div>
+    <div class="orbit-lab__actions"><button class="btn btn--ghost" type="button" data-orbit-random>Random constellation</button><button class="btn btn--ghost" type="button" data-orbit-reset>Reset orbit</button></div>
   </section>
 
   <section class="playground-outro" aria-labelledby="outro-title">
