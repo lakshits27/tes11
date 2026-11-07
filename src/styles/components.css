@@ -604,3 +604,6 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 
 .command-palette__result { display:block; width:100%; padding:12px 14px; border:0; border-radius:9px; background:transparent; color:var(--text); text-align:left; cursor:pointer; }
 .command-palette__result:hover,.command-palette__result:focus-visible { outline:0; background:var(--surface-raised); }
+
+.command-palette__result { display:flex; flex-direction:column; gap:3px; }
+.command-palette__result-description { color:var(--muted); font-size:.72rem; line-height:1.4; }
