@@ -13,6 +13,7 @@ import { playgroundPage } from '../src/templates/playground.ts';
 import { contactPage } from '../src/templates/contact.ts';
 import { nowPage } from '../src/templates/now.ts';
 import { usesPage } from '../src/templates/uses.ts';
+import { changelogPage } from '../src/templates/changelog.ts';
 import { notFoundPage } from '../src/templates/not-found.ts';
 
 const ROOT = process.cwd();
@@ -26,6 +27,7 @@ const pages = new Map<string, PageDefinition>([
   ['contact', contactPage()],
   ['now', nowPage()],
   ['uses', usesPage()],
+  ['changelog', changelogPage()],
   ['notFound', notFoundPage()],
 ]);
 
