@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import { HTML_ROUTES } from '../src/content/routes.ts';
@@ -156,7 +156,13 @@ for (const project of PROJECTS) {
 
 assert.equal(await exists('assets/avatar/lakshit-avatar.webp'), true, 'Avatar WebP missing');
 assert.equal(await exists('favicon.svg'), true, 'Favicon SVG missing');
+const faviconSvg = await readFile(path.join(DIST, 'favicon.svg'), 'utf8');
+assert.match(faviconSvg, /<svg\\b[^>]*viewBox=/, 'Favicon SVG must contain a viewBox');
 assert.equal(await exists('favicon-192.png'), true, 'Favicon PNG missing');
+const faviconPng = await sharp(path.join(DIST, 'favicon-192.png')).metadata();
+assert.equal(faviconPng.format, 'png', 'Apple touch icon must be PNG');
+assert.equal(faviconPng.width, 192, 'Favicon PNG must be 192px wide');
+assert.equal(faviconPng.height, 192, 'Favicon PNG must be 192px high');
 assert.equal(await exists('og-image.png'), true, 'Default OG image missing');
 
 const ogFiles = ['og-image.png', ...PROJECTS.map((project) => `assets/og/${project.slug}.png`)];
@@ -166,6 +172,13 @@ for (const file of ogFiles) {
   assert.equal(metadata.height, 630, `Open Graph image ${file} must be 630px high`);
 }
 assert.equal(await exists('manifest.webmanifest'), true, 'Web manifest missing');
+const manifest = JSON.parse(await readFile(path.join(DIST, 'manifest.webmanifest'), 'utf8')) as { start_url?: string; scope?: string; display?: string; icons?: Array<{ src?: string; sizes?: string; type?: string }> };
+assert.equal(manifest.start_url, SITE.basePath, 'Manifest start_url must match the deployed base path');
+assert.equal(manifest.scope, SITE.basePath, 'Manifest scope must match the deployed base path');
+assert.ok(['standalone', 'minimal-ui', 'browser', 'fullscreen'].includes(manifest.display ?? ''), 'Manifest display mode is invalid');
+assert.ok((manifest.icons ?? []).some((icon) => icon.src === 'favicon-192.png' && icon.sizes === '192x192' && icon.type === 'image/png'), 'Manifest is missing the 192px PNG icon');
+const assetFiles = await readdir(path.join(DIST, 'assets'));
+assert.ok(assetFiles.some((file) => /\\.(woff2?|ttf|otf)$/.test(file)), 'No bundled font files found in production assets');
 assert.equal(await exists('robots.txt'), true, 'robots.txt missing');
 assert.equal(await exists('sitemap.xml'), true, 'sitemap.xml missing');
 assert.equal(await exists('.nojekyll'), true, '.nojekyll missing');
