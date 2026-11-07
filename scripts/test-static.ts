@@ -40,6 +40,12 @@ const titles: string[] = [];
 const descriptions: string[] = [];
 const canonicals: string[] = [];
 const checkedAssets = new Set<string>();
+const jsFiles = (await readdir(path.join(DIST, 'assets'))).filter((file) => /\\.js$/i.test(file));
+assert.ok(jsFiles.length > 0, 'No production JavaScript bundles found');
+for (const file of jsFiles) {
+  const details = await stat(path.join(DIST, 'assets', file));
+  assert.ok(details.size <= 500_000, `JavaScript bundle exceeds 500 KB: ${file} (${details.size} bytes)`);
+}
 
 // Project catalogue integrity: slugs are IDs and must map to unique routes.
 const projectSlugs = PROJECTS.map((project) => project.slug);
