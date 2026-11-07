@@ -9,7 +9,27 @@ export function initProjectFilter(): () => void {
 
   if (!root || cards.length === 0) return () => undefined;
 
-  let activeFilter = 'All';
+  const validFilters = new Set(chips.map((chip) => chip.dataset.filter ?? 'All'));
+  const readUrlState = (): void => {
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get('category') ?? 'All';
+    activeFilter = validFilters.has(requested) ? requested : 'All';
+    if (search) search.value = params.get('q') ?? '';
+    chips.forEach((chip) => {
+      const active = (chip.dataset.filter ?? 'All') === activeFilter;
+      chip.classList.toggle('is-active', active);
+      chip.setAttribute('aria-pressed', String(active));
+    });
+  };
+  const writeUrlState = (): void => {
+    const url = new URL(window.location.href);
+    const query = (search?.value ?? '').trim();
+    if (activeFilter === 'All') url.searchParams.delete('category');
+    else url.searchParams.set('category', activeFilter);
+    if (query) url.searchParams.set('q', query);
+    else url.searchParams.delete('q');
+    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+  };
 
   const apply = (): void => {
     const query = (search?.value ?? '').trim().toLowerCase();
@@ -33,6 +53,7 @@ export function initProjectFilter(): () => void {
         : `Showing ${visible} ${noun}${activeFilter === 'All' ? '' : ` in ${activeFilter}`}.`;
     }
     if (empty) empty.hidden = visible !== 0;
+    writeUrlState();
   };
 
   const onChipClick = (event: MouseEvent): void => {
@@ -48,6 +69,7 @@ export function initProjectFilter(): () => void {
   };
 
   const onSearch = (): void => apply();
+  const onPopState = (): void => { readUrlState(); apply(); };
 
   const onDocumentKeyDown = (event: KeyboardEvent): void => {
     const target = event.target;
@@ -86,7 +108,9 @@ export function initProjectFilter(): () => void {
   };
 
   chips.forEach((chip) => { chip.addEventListener('click', onChipClick); chip.addEventListener('keydown', onChipKeyDown); });
+  readUrlState();
   search?.addEventListener('input', onSearch);
+  window.addEventListener('popstate', onPopState);
   document.addEventListener('keydown', onDocumentKeyDown);
   clear?.addEventListener('click', onClear);
   apply();
@@ -94,6 +118,7 @@ export function initProjectFilter(): () => void {
   return () => {
     chips.forEach((chip) => { chip.removeEventListener('click', onChipClick); chip.removeEventListener('keydown', onChipKeyDown); });
     search?.removeEventListener('input', onSearch);
+    window.removeEventListener('popstate', onPopState);
     document.removeEventListener('keydown', onDocumentKeyDown);
     clear?.removeEventListener('click', onClear);
   };
