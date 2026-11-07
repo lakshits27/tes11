@@ -1,3 +1,5 @@
+import { PRIMARY_NAV, SECONDARY_NAV, href } from '../content/site.ts';
+
 type PaletteCommand = { id: string; label: string; description?: string; category?: string; run: () => void };
 
 function fuzzyMatch(query: string, candidate: string): boolean {
@@ -22,7 +24,10 @@ export function initCommandPalette(): () => void {
   let open = false;
   let selectedIndex = 0;
   let previousFocus: HTMLElement | null = null;
-  const commands: PaletteCommand[] = [];
+  const commands: PaletteCommand[] = [...PRIMARY_NAV, ...SECONDARY_NAV].map((item) => ({
+    id: `route-${item.id}`, label: item.label, description: item.description, category: 'Navigate',
+    run: () => { window.location.href = href(item.path); },
+  }));
   const historyKey = 'lavi-command-history';
   const readHistory = (): string[] => {
     try { return JSON.parse(localStorage.getItem(historyKey) ?? '[]') as string[]; }
