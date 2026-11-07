@@ -32,7 +32,9 @@ export function designSystemPage(): PageDefinition {
         <article><span>BODY / MANROPE</span><p class="ds-type-body">Thoughtful interfaces balance clarity, rhythm, and a little personality.</p></article>
         <article><span>MONOSPACE / IBM PLEX MONO</span><code class="ds-type-mono">const idea = "build something useful";</code></article>
       </div></section>
-      <section aria-labelledby="ds-layout-title"><span>03 / LAYOUT</span><h2 id="ds-layout-title">Space &amp; shape</h2><p>Consistent spacing, corner radii, and depth.</p><div class="ds-placeholder">Layout tokens are being documented.</div></section>
+      <section aria-labelledby="ds-layout-title"><span>03 / LAYOUT</span><h2 id="ds-layout-title">Space &amp; shape</h2><p>Consistent spacing, corner radii, and depth.</p><div class="ds-radius-grid">
+        ${[['XS','--radius-xs'],['SM','--radius-sm'],['MD','--radius-md'],['LG','--radius-lg'],['XL','--radius-xl']].map(([label,token])=>`<article><span>${label}</span><div style="border-radius:var(${token})"></div><code>${token}</code></article>`).join('')}
+      </div></section>
       <section aria-labelledby="ds-components-title"><span>04 / COMPONENTS</span><h2 id="ds-components-title">Interface pieces</h2><p>Buttons, fields, cards, and iconography.</p><div class="ds-placeholder">Component specimens are being documented.</div></section>
     </div>
   </section>`;
