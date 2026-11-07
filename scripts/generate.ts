@@ -14,6 +14,7 @@ import { contactPage } from '../src/templates/contact.ts';
 import { nowPage } from '../src/templates/now.ts';
 import { usesPage } from '../src/templates/uses.ts';
 import { changelogPage } from '../src/templates/changelog.ts';
+import { faqPage } from '../src/templates/faq.ts';
 import { notFoundPage } from '../src/templates/not-found.ts';
 
 const ROOT = process.cwd();
@@ -28,6 +29,7 @@ const pages = new Map<string, PageDefinition>([
   ['now', nowPage()],
   ['uses', usesPage()],
   ['changelog', changelogPage()],
+  ['faq', faqPage()],
   ['notFound', notFoundPage()],
 ]);
 
