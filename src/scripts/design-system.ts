@@ -7,7 +7,7 @@ export function initDesignSystem(): () => void {
     const iconButton = target.closest<HTMLButtonElement>('[data-copy-icon]');
     if (iconButton) {
       const name = iconButton.dataset.copyIcon ?? '';
-      let copied = false;
+      let copied: boolean;
       try {
         if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(name); copied = true; }
         else {
@@ -29,7 +29,7 @@ export function initDesignSystem(): () => void {
     const rgb = getComputedStyle(swatch).backgroundColor.match(/[\d.]+/g);
     if (!rgb || rgb.length < 3) return;
     const hex = `#${rgb.slice(0, 3).map((part) => Math.round(Number(part)).toString(16).padStart(2, '0')).join('')}`;
-    let copied = false;
+    let copied: boolean;
     try {
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(hex);
