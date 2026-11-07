@@ -21,7 +21,11 @@ export function designSystemPage(): PageDefinition {
           ['Amber accent', '--amber'], ['Mint accent', '--mint'],
         ].map(([label, token]) => `<article class="ds-color-token"><span class="ds-color-token__swatch" style="background:var(${token})"></span><span class="ds-color-token__name">${label}</span><code>${token}</code><button class="ds-token-copy" type="button" data-copy-token aria-label="Copy ${token} hex value">Copy hex</button></article>`).join('')}
       </div></section>
-      <section aria-labelledby="ds-type-title"><span>02 / TYPE</span><h2 id="ds-type-title">Typography</h2><p>Display, body, and monospace roles.</p><div class="ds-placeholder">Typography specimens are being documented.</div></section>
+      <section aria-labelledby="ds-type-title"><span>02 / TYPE</span><h2 id="ds-type-title">Typography</h2><p>Display, body, and monospace roles.</p><div class="ds-type-specimens">
+        <article><span>DISPLAY / SPACE GROTESK</span><h3 class="ds-type-display">Curiosity, made visible.</h3></article>
+        <article><span>BODY / MANROPE</span><p class="ds-type-body">Thoughtful interfaces balance clarity, rhythm, and a little personality.</p></article>
+        <article><span>MONOSPACE / IBM PLEX MONO</span><code class="ds-type-mono">const idea = "build something useful";</code></article>
+      </div></section>
       <section aria-labelledby="ds-layout-title"><span>03 / LAYOUT</span><h2 id="ds-layout-title">Space &amp; shape</h2><p>Consistent spacing, corner radii, and depth.</p><div class="ds-placeholder">Layout tokens are being documented.</div></section>
       <section aria-labelledby="ds-components-title"><span>04 / COMPONENTS</span><h2 id="ds-components-title">Interface pieces</h2><p>Buttons, fields, cards, and iconography.</p><div class="ds-placeholder">Component specimens are being documented.</div></section>
     </div>
