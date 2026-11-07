@@ -567,3 +567,8 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 
 /* 179 — project search character counter */
 .search-counter { align-self: center; color: var(--muted-2); font: 500 .58rem var(--mono); white-space: nowrap; }
+
+
+/* 164 — expose the canonical page URL on paper */
+.print-page-url { display: none; }
+@media print { .print-page-url { display: block; margin: 1rem 0 0; padding-top: .5rem; border-top: 1px solid #bbb; color: #333; font: 8pt/1.4 var(--mono); overflow-wrap: anywhere; } }
