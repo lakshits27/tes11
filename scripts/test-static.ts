@@ -19,6 +19,16 @@ async function exists(relative: string, base = DIST): Promise<boolean> {
   }
 }
 
+
+async function countFiles(directory: string): Promise<number> {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const counts = await Promise.all(entries.map(async (entry) => {
+    const target = path.join(directory, entry.name);
+    return entry.isDirectory() ? countFiles(target) : entry.isFile() ? 1 : 0;
+  }));
+  return counts.reduce((total, count) => total + count, 0);
+}
+
 function extractAll(html: string, pattern: RegExp): string[] {
   return Array.from(html.matchAll(pattern), (match) => match[1] ?? '');
 }
@@ -231,5 +241,8 @@ for (const legacy of [
   assert.equal(await exists(legacy), false, `Legacy file must not be deployed: ${legacy}`);
   assert.equal(await exists(legacy, ROOT), false, `Legacy source file still exists: ${legacy}`);
 }
+
+const deploymentFileCount = await countFiles(DIST);
+assert.ok(deploymentFileCount >= 20, `Deployment artifact unexpectedly contains only ${deploymentFileCount} files`);
 
 console.info(`Static checks passed: ${HTML_ROUTES.length} routes, ${PROJECTS.length} projects, ${checkedAssets.size} local links/assets.`);
