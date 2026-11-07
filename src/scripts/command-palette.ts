@@ -59,7 +59,7 @@ export function initCommandPalette(): () => void {
   const openButton = document.querySelector<HTMLButtonElement>('[data-palette-open]');
   if (!root || !input || !results || !closeButton) return () => undefined;
   let open = false;
-  let selectedIndex = 0;
+  let selectedIndex = -1;
   let previousFocus: HTMLElement | null = null;
   const commands: PaletteCommand[] = [...PRIMARY_NAV, ...SECONDARY_NAV].map((item) => ({
     id: `route-${item.id}`, label: item.label, description: item.description, category: 'Navigate',
@@ -115,7 +115,7 @@ export function initCommandPalette(): () => void {
     catch { /* Private browsing may block storage; command execution still works. */ }
   };
   const render = (): void => {
-    selectedIndex = 0;
+    selectedIndex = -1;
     const history = readHistory();
     const ordered = input.value.trim() ? commands : [...history.map((id) => commands.find((command) => command.id === id)).filter((command): command is PaletteCommand => Boolean(command)), ...commands.filter((command) => !history.includes(command.id))];
     const matches = ordered.filter((command) => fuzzyMatch(input.value, command.label));
@@ -175,7 +175,9 @@ export function initCommandPalette(): () => void {
     if (!options.length) return;
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
-      selectedIndex = (selectedIndex + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
+      selectedIndex = selectedIndex < 0
+        ? (event.key === 'ArrowDown' ? 0 : options.length - 1)
+        : (selectedIndex + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
       options.forEach((option, index) => {
         option.setAttribute('aria-selected', String(index === selectedIndex));
         option.tabIndex = index === selectedIndex ? 0 : -1;
