@@ -48,7 +48,7 @@ function header(activeNav: string): string {
         ${PRIMARY_NAV.map((item) => navLink(item, activeNav)).join('')}
       </nav>
       <div class="nav-actions">
-        <button class="palette-trigger" type="button" data-palette-open aria-label="Quick find, open command palette" title="Search commands · Ctrl+K"><span aria-hidden="true">⌕</span><span>Quick find</span><kbd>Ctrl K</kbd></button>
+        <button class="palette-trigger" type="button" data-palette-open aria-label="Quick find Ctrl K, open command palette" title="Search commands · Ctrl+K"><span aria-hidden="true">⌕</span><span>Quick find</span><kbd>Ctrl K</kbd></button>
         ${themeToggle()}
         <a class="nav-cta" href="${href('contact/')}"><span>Let’s talk</span>${icon('arrow-up-right')}</a>
         <button class="menu-toggle" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
@@ -183,10 +183,11 @@ export function layout(content: string, options: LayoutOptions): string {
 
   <div class="page-wipe" aria-hidden="true"></div>
   <canvas id="spectral-trail" aria-hidden="true"></canvas>
-  <div class="reading-progress" data-reading-progress role="progressbar" aria-label="Page reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="reading-progress__track"><span data-reading-progress-fill></span></span><output data-reading-progress-value>0%</output></div>
   <noscript><div class="noscript-note">This site works without JavaScript; animations and playground controls are enhanced when JavaScript is available.</div></noscript>
   ${header(options.activeNav)}
   <main id="main" class="page-main" tabindex="-1">
+  <div class="reading-progress" data-reading-progress role="progressbar" aria-label="Page reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="reading-progress__track"><span data-reading-progress-fill></span></span><output data-reading-progress-value>0%</output></div>
+
   <div class="command-palette" data-command-palette hidden>
     <button class="command-palette__backdrop" type="button" data-palette-close aria-label="Close command palette"></button>
     <section class="command-palette__dialog" role="dialog" aria-modal="true" aria-labelledby="site-command-palette-title">
