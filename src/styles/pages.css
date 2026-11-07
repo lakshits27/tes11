@@ -2993,3 +2993,10 @@
 
 .ds-token-copy { justify-self:start; padding:5px 8px; border:1px solid var(--line); border-radius:6px; background:transparent; color:var(--muted); font-size:.66rem; cursor:pointer; }
 .ds-token-copy:hover,.ds-token-copy:focus-visible { border-color:var(--accent); color:var(--ink); }
+
+.ds-type-specimens { display:grid; gap:18px; margin-top:26px; }
+.ds-type-specimens article { display:grid; gap:9px; padding:18px; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--bg-soft); }
+.ds-type-specimens article > span { color:var(--muted-2); font:.62rem var(--mono); letter-spacing:.08em; }
+.ds-type-display { font-family:var(--display); font-size:clamp(1.7rem,4vw,3rem); letter-spacing:-.06em; }
+.ds-type-body { color:var(--ink-soft); font-family:var(--body-font); font-size:1rem; line-height:1.7; }
+.ds-type-mono { color:var(--accent-violet); font-family:var(--mono); font-size:.85rem; overflow-wrap:anywhere; }
