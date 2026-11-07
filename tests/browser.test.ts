@@ -94,6 +94,22 @@ before(async () => {
     protocolTimeout: 90000,
   });
   await browser.defaultBrowserContext().overridePermissions(ORIGIN, ['clipboard-read', 'clipboard-write']);
+
+
+});
+
+after(async () => {
+  await browser?.close();
+  if (server?.pid) {
+    try {
+      process.kill(-server.pid, 'SIGTERM');
+    } catch {
+      server.kill('SIGTERM');
+    }
+  }
+});
+
+describe('portfolio browser checks', () => {
   it('restores focus to the command palette trigger after closing', async () => {
     const { page, errors } = await openPage();
     await page.click('[data-palette-open]');
@@ -116,7 +132,7 @@ before(async () => {
     await page.goto(BASE, { waitUntil: 'domcontentloaded' });
     await page.click('[data-palette-open]');
     await page.waitForSelector('[data-command-palette]:not([hidden])');
-    const groups = await page.$$eval('.command-palette__group-title', (elements) => elements.map((element) => element.textContent?.trim()));
+    const groups = await page.$eval('.command-palette__group-title', (elements) => elements.map((element) => element.textContent?.trim()));
     assert.ok(groups.includes('Navigate'));
     assert.ok(groups.includes('Profiles'));
     assert.ok(groups.includes('Actions'));
@@ -140,20 +156,6 @@ before(async () => {
     await page.close();
   });
 
-});
-
-after(async () => {
-  await browser?.close();
-  if (server?.pid) {
-    try {
-      process.kill(-server.pid, 'SIGTERM');
-    } catch {
-      server.kill('SIGTERM');
-    }
-  }
-});
-
-describe('portfolio browser checks', () => {
   it('loads every major route directly and survives a nested-route refresh', async () => {
     const routes = [
       '',
