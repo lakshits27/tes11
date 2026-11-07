@@ -18,6 +18,11 @@
   to { clip-path: circle(150% at var(--portal-x, 50%) var(--portal-y, 50%)); }
 }
 
+@keyframes avatar-idle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(-0.6deg); }
+}
+
 @keyframes menu-in {
   from {
     opacity: 0;
