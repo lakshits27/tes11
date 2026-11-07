@@ -619,3 +619,8 @@ html.theme-anim *::after {
 /* 137 — consistent interactive cursor affordances */
 :where(a[href], button:not(:disabled), [role='button']:not([aria-disabled='true']), summary) { cursor: pointer; }
 :where(button:disabled, [aria-disabled='true']) { cursor: not-allowed; }
+
+
+/* 140 — readable inline-link underline geometry */
+.page-main p a:not(.btn), .page-main li a:not(.btn), .project-section__content a:not(.btn) { text-decoration-line: underline; text-decoration-thickness: .07em; text-underline-offset: .2em; text-decoration-skip-ink: auto; }
+.page-main p a:not(.btn):hover, .page-main li a:not(.btn):hover { text-decoration-thickness: .11em; }
