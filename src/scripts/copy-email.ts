@@ -38,7 +38,12 @@ export function initCopyEmail(): () => void {
 
   const onClick = async (): Promise<void> => {
     const email = button.dataset.email ?? '';
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    if (label) label.textContent = 'Copying…';
     const copied = await writeToClipboard(email);
+    button.disabled = false;
+    button.removeAttribute('aria-busy');
     window.clearTimeout(resetTimer);
     feedback.classList.toggle('is-error', !copied);
     feedback.textContent = copied
