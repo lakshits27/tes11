@@ -308,6 +308,30 @@
   color: var(--accent);
 }
 
+.hero__scroll {
+  transition: color 0.22s ease, gap 0.28s var(--ease);
+}
+
+.hero__scroll .icon {
+  transition: transform 0.28s var(--ease);
+}
+
+.hero__scroll:hover {
+  gap: 15px;
+  color: var(--ink);
+}
+
+.hero__scroll:hover .icon {
+  transform: translateY(3px) rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll,
+  .hero__scroll .icon {
+    transition: none;
+  }
+}
+
 .featured-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
