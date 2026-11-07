@@ -62,7 +62,7 @@ for (const route of HTML_ROUTES) {
   assert.ok(description, `Missing description on ${distFile}`);
   assert.ok(title.length <= 90, `Open Graph title is too long on ${distFile}`);
   assert.ok(description.length <= 200, `Open Graph description is too long on ${distFile}`);
-  const headings = Array.from(html.matchAll(/<h([1-6])\\b[^>]*>([\\s\\S]*?)<\\/h[1-6]>/g));
+  const headings = Array.from(html.matchAll(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h[1-6]>/g));
   assert.ok(headings.every((match) => (match[2] ?? '').replace(/<[^>]+>/g, '').trim().length > 0), `Empty heading on ${distFile}`);
   let previousLevel = 0;
   for (const heading of headings) {
