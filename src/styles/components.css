@@ -490,3 +490,8 @@
     min-height: 44px;
   }
 }
+
+
+/* 59 — repository action press response */
+.project-card__repo:active,.project-hero__links .btn:active { transform:translateY(1px) scale(.94); }
+.project-card__repo:focus-visible { outline:2px solid var(--card-read); outline-offset:4px; }
