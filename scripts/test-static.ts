@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 import { HTML_ROUTES } from '../src/content/routes.ts';
 import { PROJECTS } from '../src/content/projects.ts';
 import { SITE } from '../src/content/site.ts';
@@ -115,6 +116,13 @@ assert.equal(await exists('assets/avatar/lakshit-avatar.webp'), true, 'Avatar We
 assert.equal(await exists('favicon.svg'), true, 'Favicon SVG missing');
 assert.equal(await exists('favicon-192.png'), true, 'Favicon PNG missing');
 assert.equal(await exists('og-image.png'), true, 'Default OG image missing');
+
+const ogFiles = ['og-image.png', ...PROJECTS.map((project) => `assets/og/${project.slug}.png`)];
+for (const file of ogFiles) {
+  const metadata = await sharp(path.join(DIST, file)).metadata();
+  assert.equal(metadata.width, 1200, `Open Graph image ${file} must be 1200px wide`);
+  assert.equal(metadata.height, 630, `Open Graph image ${file} must be 630px high`);
+}
 assert.equal(await exists('manifest.webmanifest'), true, 'Web manifest missing');
 assert.equal(await exists('robots.txt'), true, 'robots.txt missing');
 assert.equal(await exists('sitemap.xml'), true, 'sitemap.xml missing');
