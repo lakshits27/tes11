@@ -79,6 +79,14 @@
   background: var(--ov-055);
 }
 
+.desktop-nav__link:hover {
+  transition-delay: 45ms;
+}
+
+.desktop-nav__link:not(:hover) {
+  transition-delay: 0ms;
+}
+
 .desktop-nav__link i {
   position: absolute;
   left: 50%;
