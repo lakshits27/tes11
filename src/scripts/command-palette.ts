@@ -1,5 +1,26 @@
 import { PRIMARY_NAV, SECONDARY_NAV, SOCIAL_LINKS, href } from '../content/site.ts';
 
+async function copyPaletteText(value: string): Promise<boolean> {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+  } catch { /* Use the selection-based fallback below. */ }
+  const field = document.createElement('textarea');
+  field.value = value;
+  field.setAttribute('readonly', '');
+  field.style.position = 'fixed';
+  field.style.opacity = '0';
+  field.style.top = '-9999px';
+  document.body.append(field);
+  field.select();
+  let copied = false;
+  try { copied = document.execCommand('copy'); } catch { copied = false; }
+  field.remove();
+  return copied;
+}
+
 type PaletteCommand = { id: string; label: string; description?: string; category?: string; run: () => void };
 
 function fuzzyMatch(query: string, candidate: string): boolean {
@@ -28,6 +49,24 @@ export function initCommandPalette(): () => void {
     id: `route-${item.id}`, label: item.label, description: item.description, category: 'Navigate',
     run: () => { window.location.href = href(item.path); },
   }));
+  commands.push({
+    id: 'copy-page-url', label: 'Copy current page URL',
+    description: 'Copy this page address to the clipboard', category: 'Actions',
+    run: () => {
+      void copyPaletteText(window.location.href).then((copied) => {
+        let feedback = root.querySelector<HTMLElement>('[data-palette-feedback]');
+        if (!feedback) {
+          feedback = document.createElement('p');
+          feedback.dataset.paletteFeedback = '';
+          feedback.setAttribute('role', 'status');
+          feedback.setAttribute('aria-live', 'polite');
+          feedback.className = 'command-palette__feedback';
+          root.querySelector('.command-palette__dialog')?.append(feedback);
+        }
+        feedback.textContent = copied ? 'Page URL copied.' : 'Could not copy the page URL.';
+      });
+    },
+  });
   commands.push(...SOCIAL_LINKS.filter((item) => item.url.startsWith('https://')).map((item) => ({
     id: `profile-${item.label.toLowerCase()}`, label: item.label, description: item.handle, category: 'Profiles',
     run: () => { window.open(item.url, '_blank', 'noopener,noreferrer'); },
