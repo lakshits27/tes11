@@ -550,3 +550,8 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 .decision-card[open] .decision-card__toggle { transform:rotate(45deg); color:var(--accent); }
 .decision-card > p { padding-inline-start:42px; }
 .decision-card > summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:6px; }
+
+
+/* 344 — project visual position counter */
+.project-visual figcaption { display:flex; align-items:baseline; justify-content:space-between; gap:14px; }
+.project-visual__count { flex:0 0 auto; color:var(--muted-2); font: .62rem var(--mono); letter-spacing:.08em; }
