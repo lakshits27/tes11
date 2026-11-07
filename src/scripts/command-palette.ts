@@ -1,4 +1,4 @@
-import { PRIMARY_NAV, SECONDARY_NAV, href } from '../content/site.ts';
+import { PRIMARY_NAV, SECONDARY_NAV, SOCIAL_LINKS, href } from '../content/site.ts';
 
 type PaletteCommand = { id: string; label: string; description?: string; category?: string; run: () => void };
 
@@ -28,6 +28,10 @@ export function initCommandPalette(): () => void {
     id: `route-${item.id}`, label: item.label, description: item.description, category: 'Navigate',
     run: () => { window.location.href = href(item.path); },
   }));
+  commands.push(...SOCIAL_LINKS.filter((item) => item.url.startsWith('https://')).map((item) => ({
+    id: `profile-${item.label.toLowerCase()}`, label: item.label, description: item.handle, category: 'Profiles',
+    run: () => { window.open(item.url, '_blank', 'noopener,noreferrer'); },
+  })));
   const historyKey = 'lavi-command-history';
   const readHistory = (): string[] => {
     try { return JSON.parse(localStorage.getItem(historyKey) ?? '[]') as string[]; }
