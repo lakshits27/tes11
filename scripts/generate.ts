@@ -18,6 +18,7 @@ import { faqPage } from '../src/templates/faq.ts';
 import { designSystemPage } from '../src/templates/design-system.ts';
 import { accessibilityPage } from '../src/templates/accessibility.ts';
 import { creditsPage } from '../src/templates/credits.ts';
+import { privacyPage } from '../src/templates/privacy.ts';
 import { notFoundPage } from '../src/templates/not-found.ts';
 
 const ROOT = process.cwd();
@@ -36,6 +37,7 @@ const pages = new Map<string, PageDefinition>([
   ['designSystem', designSystemPage()],
   ['accessibility', accessibilityPage()],
   ['credits', creditsPage()],
+  ['privacy', privacyPage()],
   ['notFound', notFoundPage()],
 ]);
 
