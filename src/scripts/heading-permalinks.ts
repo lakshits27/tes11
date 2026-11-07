@@ -26,8 +26,9 @@ export function initHeadingPermalinks(): () => void {
     field.style.opacity = '0';
     document.body.append(field);
     field.select();
-    let copied = false;
-    try { copied = document.execCommand('copy'); } catch { copied = false; }
+    const copied = (() => {
+      try { return document.execCommand('copy'); } catch { return false; }
+    })();
     field.remove();
     return copied;
   };
