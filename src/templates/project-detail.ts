@@ -34,13 +34,13 @@ function visualFigure(project: Project): string {
   return `<div class="project-visuals${isIcon ? ' project-visuals--single' : ''}">
     ${project.visuals
       .map(
-        (visual) => `<figure class="project-visual project-visual--${visual.kind}" data-reveal>
+        (visual, index) => `<figure class="project-visual project-visual--${visual.kind}" data-reveal>
           <div class="project-visual__frame">
             <img src="${asset(screenshotPath(visual))}" alt="${escapeHtml(
               visual.alt,
             )}" loading="lazy" decoding="async" width="1200" height="800">
           </div>
-          <figcaption><span>${escapeHtml(visual.kind === 'screenshot' ? 'Repository screenshot' : visual.kind === 'app-icon' ? 'Repository app icon' : 'Original illustration')}</span>${escapeHtml(
+          <figcaption><span>${escapeHtml(visual.kind === 'screenshot' ? 'Repository screenshot' : visual.kind === 'app-icon' ? 'Repository app icon' : 'Original illustration')}<span class="project-visual__count">${String(index + 1).padStart(2, '0')} / ${String(project.visuals.length).padStart(2, '0')}</span></span>${escapeHtml(
             visual.caption,
           )}</figcaption>
         </figure>`,
