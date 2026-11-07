@@ -165,6 +165,7 @@ export function initCommandPalette(): () => void {
   };
   const onInput = (): void => render();
   const onInputKeyDown = (event: KeyboardEvent): void => {
+    if (!open) return;
     if ((event.ctrlKey || event.metaKey) && event.key === 'Backspace' && input.value) {
       event.preventDefault();
       input.value = '';
@@ -189,14 +190,14 @@ export function initCommandPalette(): () => void {
     }
   };
   input.addEventListener('input', onInput);
-  root.addEventListener('keydown', onInputKeyDown);
+  document.addEventListener('keydown', onInputKeyDown);
   closeButton.addEventListener('click', close);
   openButton?.addEventListener('click', show);
   document.addEventListener('keydown', onKeyDown);
   render();
   return () => {
     input.removeEventListener('input', onInput);
-    root.removeEventListener('keydown', onInputKeyDown);
+    document.removeEventListener('keydown', onInputKeyDown);
     closeButton.removeEventListener('click', close);
     openButton?.removeEventListener('click', show);
     document.removeEventListener('keydown', onKeyDown);
