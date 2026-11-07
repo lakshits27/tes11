@@ -490,3 +490,7 @@
     min-height: 44px;
   }
 }
+
+
+/* 37 — category labels read as compact metadata */
+.project-card__meta > :last-child { display: inline-flex; align-items: center; width: fit-content; padding: 5px 9px; border: 1px solid color-mix(in srgb, var(--card-read) 34%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--card-accent) 9%, transparent); color: var(--card-read); line-height: 1.2; }
