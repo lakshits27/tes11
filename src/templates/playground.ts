@@ -64,6 +64,7 @@ export function playgroundPage(): PageDefinition {
             <option value="solar">Solar flare</option>
             <option value="ultraviolet">Ultraviolet</option>
           </select>
+          <button class="btn btn--ghost" type="button" data-prism-shuffle>Shuffle palette</button>
         </div>
         <div class="control-panel__actions">
           <button class="btn btn--primary" type="button" data-prism-pulse>${icon('spark')}<span>Send pulse</span></button>
