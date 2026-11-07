@@ -186,6 +186,7 @@ export function layout(content: string, options: LayoutOptions): string {
   <main id="main" class="page-main" tabindex="-1">
 ${content}
   </main>
+  <p class="print-page-url">Page URL: ${escapeHtml(url)}</p>
   ${footer()}
   <script type="module" src="${scriptSrc}"></script>
 </body>
