@@ -69,6 +69,6 @@ export function icon(name: IconName, className = 'icon'): string {
   return `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${PATHS[name]}</svg>`;
 }
 
-export function wordmarkGlyph(): string {
-  return `<svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="wordmark-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#wordmark-gradient)"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg>`;
+export function wordmarkGlyph(id: string): string {
+  return `<svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7ff65"/><stop offset=".45" stop-color="#61e7ff"/><stop offset="1" stop-color="#b69bff"/></linearGradient></defs><path d="M10 7h7v23h17v7H10V7Z" fill="url(#${id})"/><circle cx="34" cy="10" r="4" fill="#ff78b7"/></svg>`;
 }
