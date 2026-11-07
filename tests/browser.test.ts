@@ -418,6 +418,7 @@ describe('portfolio browser checks', () => {
   it('passes axe-core accessibility checks on representative pages', async () => {
     const routes = ['', 'projects/', 'projects/sortify/', 'about/', 'playground/', 'contact/'];
     const violationsByRoute: Record<string, string[]> = {};
+    const axeDetailsByRoute: Record<string, unknown> = {};
     for (const route of routes) {
       const { page, errors } = await openPage(route);
       await page.addScriptTag({ content: axeSource });
@@ -425,19 +426,20 @@ describe('portfolio browser checks', () => {
         const axe = (
           window as typeof window & {
             axe?: {
-              run: (context: Document) => Promise<{ violations: Array<{ id: string; impact?: string; nodes: unknown[] }> }>;
+              run: (context: Document) => Promise<{ violations: Array<{ id: string; impact?: string; nodes: Array<{ html: string; failureSummary?: string }> }> }>;
             };
           }
         ).axe;
         if (!axe) throw new Error('axe-core was not injected');
         const result = await axe.run(document);
-        return result.violations.map((violation) => `${violation.id} (${violation.nodes.length})`);
+        return result.violations.map((violation) => ({ id: violation.id, nodes: violation.nodes.map((node) => ({ html: node.html, failureSummary: node.failureSummary })) }));
       });
-      violationsByRoute[route || '/'] = violations;
+      violationsByRoute[route || '/'] = violations.map((violation) => `${violation.id} (${violation.nodes.length})`);
+      axeDetailsByRoute[route || '/'] = violations;
       assert.deepEqual(errors, [], `Console or request errors on ${route || '/'}`);
       await page.close();
     }
-    assert.deepEqual(violationsByRoute, Object.fromEntries(routes.map((route) => [route || '/', []])), 'Axe violations found');
+    assert.deepEqual(violationsByRoute, Object.fromEntries(routes.map((route) => [route || '/', []])), `Axe violations found: ${JSON.stringify(axeDetailsByRoute)}`);
   });
 
   it('keeps light-theme contrast accessible on representative pages', async () => {
