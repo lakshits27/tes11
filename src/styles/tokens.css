@@ -624,3 +624,8 @@ html.theme-anim *::after {
 /* 140 — readable inline-link underline geometry */
 .page-main p a:not(.btn), .page-main li a:not(.btn), .project-section__content a:not(.btn) { text-decoration-line: underline; text-decoration-thickness: .07em; text-underline-offset: .2em; text-decoration-skip-ink: auto; }
 .page-main p a:not(.btn):hover, .page-main li a:not(.btn):hover { text-decoration-thickness: .11em; }
+
+
+/* 141 — inline code treatment */
+:not(pre) > code, p code, li code { padding: .12em .42em; border: 1px solid var(--line); border-radius: .42em; background: var(--surface-2); color: var(--accent-violet); font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
+pre { max-width: 100%; overflow: auto; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-deep); color: var(--ink-soft); }
