@@ -1,4 +1,4 @@
-type PaletteCommand = { id: string; label: string; run: () => void };
+type PaletteCommand = { id: string; label: string; category?: string; run: () => void };
 
 function fuzzyMatch(query: string, candidate: string): boolean {
   const needle = query.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
@@ -24,8 +24,13 @@ export function initCommandPalette(): () => void {
   const commands: PaletteCommand[] = [];
   const render = (): void => {
     const matches = commands.filter((command) => fuzzyMatch(input.value, command.label));
-    results.innerHTML = matches.length
-      ? matches.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}">${command.label}</button>`).join('')
+    const groups = new Map<string, PaletteCommand[]>();
+    matches.forEach((command) => {
+      const category = command.category ?? 'General';
+      groups.set(category, [...(groups.get(category) ?? []), command]);
+    });
+    results.innerHTML = groups.size
+      ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}">${command.label}</button>`).join('')}</section>`).join('')
       : '<p class="command-palette__empty">No matching commands.</p>';
     results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button) => {
       button.addEventListener('click', () => commands.find((command) => command.id === button.dataset.commandId)?.run());
