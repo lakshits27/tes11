@@ -23,6 +23,21 @@ async function copyPaletteText(value: string): Promise<boolean> {
 
 type PaletteCommand = { id: string; label: string; description?: string; category?: string; run: () => void };
 
+function escapePaletteText(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character] ?? character);
+}
+
+function highlightMatch(label: string, query: string): string {
+  const needle = [...query.toLocaleLowerCase().replace(/\s+/g, '')];
+  let cursor = 0;
+  return [...label].map((character) => {
+    const matched = needle[cursor] === character.toLocaleLowerCase();
+    if (matched) cursor += 1;
+    const safe = escapePaletteText(character);
+    return matched ? `<mark class="command-palette__match">${safe}</mark>` : safe;
+  }).join('');
+}
+
 function fuzzyMatch(query: string, candidate: string): boolean {
   const needle = query.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
   const haystack = candidate.toLocaleLowerCase();
@@ -109,7 +124,7 @@ export function initCommandPalette(): () => void {
       groups.set(category, [...(groups.get(category) ?? []), command]);
     });
     results.innerHTML = groups.size
-      ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}"><span class="command-palette__result-label">${command.label}</span>${command.description ? `<small class="command-palette__result-description">${command.description}</small>` : ""}</button>`).join('')}</section>`).join('')
+      ? [...groups].map(([category, items]) => `<section class="command-palette__group"><h3 class="command-palette__group-title">${category}</h3>${items.map((command) => `<button class="command-palette__result" type="button" role="option" data-command-id="${command.id}"><span class="command-palette__result-label">${highlightMatch(command.label, input.value)}</span>${command.description ? `<small class="command-palette__result-description">${command.description}</small>` : ""}</button>`).join('')}</section>`).join('')
       : '<p class="command-palette__empty">No matching commands.</p>';
     results.querySelectorAll<HTMLButtonElement>('[data-command-id]').forEach((button, index) => {
       button.setAttribute('aria-selected', String(index === selectedIndex));
