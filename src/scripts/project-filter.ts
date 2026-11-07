@@ -5,6 +5,7 @@ export function initProjectFilter(): () => void {
   const status = document.querySelector<HTMLElement>('[data-filter-status]');
   const empty = document.querySelector<HTMLElement>('[data-projects-empty]');
   const clear = document.querySelector<HTMLButtonElement>('[data-clear-filters]');
+  const clearSearch = document.querySelector<HTMLButtonElement>('[data-clear-search]');
   const cards = root ? Array.from(root.querySelectorAll<HTMLElement>('[data-project-card]')) : [];
 
   if (!root || cards.length === 0) return () => undefined;
@@ -13,6 +14,7 @@ export function initProjectFilter(): () => void {
 
   const apply = (): void => {
     const query = (search?.value ?? '').trim().toLowerCase();
+    if (clearSearch) clearSearch.hidden = query.length === 0;
     let visible = 0;
 
     cards.forEach((card) => {
@@ -48,6 +50,7 @@ export function initProjectFilter(): () => void {
   };
 
   const onSearch = (): void => apply();
+  const onClearSearch = (): void => { if (search) search.value = ''; apply(); search?.focus(); };
   const onClear = (): void => {
     activeFilter = 'All';
     if (search) search.value = '';
@@ -63,11 +66,13 @@ export function initProjectFilter(): () => void {
   chips.forEach((chip) => chip.addEventListener('click', onChipClick));
   search?.addEventListener('input', onSearch);
   clear?.addEventListener('click', onClear);
+  clearSearch?.addEventListener('click', onClearSearch);
   apply();
 
   return () => {
     chips.forEach((chip) => chip.removeEventListener('click', onChipClick));
     search?.removeEventListener('input', onSearch);
     clear?.removeEventListener('click', onClear);
+    clearSearch?.removeEventListener('click', onClearSearch);
   };
 }

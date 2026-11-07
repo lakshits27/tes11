@@ -31,7 +31,7 @@ export function projectsPage(): PageDefinition {
       <label class="search-field">
         <span class="sr-only">Search projects</span>
         ${icon('search')}
-        <input type="search" id="project-search" data-project-search placeholder="Search projects, stacks, ideas…" autocomplete="off">
+        <input type="search" id="project-search" data-project-search placeholder="Search projects, stacks, ideas…" autocomplete="off"><button type="button" class="search-field__clear" data-clear-search aria-label="Clear project search" hidden>×</button>
       </label>
     </div>
     <p class="filter-status" data-filter-status role="status" aria-live="polite">Showing all ${PROJECTS.length} projects.</p>
