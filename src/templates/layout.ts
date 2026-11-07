@@ -83,7 +83,7 @@ function header(activeNav: string): string {
 }
 
 function themeToggle(className = ''): string {
-  return `<button class="theme-toggle ${className}" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+  return `<button class="theme-toggle ${className}" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme" title="Toggle theme · Ctrl+Shift+L">
     <span class="theme-toggle__sun">${icon('sun')}</span>
     <span class="theme-toggle__moon">${icon('moon')}</span>
     <span class="sr-only" data-theme-label>Switch to light theme</span>
