@@ -21,10 +21,10 @@ export function faqPage(): PageDefinition {
     <div class="faq-list">
       ${[...new Set(questions.map((item) => item.category))].map((category) => `<section class="faq-group" aria-labelledby="faq-${category.toLowerCase().replace(/[^a-z]+/g, '-')}">
         <h2 id="faq-${category.toLowerCase().replace(/[^a-z]+/g, '-')}" class="faq-group__title">${category}</h2>
-        ${questions.filter((item) => item.category === category).map((item) => `<article class="faq-item">
-          <span class="faq-item__index">${String(questions.indexOf(item) + 1).padStart(2, '0')}</span>
-          <div><h3>${item.question}</h3><p>${item.answer}</p></div>
-        </article>`).join('')}
+        ${questions.filter((item) => item.category === category).map((item) => `<details class="faq-item">
+          <summary><span class="faq-item__index">${String(questions.indexOf(item) + 1).padStart(2, '0')}</span><h3>${item.question}</h3><span class="faq-item__toggle" aria-hidden="true">+</span></summary>
+          <p>${item.answer}</p>
+        </details>`).join('')}
       </section>`).join('')}
     </div>
     <a class="text-link" href="${href('contact/')}">Still curious? Get in touch ↗</a>
