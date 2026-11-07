@@ -2954,3 +2954,7 @@
 .faq-item h2 { margin:0 0 9px; font-size:1.12rem; }
 .faq-item p { margin:0; max-width:680px; color:var(--muted); line-height:1.7; }
 @media(max-width:560px) { .faq-page { width:min(100% - 36px,920px); } .faq-item { grid-template-columns:34px minmax(0,1fr); gap:10px; } }
+
+.faq-group + .faq-group { margin-top:38px; }
+.faq-group__title { margin:0 0 12px; color:var(--accent); font:.72rem var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+.faq-item h3 { margin:0 0 9px; font-size:1.12rem; }
