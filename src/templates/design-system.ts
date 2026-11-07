@@ -44,6 +44,10 @@ export function designSystemPage(): PageDefinition {
         <a class="btn btn--secondary" href="#ds-components-title">Secondary action</a>
         <a class="btn btn--ghost" href="#ds-components-title">Quiet action</a>
         <button class="btn btn--dark" type="button" disabled>Disabled state</button>
+      </div><div class="ds-form-showcase">
+        <label>Search field<input type="search" placeholder="Search projects…" aria-label="Search field specimen"></label>
+        <label>Select menu<select aria-label="Select menu specimen"><option>Choose a category</option><option>Web</option><option>Systems</option></select></label>
+        <label class="ds-form-check"><input type="checkbox" checked> Preference toggle</label>
       </div></section>
     </div>
   </section>`;
