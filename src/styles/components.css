@@ -490,3 +490,10 @@
     min-height: 44px;
   }
 }
+
+
+/* 46 — image loading placeholder */
+.project-card__media { background: linear-gradient(110deg,var(--media-bg) 25%,color-mix(in srgb,var(--card-read) 12%,var(--media-bg)) 42%,var(--media-bg) 62%); background-size:220% 100%; animation:project-media-shimmer 1.8s ease-in-out infinite; }
+.project-card__media img { background:var(--media-bg); }
+@keyframes project-media-shimmer { to { background-position-x:-220%; } }
+@media (prefers-reduced-motion:reduce) { .project-card__media { animation:none; } }
