@@ -490,3 +490,9 @@
     min-height: 44px;
   }
 }
+
+
+/* 36 — project title micro-transition */
+.project-card h3 { transition: transform .28s var(--ease), letter-spacing .28s ease; transform-origin: left center; }
+.project-card:hover h3, .project-card:focus-within h3 { transform: translateX(3px); letter-spacing: -.025em; }
+@media (prefers-reduced-motion: reduce) { .project-card h3 { transition: none; } .project-card:hover h3, .project-card:focus-within h3 { transform: none; } }
