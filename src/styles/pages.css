@@ -3018,3 +3018,12 @@
 .ds-form-showcase .ds-form-check { display:flex; align-items:center; gap:10px; grid-column:1/-1; color:var(--ink); }
 .ds-form-showcase .ds-form-check input { accent-color:var(--accent); width:17px; height:17px; }
 @media(max-width:560px) { .ds-form-showcase { grid-template-columns:1fr; } }
+
+.ds-card-showcase { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:28px; }
+.ds-demo-card { display:flex; flex-direction:column; gap:12px; min-height:170px; padding:18px; border:1px solid var(--line); border-radius:var(--radius-md); background:var(--surface); }
+.ds-demo-card > span { color:var(--muted-2); font:.6rem var(--mono); letter-spacing:.08em; }
+.ds-demo-card h3 { font-size:1.18rem; }
+.ds-demo-card p { font-size:.8rem; line-height:1.6; }
+.ds-demo-card--raised { box-shadow:var(--shadow-soft); background:var(--surface-2); }
+.ds-demo-card--accent { border-color:var(--lime-line); background:var(--lime-wash); }
+@media(max-width:760px) { .ds-card-showcase { grid-template-columns:1fr; } }

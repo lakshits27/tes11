@@ -48,6 +48,10 @@ export function designSystemPage(): PageDefinition {
         <label>Search field<input type="search" placeholder="Search projects…" aria-label="Search field specimen"></label>
         <label>Select menu<select aria-label="Select menu specimen"><option>Choose a category</option><option>Web</option><option>Systems</option></select></label>
         <label class="ds-form-check"><input type="checkbox" checked> Preference toggle</label>
+      </div><div class="ds-card-showcase">
+        <article class="ds-demo-card ds-demo-card--quiet"><span>01 / QUIET</span><h3>Surface card</h3><p>A restrained container for supporting information.</p></article>
+        <article class="ds-demo-card ds-demo-card--raised"><span>02 / RAISED</span><h3>Elevated card</h3><p>A stronger surface for a primary item or interaction.</p></article>
+        <article class="ds-demo-card ds-demo-card--accent"><span>03 / ACCENT</span><h3>Accent card</h3><p>A focused highlight for one meaningful detail.</p></article>
       </div></section>
     </div>
   </section>`;
