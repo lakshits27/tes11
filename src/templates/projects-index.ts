@@ -34,7 +34,7 @@ export function projectsPage(): PageDefinition {
         <input type="search" id="project-search" data-project-search placeholder="Search projects, stacks, ideas…" autocomplete="off">
       </label>
     </div>
-    <p class="filter-status" data-filter-status role="status" aria-live="polite">Showing all ${PROJECTS.length} projects.</p>
+    <div class="project-discovery-actions"><p class="filter-status" data-filter-status role="status" aria-live="polite">Showing all ${PROJECTS.length} projects.</p><button class="btn btn--ghost" type="button" data-project-random>Surprise me <span aria-hidden="true">↗</span></button></div>
 
     <h2 class="sr-only">Project gallery</h2>
     <div class="projects-grid" data-projects-grid>
