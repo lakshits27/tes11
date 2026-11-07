@@ -41,7 +41,7 @@ function header(activeNav: string): string {
   return `<header class="site-header" id="top">
     <div class="nav-shell">
       <a class="wordmark" href="${href()}" aria-label="LAVI. — ${escapeHtml(SITE.name)}, home">
-        <span class="wordmark__glyph">${wordmarkGlyph()}</span>
+        <span class="wordmark__glyph">${wordmarkGlyph('wordmark-gradient-header')}</span>
         <span class="wordmark__text">${SITE.brand}<span class="wordmark__dot">.</span></span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
@@ -98,7 +98,7 @@ function footer(currentPage: string): string {
     <div class="footer-inner" data-reveal>
       <div class="footer-brand">
         <a class="wordmark wordmark--footer" href="${href()}" aria-label="LAVI. — ${escapeHtml(SITE.name)}, home">
-          <span class="wordmark__glyph">${wordmarkGlyph()}</span>
+          <span class="wordmark__glyph">${wordmarkGlyph('wordmark-gradient-footer')}</span>
           <span class="wordmark__text">${SITE.brand}<span class="wordmark__dot">.</span></span>
         </a>
         <p>Curious builder, multidisciplinary developer, and collector of interesting questions.</p>
