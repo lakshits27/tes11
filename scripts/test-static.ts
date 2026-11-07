@@ -54,6 +54,7 @@ for (const route of HTML_ROUTES) {
   assert.equal(await exists(distFile), true, `Missing built route: ${distFile}`);
   assert.equal(await exists(route.file, ROOT), true, `Missing generated source route: ${route.file}`);
   const html = await readFile(path.join(DIST, distFile), 'utf8');
+  assert.ok(Buffer.byteLength(html, 'utf8') <= 300_000, `Generated HTML exceeds 300 KB on ${distFile}`);
 
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
