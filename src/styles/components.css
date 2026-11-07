@@ -587,3 +587,17 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 .footer-breadcrumb a:hover { color: var(--accent); }
 .footer-breadcrumb [aria-current='page'] { color: var(--ink-soft); }
 @media (max-width: 720px) { .footer-breadcrumb { order: 3; } }
+
+
+/* 409 — site-wide command palette */
+.command-palette[hidden] { display:none; }
+.command-palette { position:fixed; inset:0; z-index:1000; display:grid; place-items:start center; padding: min(16vh,120px) 18px 24px; }
+.command-palette__backdrop { position:absolute; inset:0; border:0; background:rgb(4 6 12 / .72); backdrop-filter:blur(12px); cursor:default; }
+.command-palette__dialog { position:relative; width:min(620px,100%); overflow:hidden; border:1px solid var(--line); border-radius:18px; background:var(--surface); box-shadow:0 28px 100px rgb(0 0 0 / .35); }
+.command-palette__search { display:flex; align-items:center; gap:12px; padding:17px 20px; border-bottom:1px solid var(--line); color:var(--muted); }
+.command-palette__search input { width:100%; min-width:0; border:0; outline:0; background:transparent; color:var(--text); font:inherit; }
+.command-palette__search kbd,.command-palette__hint kbd { padding:3px 6px; border:1px solid var(--line); border-radius:5px; color:var(--muted); font: .68rem var(--mono); }
+.command-palette__results { max-height:min(54vh,440px); overflow:auto; padding:10px; }
+.command-palette__empty { margin:0; padding:22px 12px; color:var(--muted); text-align:center; font-size:.88rem; }
+.command-palette__hint { margin:0; padding:11px 16px; border-top:1px solid var(--line); color:var(--muted); font-size:.7rem; }
+.command-palette__hint kbd { margin-inline:2px; }
