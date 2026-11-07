@@ -45,6 +45,8 @@ export function createPrismField(): PrismFieldController | null {
   const pulseButton = document.querySelector<HTMLButtonElement>('[data-prism-pulse]');
   const resetButton = document.querySelector<HTMLButtonElement>('[data-prism-reset]');
   const toggleButton = document.querySelector<HTMLButtonElement>('[data-prism-toggle]');
+  const fullscreenButton = document.querySelector<HTMLButtonElement>('[data-prism-fullscreen]');
+  const stage = canvas.closest<HTMLElement>('.prism-lab__stage');
 
   const values: Record<ControlKey, number> = { ...DEFAULTS };
   let palette: PaletteName = 'aurora';
@@ -259,6 +261,24 @@ export function createPrismField(): PrismFieldController | null {
     }
   };
 
+  const syncFullscreen = (): void => {
+    const active = Boolean(stage && document.fullscreenElement === stage);
+    fullscreenButton?.setAttribute('aria-pressed', String(active));
+    const label = fullscreenButton?.querySelector('span');
+    if (label) label.textContent = active ? 'Exit fullscreen' : 'Fullscreen';
+  };
+
+  const onFullscreen = async (): Promise<void> => {
+    if (!stage) return;
+    try {
+      if (document.fullscreenElement === stage) await document.exitFullscreen();
+      else if (stage.requestFullscreen) await stage.requestFullscreen();
+      else if (fps) fps.textContent = 'FULLSCREEN UNAVAILABLE';
+    } catch {
+      if (fps) fps.textContent = 'FULLSCREEN BLOCKED';
+    }
+  };
+
   const onReset = (): void => {
     (Object.keys(DEFAULTS) as ControlKey[]).forEach((key) => setControl(key, DEFAULTS[key]));
     if (paletteSelect) paletteSelect.value = 'aurora';
@@ -304,6 +324,8 @@ export function createPrismField(): PrismFieldController | null {
   pulseButton?.addEventListener('click', onPulse);
   resetButton?.addEventListener('click', onReset);
   toggleButton?.addEventListener('click', onToggle);
+  fullscreenButton?.addEventListener('click', onFullscreen);
+  document.addEventListener('fullscreenchange', syncFullscreen);
   canvas.addEventListener('pointerdown', onPointerDown);
   canvas.addEventListener('pointermove', onPointerMove);
   canvas.addEventListener('pointerup', onPointerUp);
@@ -356,6 +378,8 @@ export function createPrismField(): PrismFieldController | null {
       pulseButton?.removeEventListener('click', onPulse);
       resetButton?.removeEventListener('click', onReset);
       toggleButton?.removeEventListener('click', onToggle);
+      fullscreenButton?.removeEventListener('click', onFullscreen);
+      document.removeEventListener('fullscreenchange', syncFullscreen);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup', onPointerUp);

@@ -656,3 +656,8 @@
     min-height: 52px;
   }
 }
+
+
+/* Fullscreen Prism Field presentation */
+.prism-lab__stage:fullscreen { display: grid; place-items: center; width: 100vw; height: 100vh; aspect-ratio: auto; border: 0; border-radius: 0; background: #080b14; }
+.prism-lab__stage:fullscreen canvas { width: 100%; height: 100%; }
