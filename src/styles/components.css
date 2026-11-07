@@ -499,3 +499,12 @@
     min-height: 44px;
   }
 }
+
+
+/* 41 — small CSS illustration for the empty project shelf */
+.projects-empty { position:relative; isolation:isolate; overflow:hidden; }
+.projects-empty::before,.projects-empty::after { content:''; position:absolute; z-index:-1; width:150px; aspect-ratio:1; border:1px solid var(--line-strong); border-radius:50%; pointer-events:none; }
+.projects-empty::before { top:18px; right:clamp(12px,10vw,110px); box-shadow:0 0 0 18px var(--ov-012),0 0 0 38px var(--ov-008); transform:rotate(-24deg) scaleX(1.35); }
+.projects-empty::after { bottom:-95px; left:clamp(8px,12vw,130px); width:210px; border-color:var(--violet-line); opacity:.65; }
+.projects-empty > .icon { filter:drop-shadow(0 0 16px var(--lime-glow)); }
+@media (max-width:720px) { .projects-empty::before { right:-65px; } .projects-empty::after { left:-110px; } }
