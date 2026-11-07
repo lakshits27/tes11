@@ -3074,3 +3074,20 @@
 .credits-assets h2 { margin-bottom:16px; font-size:1.55rem; }
 .credits-assets p { color:var(--muted); font-size:.86rem; line-height:1.75; }
 .credits-assets p + p { margin-top:12px; }
+
+
+/* Privacy explanation */
+.privacy-page { width:min(100% - 48px,920px); margin:0 auto; padding:clamp(76px,12vw,150px) 0 100px; }
+.privacy-page__hero { max-width:720px; margin-bottom:64px; }
+.privacy-page__hero h1 { margin:18px 0; font-size:clamp(3rem,8vw,6.5rem); letter-spacing:-.075em; }
+.privacy-page__hero h1 span { color:var(--accent); }
+.privacy-page__hero > p:last-child { color:var(--muted); font-size:1.05rem; line-height:1.8; }
+.privacy-list { border-top:1px solid var(--line); }
+.privacy-list article { display:grid; grid-template-columns:42px minmax(0,1fr); gap:18px; padding:25px 0; border-bottom:1px solid var(--line); }
+.privacy-list article > span { color:var(--accent); font:.68rem var(--mono); padding-top:5px; }
+.privacy-list h2 { margin-bottom:9px; font-size:1.25rem; }
+.privacy-list p,.privacy-updated { color:var(--muted); font-size:.86rem; line-height:1.75; }
+.privacy-contact { margin-top:32px; color:var(--muted); font-size:.85rem; }
+.privacy-contact a { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.privacy-updated { margin-top:10px; font-size:.72rem; }
+@media(max-width:560px) { .privacy-page { width:min(100% - 36px,920px); } }
