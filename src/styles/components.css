@@ -579,3 +579,11 @@ blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); fon
 :is(h2, h3):hover .heading-permalink, :is(h2, h3):focus-within .heading-permalink, .heading-permalink:focus-visible { opacity: 1; }
 .heading-permalink:hover { background: var(--surface-2); color: var(--accent-violet); }
 @media (hover: none) { .heading-permalink { opacity: .72; } }
+
+
+/* 151 — compact current-page breadcrumb in the footer */
+.footer-breadcrumb { display: inline-flex; align-items: center; gap: 8px; color: var(--muted-2); }
+.footer-breadcrumb a { color: var(--muted); }
+.footer-breadcrumb a:hover { color: var(--accent); }
+.footer-breadcrumb [aria-current='page'] { color: var(--ink-soft); }
+@media (max-width: 720px) { .footer-breadcrumb { order: 3; } }
