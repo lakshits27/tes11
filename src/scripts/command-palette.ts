@@ -15,7 +15,7 @@ async function copyPaletteText(value: string): Promise<boolean> {
   field.style.top = '-9999px';
   document.body.append(field);
   field.select();
-  let copied = false;
+  let copied: boolean;
   try { copied = document.execCommand('copy'); } catch { copied = false; }
   field.remove();
   return copied;
@@ -159,7 +159,8 @@ export function initCommandPalette(): () => void {
     if (event.key === 'Escape' && open) { event.preventDefault(); close(); return; }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
       event.preventDefault();
-      open ? close() : show();
+      if (open) close();
+      else show();
     }
   };
   const onInput = (): void => render();
