@@ -23,6 +23,21 @@
     background 0.28s ease;
 }
 
+.wordmark:active {
+  transform: scale(0.97);
+}
+
+.wordmark:active .wordmark__glyph {
+  transform: scale(0.9);
+  background: var(--lime-wash);
+  border-color: var(--lime-line);
+  box-shadow: 0 0 0 4px var(--lime-wash);
+}
+
+.wordmark:active .wordmark__glyph svg {
+  transform: scale(0.92);
+}
+
 .site-header.is-scrolled {
   background: color-mix(in srgb, var(--header-bg) 94%, var(--ink) 6%);
   border-bottom-color: var(--line);
