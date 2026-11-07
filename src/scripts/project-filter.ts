@@ -48,6 +48,20 @@ export function initProjectFilter(): () => void {
   };
 
   const onSearch = (): void => apply();
+
+  const onChipKeyDown = (event: KeyboardEvent): void => {
+    const current = event.currentTarget;
+    if (!(current instanceof HTMLButtonElement)) return;
+    const index = chips.indexOf(current);
+    let next = -1;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % chips.length;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + chips.length) % chips.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = chips.length - 1;
+    if (next < 0) return;
+    event.preventDefault();
+    chips[next]?.focus();
+  };
   const onClear = (): void => {
     activeFilter = 'All';
     if (search) search.value = '';
@@ -60,13 +74,13 @@ export function initProjectFilter(): () => void {
     search?.focus();
   };
 
-  chips.forEach((chip) => chip.addEventListener('click', onChipClick));
+  chips.forEach((chip) => { chip.addEventListener('click', onChipClick); chip.addEventListener('keydown', onChipKeyDown); });
   search?.addEventListener('input', onSearch);
   clear?.addEventListener('click', onClear);
   apply();
 
   return () => {
-    chips.forEach((chip) => chip.removeEventListener('click', onChipClick));
+    chips.forEach((chip) => { chip.removeEventListener('click', onChipClick); chip.removeEventListener('keydown', onChipKeyDown); });
     search?.removeEventListener('input', onSearch);
     clear?.removeEventListener('click', onClear);
   };
