@@ -26,7 +26,7 @@
 .site-header.is-scrolled {
   background: color-mix(in srgb, var(--header-bg) 94%, var(--ink) 6%);
   border-bottom-color: var(--line);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), 0 1px 0 var(--line-soft);
   -webkit-backdrop-filter: blur(28px) saturate(155%);
   backdrop-filter: blur(28px) saturate(155%);
 }
