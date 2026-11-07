@@ -60,7 +60,7 @@ for (const route of HTML_ROUTES) {
   assert.match(html, /property="og:image"/, `Missing OG image on ${distFile}`);
   assert.match(html, /type="application\/ld\+json"/, `Missing structured data on ${distFile}`);
   assert.doesNotMatch(html, /href="#"/, `Dead href="#" on ${distFile}`);
-  const pageIds = extractAll(html, /\\bid="([^"]+)"/g);
+  const pageIds = extractAll(html, /\bid="([^"]+)"/g);
   assert.equal(new Set(pageIds).size, pageIds.length, `Duplicate id on ${distFile}`);
   const pageIdSet = new Set(pageIds);
   for (const target of extractAll(html, /href="#([^"]+)"/g)) {
