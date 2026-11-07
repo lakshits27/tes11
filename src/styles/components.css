@@ -519,3 +519,11 @@
 blockquote { margin: 1.5rem 0; padding: 1rem 1.25rem; border-inline-start: 3px solid var(--accent-violet); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--surface-2); color: var(--ink-soft); }
 blockquote p { color: inherit; }
 blockquote cite { display: block; margin-top: .65rem; color: var(--muted-2); font-size: .82rem; font-style: normal; }
+
+
+/* 149 — consistent footer social rhythm */
+.footer-connect { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+.footer-connect > a { min-height: 42px; display: flex; align-items: center; gap: 11px; padding: 7px 10px; border-radius: var(--radius-xs); }
+.footer-connect > a > span { flex: 1; }
+.footer-connect > a:hover { background: var(--ov-035); }
+@media (max-width: 720px) { .footer-connect { gap: 5px; } .footer-connect > a { min-height: 46px; } }
