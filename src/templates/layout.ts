@@ -180,6 +180,7 @@ export function layout(content: string, options: LayoutOptions): string {
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-wipe" aria-hidden="true"></div>
   <canvas id="spectral-trail" aria-hidden="true"></canvas>
+  <div class="reading-progress" data-reading-progress role="progressbar" aria-label="Page reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="reading-progress__track"><span data-reading-progress-fill></span></span><output data-reading-progress-value>0%</output></div>
   <noscript><div class="noscript-note">This site works without JavaScript; animations and playground controls are enhanced when JavaScript is available.</div></noscript>
   ${header(options.activeNav)}
   <main id="main" class="page-main" tabindex="-1">
