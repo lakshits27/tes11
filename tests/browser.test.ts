@@ -106,6 +106,38 @@ before(async () => {
     await page.close();
   });
 
+  it('loads new reference pages and exercises command-palette search and keyboard navigation', async () => {
+    const { page, errors } = await openPage();
+    for (const route of ['changelog/', 'faq/', 'design-system/', 'accessibility/', 'credits/', 'privacy/']) {
+      const response = await page.goto(new URL(route, BASE).toString(), { waitUntil: 'domcontentloaded' });
+      assert.ok(response && [200, 304].includes(response.status()), `New route ${route} did not load`);
+      assert.ok(await page.$eval('h1', (element) => (element.textContent ?? '').trim().length > 0));
+    }
+    await page.goto(BASE, { waitUntil: 'domcontentloaded' });
+    await page.click('[data-palette-open]');
+    await page.waitForSelector('[data-command-palette]:not([hidden])');
+    const groups = await page.$eval('.command-palette__group-title', (elements) => elements.map((element) => element.textContent?.trim()));
+    assert.ok(groups.includes('Navigate'));
+    assert.ok(groups.includes('Profiles'));
+    assert.ok(groups.includes('Actions'));
+    await page.focus('[data-palette-search]');
+    await page.keyboard.type('proj');
+    await page.waitForFunction(() => document.querySelectorAll('[data-command-id]').length === 1);
+    assert.equal(await page.$eval('[data-command-id]', (element) => element.textContent?.includes('Projects')), true);
+    assert.ok(await page.$('[data-command-palette] mark'));
+    await page.keyboard.press('Control+Backspace');
+    assert.equal(await page.$eval('[data-palette-search]', (element) => (element as HTMLInputElement).value), '');
+    await page.focus('[data-palette-search]');
+    await page.keyboard.press('ArrowDown');
+    await page.waitForFunction(() => document.activeElement?.getAttribute('data-command-id') === 'route-home');
+    await page.keyboard.press('ArrowDown');
+    await page.waitForFunction(() => document.activeElement?.getAttribute('data-command-id') === 'route-projects');
+    await page.keyboard.press('Enter');
+    await page.waitForFunction(() => location.pathname.endsWith('/projects/'));
+    assert.deepEqual(errors, [], 'Console or request errors during palette interactions and reference-page navigation');
+    await page.close();
+  });
+
 });
 
 after(async () => {
