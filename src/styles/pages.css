@@ -2784,3 +2784,77 @@
     position: static;
   }
 }
+
+
+/* 79 — print-friendly About page */
+@media print {
+  body.page--about {
+    background: #fff !important;
+    color: #171717 !important;
+    font-size: 10.5pt;
+    print-color-adjust: economy;
+    -webkit-print-color-adjust: economy;
+  }
+
+  body.page--about .site-header,
+  body.page--about .site-footer,
+  body.page--about .page-wipe,
+  body.page--about #spectral-trail,
+  body.page--about .about-section-nav,
+  body.page--about .about-hero__actions,
+  body.page--about .about-next__actions,
+  body.page--about .about-hero__halo,
+  body.page--about .about-hero__ring,
+  body.page--about .curiosity-compass__rings {
+    display: none !important;
+  }
+
+  body.page--about .page-main,
+  body.page--about .section,
+  body.page--about .about-next {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 18pt 0;
+    background: #fff !important;
+    color: #171717 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  body.page--about h1,
+  body.page--about h2,
+  body.page--about h3,
+  body.page--about p,
+  body.page--about li,
+  body.page--about a,
+  body.page--about span {
+    color: #171717 !important;
+    text-shadow: none !important;
+  }
+
+  body.page--about .about-hero,
+  body.page--about .story-grid,
+  body.page--about .skills-layout,
+  body.page--about .learning-loop {
+    display: block;
+  }
+
+  body.page--about .about-hero__art {
+    display: none;
+  }
+
+  body.page--about .skill-group,
+  body.page--about .exploring-panel,
+  body.page--about .learning-loop__step {
+    break-inside: avoid;
+    border-color: #bbb !important;
+    background: #fff !important;
+  }
+
+  body.page--about a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+    font-size: 8pt;
+  }
+}
