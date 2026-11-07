@@ -490,3 +490,9 @@
     min-height: 44px;
   }
 }
+
+
+/* 54 — project detail section rhythm */
+.project-section { position:relative; }
+.project-section::before { content:''; position:absolute; top:-1px; left:0; width:clamp(54px,9vw,112px); height:2px; background:linear-gradient(90deg,var(--project-accent),transparent); opacity:.72; }
+.project-section + .project-section { border-top-color:color-mix(in srgb,var(--project-accent) 16%,var(--line-soft)); }
