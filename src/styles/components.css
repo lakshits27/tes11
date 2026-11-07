@@ -490,3 +490,11 @@
     min-height: 44px;
   }
 }
+
+
+/* 38 — active filter chip state transition */
+.filter-chip { position: relative; overflow: hidden; }
+.filter-chip::after { content: ''; position: absolute; inset: auto 14px 5px; height: 2px; border-radius: 2px; background: currentColor; transform: scaleX(0); transform-origin: center; transition: transform .24s var(--ease); }
+.filter-chip.is-active::after { transform: scaleX(1); }
+.filter-chip.is-active { box-shadow: 0 5px 18px color-mix(in srgb, var(--accent) 16%, transparent); }
+@media (prefers-reduced-motion: reduce) { .filter-chip::after { transition: none; } }
