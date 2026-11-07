@@ -1,5 +1,6 @@
 import '../styles/main.css';
 import { initCommandPalette } from './command-palette.ts';
+import { initDesignSystem } from './design-system.ts';
 import { initTheme } from './theme.ts';
 import { initNavigation } from './navigation.ts';
 import { initReveal } from './reveal.ts';
@@ -45,6 +46,7 @@ function boot(): void {
   cleanups.push(
     initTheme(),
     initCommandPalette(),
+    initDesignSystem(),
     initNavigation(),
     initReveal(),
     initTransitions(),
