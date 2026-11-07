@@ -490,3 +490,8 @@
     min-height: 44px;
   }
 }
+
+
+/* 57 — screenshot caption hierarchy */
+.project-visual figcaption { display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:10px 2px 0; color:var(--muted); font-size:.78rem; line-height:1.5; }
+.project-visual figcaption span { flex:0 0 auto; color:var(--project-read); font-family:var(--mono); font-size:.61rem; letter-spacing:.09em; text-transform:uppercase; }
