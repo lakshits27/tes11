@@ -232,6 +232,10 @@ html[data-theme='light'] .theme-toggle__sun {
   animation: menu-in 0.28s var(--ease) both;
 }
 
+.mobile-menu.is-closing {
+  animation: menu-out 0.2s ease-in both;
+}
+
 .mobile-menu__nav {
   display: grid;
   gap: 2px;
