@@ -186,14 +186,14 @@ export function initCommandPalette(): () => void {
     }
   };
   input.addEventListener('input', onInput);
-  input.addEventListener('keydown', onInputKeyDown);
+  root.addEventListener('keydown', onInputKeyDown);
   closeButton.addEventListener('click', close);
   openButton?.addEventListener('click', show);
   document.addEventListener('keydown', onKeyDown);
   render();
   return () => {
     input.removeEventListener('input', onInput);
-    input.removeEventListener('keydown', onInputKeyDown);
+    root.removeEventListener('keydown', onInputKeyDown);
     closeButton.removeEventListener('click', close);
     openButton?.removeEventListener('click', show);
     document.removeEventListener('keydown', onKeyDown);
